@@ -1,0 +1,25 @@
+{
+  "name": "turing-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "jsonwebtoken": "^8.5.0",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mysql2": "^1.6.5",
+    "nodemon": "^1.18.10",
+    "sequelize": "^5.1.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^5.4.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=production nodemon src/app.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon src/app.js"
+  }
+}
