@@ -1,0 +1,31 @@
+yarn db:create --name attribute --attributes attribute_id:integer,name:string
+
+yarn db:create --name attribute_value --attributes attribute_value_id:integer,attribute_id:integer,value:string
+
+yarn db:create --name audit --attributes audit_id:integer,order_id:integer,created_on:date,message:text,code:integer
+
+yarn db:create --name category --attributes category_id:integer,department_id:integer,name:string,description:string &&
+
+yarn db:create --name customer --attributes customer_id:integer,name:string,email:string,password:string,credit_cart:text,address_1:string,address_2:string,city:string,region:string,postal_code:string,country:string,shipping_region_id:integer,day_phone:string,eve_phone:string,mob_phone:string
+
+yarn db:create --name department --attributes department_id:integer,name:string,description:string
+
+yarn db:create --name order_detail --attributes item_id:integer,order_id:integer,product_id:integer,attributes:string,product_name:string,quantity:integer,unit_cost:decimal
+
+yarn db:create --name orders --attributes order_id:integer,total_amount:decimal,created_on:date,shipped_on:date,status:integer,comments:string,customer_id:integer,auth_code:string,reference:string,shipping_id:integer,tax_id:integer
+
+yarn db:create --name product_attribute --attributes product_id:integer,attribute_value_id:integer
+
+yarn db:create --name product_category --attributes product_id:integer,category_id:integer
+
+yarn db:create --name product --attributes product_id:integer,name:string,description:string,price:decimal,discounted_price:decimal,image:string,image_2:string,thumbnail:string,display:smallint
+
+yarn db:create --name review --attributes review_id:integer,customer_id:integer,product_id:integer,review:text,rating:smallint,created_on:date
+
+yarn db:create --name shipping_region --attributes shipping_region_id:integer,shipping_region:string
+
+yarn db:create --name shipping --attributes shipping_id:integer,shipping_type:string,shipping_region_id:numeric,shipping_region_id:integer
+
+yarn db:create --name shopping_cart --attributes item_id:integer,cart_id:string,product_id:integer,attributes:string,quantity:integer,buy_now:boolean,add_on:date
+
+yarn db:create --name tax --attributes  tax_id:integer,tax_type:string,tax_percentage:numeric
