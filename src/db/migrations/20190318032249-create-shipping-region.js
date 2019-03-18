@@ -2,13 +2,10 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('shipping_region', {
-      id: {
+      shipping_region_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      shipping_region_id: {
         type: Sequelize.INTEGER
       },
       shipping_region: {

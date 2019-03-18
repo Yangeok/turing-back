@@ -2,23 +2,24 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('shipping', {
-      id: {
+      shipping_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      shipping_id: {
-        type: Sequelize.INTEGER
-      },
       shipping_type: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
       shipping_region_id: {
-        type: Sequelize.NUMERIC
+        type: Sequelize.FLOAT(10, 2)
       },
       shipping_region_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'shipping_region',
+          key: 'shipping_region_id'
+        }
       }
     });
   },

@@ -2,20 +2,17 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('tax', {
-      id: {
+      tax_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tax_id: {
-        type: Sequelize.INTEGER
-      },
       tax_type: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
       tax_percentage: {
-        type: Sequelize.NUMERIC
+        type: Sequelize.NUMERIC(10, 2)
       }
     });
   },

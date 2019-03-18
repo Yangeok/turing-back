@@ -1,12 +1,23 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const tax = sequelize.define('tax', {
-    tax_id: DataTypes.INTEGER,
-    tax_type: DataTypes.STRING,
-    tax_percentage: DataTypes.NUMERIC
-  }, {});
-  tax.associate = function(models) {
-    // associations can be defined here
-  };
+  const tax = sequelize.define(
+    'tax',
+    {
+      tax_id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
+      tax_type: {
+        type: DataTypes.STRING
+      },
+      tax_percentage: {
+        type: DataTypes.FLOAT(10, 2)
+      }
+    },
+    {}
+  );
+  tax.associate = function(models) {};
   return tax;
 };

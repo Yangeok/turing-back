@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   const customer = sequelize.define(
     'customer',
@@ -52,10 +54,30 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       }
     },
-    {}
+    {
+      hooks: {
+        beforeCreate: function(customer) {
+          customer.password = bcrypt.hashSync(
+            customer.password,
+            bcrypt.genSaltSync(10),
+            null
+          );
+        }
+      }
+    }
   );
   customer.associate = function(models) {
-    // associations can be defined here
+    customer.belongsTo(models.shipping_region, {
+      foreignKey: 'shipping_region_id'
+    });
+    customer.hasMany(models.shopping_cart, {
+      foreignKey: 'customer_id'
+    });
   };
+
+  customer.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+
   return customer;
 };

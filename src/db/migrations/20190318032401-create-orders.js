@@ -2,17 +2,14 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('order', {
-      id: {
+      order_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      order_id: {
-        type: Sequelize.INTEGER
-      },
       total_amount: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10, 2)
       },
       created_on: {
         type: Sequelize.DATE
@@ -21,7 +18,8 @@ module.exports = {
         type: Sequelize.DATE
       },
       status: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        default: 0
       },
       comments: {
         type: Sequelize.STRING
@@ -30,16 +28,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       auth_code: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       reference: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       shipping_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'shipping',
+          key: 'shipping_id'
+        }
       },
       tax_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'tax',
+          key: 'tax_id'
+        }
       }
     });
   },
