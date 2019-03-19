@@ -12,10 +12,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(50)
       },
       email: {
-        type: DataTypes.STRING
+        unique: true,
+        type: DataTypes.STRING(100)
       },
       password: {
         type: DataTypes.STRING
@@ -24,34 +25,35 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT
       },
       address_1: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       address_2: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       city: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       region: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       postal_code: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       country: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       shipping_region_id: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        default: 1
       },
       day_phone: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       eve_phone: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       mob_phone: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       }
     },
     {

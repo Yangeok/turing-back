@@ -23,16 +23,16 @@ module.exports = {
         }
       },
       attributes: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1000)
       },
       product_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
       },
       quantity: {
         type: Sequelize.INTEGER
       },
       unit_cost: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10, 2)
       }
     });
   },

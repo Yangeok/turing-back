@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       cart_id: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(32)
       },
       product_id: {
         type: DataTypes.INTEGER
@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       add_on: {
         type: DataTypes.DATE
+      },
+      customer_id: {
+        type: DataTypes.INTEGER
       }
     },
     {}

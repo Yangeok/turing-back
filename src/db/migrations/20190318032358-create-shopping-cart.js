@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       cart_id: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(32)
       },
       product_id: {
         type: Sequelize.INTEGER,
@@ -29,6 +29,13 @@ module.exports = {
       },
       add_on: {
         type: Sequelize.DATE
+      },
+      customer_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'customer',
+          key: 'customer'
+        }
       }
     });
   },

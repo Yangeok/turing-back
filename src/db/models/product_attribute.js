@@ -17,7 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   product_attribute.associate = function(models) {
-    // associations can be defined here
+    product_attribute.belongsTo(models.product, {
+      foreignKey: 'product_id'
+    });
+    product_attribute.belongsTo(models.attribute_value, {
+      foreignKey: 'attribute_value_id'
+    });
   };
   return product_attribute;
 };

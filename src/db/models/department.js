@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       description: {
         type: DataTypes.STRING(1000)

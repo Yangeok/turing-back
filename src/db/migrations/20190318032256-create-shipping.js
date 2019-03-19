@@ -11,7 +11,7 @@ module.exports = {
       shipping_type: {
         type: Sequelize.STRING(100)
       },
-      shipping_region_id: {
+      shipping_cost: {
         type: Sequelize.FLOAT(10, 2)
       },
       shipping_region_id: {

@@ -30,7 +30,8 @@ module.exports = {
         type: Sequelize.STRING(150)
       },
       display: {
-        type: Sequelize.SMALLINT
+        type: Sequelize.SMALLINT(6),
+        default: 0
       }
     });
   },

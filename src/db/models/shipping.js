@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       shipping_type: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100)
       },
       shipping_cost: {
         type: DataTypes.FLOAT(10, 2)
@@ -21,6 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  shipping.associate = function(models) {};
+  shipping.associate = function(models) {
+    shipping.belongsTo(models.shipping_region, {
+      foreignKey: 'shipping_region_id'
+    });
+    shipping.hasMany(models.orders, {
+      foreignKey: 'shipping_id'
+    });
+  };
   return shipping;
 };

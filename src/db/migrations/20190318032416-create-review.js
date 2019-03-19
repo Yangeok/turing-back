@@ -16,7 +16,11 @@ module.exports = {
         }
       },
       product_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'product',
+          key: 'product_id'
+        }
       },
       review: {
         type: Sequelize.TEXT

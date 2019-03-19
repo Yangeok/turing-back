@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       total_amount: {
-        type: DataTypes.DECIMAL(10, 2)
+        type: DataTypes.DECIMAL(10, 2),
+        default: 0.0
       },
       created_on: {
         type: DataTypes.DATE
@@ -19,19 +20,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE
       },
       status: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        default: 0
       },
       comments: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(255)
       },
       customer_id: {
         type: DataTypes.INTEGER
       },
       auth_code: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(50)
       },
       reference: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(50)
       },
       shipping_id: {
         type: DataTypes.INTEGER
@@ -40,12 +42,21 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       }
     },
-    {}
+    { freezeTableName: true }
   );
   orders.associate = function(models) {
-    orders.belongsTo(models.shipping, { foreignKey: 'shipping_id' });
-    orders.belongsTo(models.tax, { foreignKey: 'tax_id' });
-    orders.belongsTo(models.customer, { foreignKey: 'customer_id' });
+    orders.belongsTo(models.shipping, {
+      foreignKey: 'shipping_id'
+    });
+    orders.belongsTo(models.tax, {
+      foreignKey: 'tax_id'
+    });
+    orders.belongsTo(models.customer, {
+      foreignKey: 'customer_id'
+    });
+    orders.hasMany(models.audit, {
+      foreignKey: 'order_id'
+    });
   };
   return orders;
 };
