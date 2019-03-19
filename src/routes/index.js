@@ -10,6 +10,10 @@ const payment = require('./payment/payment');
 const product = require('./product/product');
 const profile = require('./profile/profile');
 
+// Error handling
+const error = require('../utils/response');
+router.use(error.handler);
+
 router.use('/', home.routes());
 router.use('/cart', cart.routes());
 router.use('/category', category.routes());
@@ -18,9 +22,5 @@ router.use('/department', department.routes());
 router.use('/payment', payment.routes());
 router.use('/product', product.routes());
 router.use('/profile', profile.routes());
-
-// Error handling
-const error = require('../services/error');
-router.use(error.handler);
 
 module.exports = router;

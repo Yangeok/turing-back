@@ -14,6 +14,7 @@
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "moment-timezone": "^0.5.23",
     "mysql2": "^1.6.5",
     "sequelize": "^5.1.0"
   },
@@ -28,6 +29,7 @@
     "db:generate": "yarn sequelize model:generate",
     "db:create": "yarn sequelize db:create",
     "db:migrate": "yarn sequelize db:migrate",
-    "db:migrate:undo": "yarn sequelize db:migrate:undo"
+    "db:migrate:undo": "yarn sequelize db:migrate:undo",
+    "db:migrate:prod": "cross-env NODE_ENV=production yarn sequelize db:migrate"
   }
 }
