@@ -29,7 +29,8 @@ db.sequelize
     process.exit();
   })
   .then(() => {
-    app.listen(PORT || process.env.PORT, () => {
+    app.listen(PORT, () => {
+      console.log(process.env.PORT);
       console.log(`> Koa server is listening on port ${PORT}`);
     });
   });

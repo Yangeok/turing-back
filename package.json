@@ -30,6 +30,7 @@
     "db:create": "yarn sequelize db:create",
     "db:migrate": "yarn sequelize db:migrate",
     "db:migrate:undo": "yarn sequelize db:migrate:undo",
-    "db:migrate:prod": "cross-env NODE_ENV=production yarn sequelize db:migrate"
+    "db:migrate:prod": "yarn sequelize  db:migrate --env production",
+    "db:migrate:undo:prod": "yarn sequelize  db:migrate --env production"
   }
 }
