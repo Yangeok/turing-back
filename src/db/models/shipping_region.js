@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   shipping_region.associate = function(models) {
     shipping_region.hasMany(models.shipping, {
-      foreignKey: 'shipping_id'
+      foreignKey: 'shipping_region_id'
     });
   };
   return shipping_region;
