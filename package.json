@@ -33,5 +33,9 @@
     "db:migrate:undo": "yarn sequelize db:migrate:undo",
     "db:migrate:prod": "yarn sequelize  db:migrate --env production",
     "db:migrate:undo:prod": "yarn sequelize  db:migrate --env production"
+  },
+  "engine": {
+    "node": "8.11.3",
+    "npm": "5.6.0"
   }
 }
