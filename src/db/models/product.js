@@ -36,7 +36,14 @@ module.exports = (sequelize, DataTypes) => {
         default: 0
       }
     },
-    {}
+    {
+      indexes: [
+        {
+          type: 'FULLTEXT',
+          fields: ['name', 'description']
+        }
+      ]
+    }
   );
   product.associate = function(models) {
     product.belongsToMany(models.category, {
