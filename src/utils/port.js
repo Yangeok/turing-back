@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 let PORT;
 const env = process.env;
 

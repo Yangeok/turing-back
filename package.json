@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt": "^3.0.4",
     "cross-env": "^5.2.0",
+    "dotenv": "^7.0.0",
     "jsonwebtoken": "^8.5.0",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
@@ -14,17 +15,18 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "mysql2": "^1.6.5",
-    "nodemon": "^1.18.10",
     "sequelize": "^5.1.0"
   },
   "devDependencies": {
+    "nodemon": "^1.18.10",
     "sequelize-cli": "^5.4.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon src/app.js",
+    "start": "cross-env NODE_ENV=production node src/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon src/app.js",
     "sequelize": "sequelize --options-path=src/db/config/options.js",
-    "db:create": "yarn sequelize model:generate",
+    "db:generate": "yarn sequelize model:generate",
+    "db:create": "yarn sequelize db:create",
     "db:migrate": "yarn sequelize db:migrate",
     "db:migrate:undo": "yarn sequelize db:migrate:undo"
   }
