@@ -1,16 +1,16 @@
 exports.validateEmail = email => {
-  let errorMessage = '';
+  let errorMessages = [];
   const regex = /\S+@\S+\.\S+/;
-  const rimmedEmail = emial.trim();
+  const trimmedEmail = email.trim();
 
   if (trimmedEmail.length > 40) {
-    errorMessage = '> Email is too long, please use shorter email address';
+    errorMessages.push('> Email is too long, please use shorter email address');
   }
   if (!regex.test(trimmedEmail) || trimmedEmail.length === 0) {
-    errorMessage = '> Email must be in valid format';
+    errorMessages.push('> Email must be in valid format');
   }
 
-  return errorMessage;
+  return errorMessages;
 };
 
 exports.validatePassword = password => {
@@ -34,7 +34,6 @@ exports.validatePassword = password => {
   if (!password.match(/[A-Z]/g)) {
     errorMessages.push('> Missing an uppercase letter');
   }
-
   return errorMessages;
 };
 

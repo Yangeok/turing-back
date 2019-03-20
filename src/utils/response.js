@@ -1,6 +1,6 @@
-exports.handler = async (ctx, next) => {
+exports.errorHandler = (ctx, next) => {
   try {
-    await next();
+    next();
   } catch (err) {
     err.status = err.status || 500;
     ctx.body = err.message;

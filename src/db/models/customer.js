@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING
       },
-      credit_cart: {
+      credit_card: {
         type: DataTypes.TEXT
       },
       address_1: {

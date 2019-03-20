@@ -21,7 +21,7 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      credit_cart: {
+      credit_card: {
         type: Sequelize.TEXT
       },
       address_1: {

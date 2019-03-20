@@ -7,10 +7,13 @@ const {
 } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 
+/**
+ * [Example: http://localhost/product/all?page=1&limit=10&offset=0&category_name=Animal&department_name=Nature]
+ */
 exports.allLists = async ctx => {
   const pageSize = 10;
   const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
-  const offset = ctx.request.offset
+  const offset = ctx.request.query.offset
     ? Number(ctx.request.query.offset) + (page - 1)
     : (page - 1) * pageSize;
   const limit = Number(ctx.request.query.limit) || pageSize;
@@ -57,9 +60,12 @@ exports.allLists = async ctx => {
     ctx.body = errorMessage(err.message);
   }
 };
+
+/**
+ * [Example: http://localhost/product/each/1]
+ */
 exports.list = async ctx => {
   let id = ctx.params.id;
-
   try {
     const singleProduct = await product.findByPk(decodeURI(id), {
       include: [
@@ -79,18 +85,26 @@ exports.list = async ctx => {
     ctx.body = errorMessage(err.message);
   }
 };
+
+/**
+ * [Example: http://localhost/product/search?term=love]
+ */
 exports.search = async ctx => {
+  let term = ctx.request.query.term;
   try {
-    const result = await product.findAll({
-      where: Sequelize.literal(
-        `MATCH (product.name) AGAINST('${decodeURI(
-          ctx.request.query.term
-        )}' IN NATURAL LANGUAGE MODE)`
-      ),
-      include: [{ model: category }]
-    });
+    const result = await product.findAll(
+      {
+        where: Sequelize.literal(
+          `MATCH (name, description) AGAINST('${decodeURI(
+            term
+          )}' IN NATURAL LANGUAGE MODE)`
+        )
+      }
+      // { include: [{ model: category }] }
+    );
     ctx.body = successMessage('product', result);
   } catch (err) {
+    console.log(err);
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
   }

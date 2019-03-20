@@ -6,9 +6,10 @@
   "dependencies": {
     "bcrypt": "^3.0.4",
     "cross-env": "^5.2.0",
+    "crypto": "^1.0.1",
     "dotenv": "^7.0.0",
     "forever": "^0.15.3",
-    "jsonwebtoken": "^8.5.0",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
     "koa-json": "^2.0.2",
