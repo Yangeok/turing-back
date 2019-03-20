@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { errorMessage } = require('./response');
+const { successMessage, errorMessage } = require('./response');
 const env = process.env;
 
 exports.generateJwtToken = payload => {
@@ -14,27 +14,35 @@ const verifyJwtToken = token => {
   }
 };
 
-exports.verifyJwt = (ctx, next) => {
-  if (
+exports.verifyJwt = async (ctx, next) => {
+  // console.log(ctx.request.header.authorization);
+  const token =
     ctx.request.header.authorization &&
     ctx.request.header.authorization.split(' ')[0] === 'Bearer'
-  ) {
-    const token = ctx.request.header.authorization.split(' ')[1];
+      ? ctx.request.header.authorization.split(' ')[1]
+      : '';
+
+  if (token) {
     const payload = verifyJwtToken(token);
-    if (payload !== null || [payload !== undefined]) {
+    // console.log(payload);
+    if (payload !== null || payload !== undefined) {
+      ctx.status = 200;
       ctx.request.user = payload;
       ctx.request.user.authenticated = true;
+      // console.log(ctx.request.user);
     } else {
-      ctx.request.user = {};
+      ctx.status = 200;
+      ctx.reuqest.user.authenticated = {};
+      // console.log(ctx.request.user);
     }
   }
-  next();
+  await next();
 };
 
 exports.authenticated = async (ctx, next) => {
   if (ctx.request.user.authenticated) {
-    ctx.body = ctx.request.user;
-    next();
+    // console.log(ctx.request.user);
+    await next();
   } else {
     ctx.status = 401;
     ctx.body = errorMessage('Login and try again');

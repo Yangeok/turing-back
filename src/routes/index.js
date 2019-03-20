@@ -10,6 +10,9 @@ const payment = require('./payment/payment');
 const product = require('./product/product');
 const profile = require('./profile/profile');
 
+const { verifyJwt, authenticated } = require('../utils/jwt');
+
+// router.use(verifyJwt);
 router.use('/', home.routes());
 router.use('/cart', cart.routes());
 router.use('/category', category.routes());

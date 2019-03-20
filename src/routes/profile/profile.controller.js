@@ -3,12 +3,21 @@ const { successMessage, errorMessage } = require('../../utils/response');
 const { removeKeys } = require('../../utils/validation');
 
 exports.list = async ctx => {
-  const id = 1;
-  const profile = await customer.findByPk(decodeURI(id));
-  if (profile) {
-    const newProfile = removeKeys(profile, ['password', 'credit_card']);
-    ctx.body = successMessage('profile', newProfile);
-  } else {
-    ctx.body = errorMessage('Something wrong with you');
+  ctx.body = ctx.request.user;
+  const id = ctx.request.user.id;
+  try {
+    // const profile = await customer.findAll();
+    const profile = await customer.findByPk(id);
+    // console.log(profile);
+    if (profile) {
+      const newProfile = removeKeys(profile, [
+        'password',
+        'credit_card'
+      ]).toJSON();
+      ctx.body = successMessage('profile', newProfile);
+      console.log(ctx.body);
+    }
+  } catch (err) {
+    ctx.body = errorMessage(err.message);
   }
 };
