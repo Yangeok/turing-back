@@ -3,7 +3,7 @@ const { successMessage, errorMessage } = require('../../utils/response');
 const { removeKeys } = require('../../utils/validation');
 
 exports.list = async ctx => {
-  ctx.body = ctx.request.user;
+  // ctx.body = ctx.request.user;
   const id = ctx.request.user.id;
   try {
     // const profile = await customer.findAll();
@@ -15,7 +15,6 @@ exports.list = async ctx => {
         'credit_card'
       ]).toJSON();
       ctx.body = successMessage('profile', newProfile);
-      console.log(ctx.body);
     }
   } catch (err) {
     ctx.body = errorMessage(err.message);

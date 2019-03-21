@@ -1,6 +1,8 @@
 const Koa = require('koa');
-const cors = require('koa2-cors');
+const path = require('path');
 const json = require('koa-json');
+const cors = require('koa2-cors');
+const serve = require('koa-static');
 const helmet = require('koa-helmet');
 const logger = require('koa-logger');
 const Router = require('koa-router');
@@ -21,8 +23,9 @@ app.use(logger());
 app.use(verifyJwt);
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(serve('src/images/product_images'));
 
-const PORT = require('./utils/port');
+const { PORT, force } = require('./utils/env');
 const db = require('./db/models');
 db.sequelize
   .sync()
@@ -38,3 +41,5 @@ db.sequelize
       console.log(`> Koa server is listening on port ${PORT}`);
     });
   });
+
+module.exports = app;

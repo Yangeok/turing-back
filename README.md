@@ -16,8 +16,8 @@
   - 검색박스를 이용해 아이템 검색하기
   - 페이지네이션 구현하기
   - 특정 아이템 선택하면 디테일 보여주기
-  - 장바구니에 아이템 추가하기
   - 소셜로그인/로컬폼으로 가입/로그인 추가하기
+  - 장바구니에 아이템 추가하기
   - 유저 프로필 변경기능 추가하기
   - 서드파티 페이 기능 추가하기
   - 주문시 메일링 기능 추가하기
@@ -30,7 +30,6 @@
 
 ## References
 
-- [nirajgeorgian](https://github.com/nirajgeorgian/turing-backend/blob/master/src/utils/token.js)
 - [agatapouglof](https://github.com/agatapouglof/turing-backend/blob/master/controllers/errors.js)
 - [koa-pagination](https://github.com/uphold/koa-pagination)
 - [koa error-handling](https://github.com/koajs/koa/blob/master/docs/error-handling.md)
