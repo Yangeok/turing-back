@@ -1,7 +1,9 @@
 language: node_js
 node_js:
   - 'node'
+env:
+  - NODE_ENV=test
 install:
-  - yarn
+  - npm install
 script:
-  - yarn test
+  - npm run test

@@ -25,6 +25,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(serve('src/images/product_images'));
 
+console.log(process.env);
 const { PORT, force } = require('./utils/env');
 const db = require('./db/models');
 db.sequelize
