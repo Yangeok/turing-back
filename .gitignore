@@ -1,2 +1,9 @@
+# Modules
 node_modules/
+
+# Scripts
 *.sh
+
+# Coverage
+.coveralls.yml
+.nyc_output/

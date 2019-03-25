@@ -1,11 +1,9 @@
-# Turing-Backend ![](https://api.travis-ci.org/Yangeok/turing-back.svg?branch=master)
+# Turing-Backend ![](https://api.travis-ci.org/Yangeok/turing-back.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Yangeok/turing-back/badge.svg?branch=master)](https://coveralls.io/github/Yangeok/turing-back?branch=master)
 
 ## TODO
 
 - 핵심 기능
 
-  - `.postman.json` 파일로 포스트맨 테스팅
-  - 테스트 케이스 테스팅
   - 메모리 캐싱
   - 온라인 배포하기
   - 문서화하기
