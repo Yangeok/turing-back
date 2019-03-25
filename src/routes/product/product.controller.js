@@ -65,7 +65,7 @@ exports.allLists = async ctx => {
  * [Example: http://localhost/product/each/1]
  */
 exports.list = async ctx => {
-  let id = ctx.params.id;
+  let { id } = ctx.params;
   try {
     const singleProduct = await product.findByPk(decodeURI(id), {
       include: [
@@ -90,7 +90,7 @@ exports.list = async ctx => {
  * [Example: http://localhost/product/search?term=love]
  */
 exports.search = async ctx => {
-  let term = ctx.request.query.term;
+  let { term } = ctx.request.query;
   try {
     const result = await product.findAll(
       {
@@ -111,15 +111,51 @@ exports.search = async ctx => {
 };
 
 exports.create = async ctx => {
-  ctx.body = 'create';
+  try {
+    const singleProduct = await product.create(ctx.request.body);
+    const createProductCategory = await product_category.create({
+      product_id: singleProduct.product_id,
+      category_id: ctx.request.body.category_id
+    });
+    ctx.body = successMessage('product', [
+      singleProduct,
+      { category_id: createProductCategory.category_id }
+    ]);
+  } catch (err) {
+    ctx.status = 400;
+    ctx.body = errorMessage(err.message);
+  }
 };
 
 exports.update = async ctx => {
-  let id = ctx.params.id;
-  ctx.body = 'update';
+  let { id } = ctx.params;
+  try {
+    const updateProduct = await product.update(ctx.request.body, {
+      returning: true,
+      where: { product_id: id }
+    });
+    const singleProduct = await product.findOne({
+      where: { product_id: id }
+    });
+    ctx.body = successMessage('product', [updateProduct, singleProduct]);
+  } catch (err) {
+    ctx.status = 400;
+    ctx.body = errorMessage(err.message);
+  }
 };
 
 exports.delete = async ctx => {
-  let id = ctx.params.id;
-  ctx.body = 'delete';
+  let { id } = ctx.params;
+  try {
+    const singleProduct = await product.destroy({ where: { product_id: id } });
+    if (singleProduct == 1) {
+      ctx.body = successMessage('message', `Product id ${id} is deleted`);
+    } else {
+      ctx.status = 400;
+      ctx.body = errorMessage(`Product id ${id} is already deleted`);
+    }
+  } catch (err) {
+    ctx.status = 400;
+    ctx.body = errorMessage(err.message);
+  }
 };
