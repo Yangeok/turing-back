@@ -17,7 +17,7 @@ switch (env.NODE_ENV) {
     break;
 
   case 'test':
-    PORT = env.TEST_PORT || 80;
+    PORT = env.TEST_PORT || 81;
     hostname = 'localhost';
     // force = { force: true };
     break;
