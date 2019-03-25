@@ -8,11 +8,9 @@ before_install:
 addons:
   hosts:
     - localhost
-before_script:
-  - sleep 5
 env:
   - NODE_ENV=test
-install:
-  - yarn
+cache:
+  yarn: true
 script:
   - yarn test
