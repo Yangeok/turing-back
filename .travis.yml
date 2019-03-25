@@ -14,7 +14,5 @@ addons:
     - localhost
 env:
   - NODE_ENV=test
-before_script:
-  - curl http://localhost:80
 script:
   - yarn test
