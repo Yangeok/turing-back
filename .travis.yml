@@ -16,5 +16,5 @@ before_script:
   - netstat -atlnp
   - iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
 script:
-  - yarn test
+  - sudo yarn test
 after_script:
