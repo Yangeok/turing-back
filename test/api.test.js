@@ -3,9 +3,8 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const { request, expect } = require('chai');
 
-const port = 80;
-const hostname = 'localhost';
-const url = `${hostname}:${port}`;
+const { PORT, hostname } = require('../src/utils/env');
+const url = `${hostname}:${PORT}`;
 const app = require('../src/app');
 const db = require('../src/db/models/index');
 
@@ -17,8 +16,8 @@ let token =
 
 describe('Root', () => {
   before(() => {
-    app.listen(port, hostname, () => {
-      console.log(`> Test server is running on http://${hostname}:${port} `);
+    app.listen(80, hostname, () => {
+      console.log(`> Test server is running on http://${hostname}:${PORT} `);
     });
   });
   it('returns http request headers', done => {

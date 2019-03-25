@@ -32,7 +32,7 @@
     "sequelize-cli": "^5.4.0"
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/*.js -t 10000 -exit",
+    "test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/*.js -t 5000",
     "start": "cross-env NODE_ENV=production ./node_modules/.bin/forever src/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon src/app.js",
     "sequelize": "sequelize --options-path=src/db/config/options.js",
