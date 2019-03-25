@@ -12,5 +12,9 @@ addons:
     - localhost
 env:
   - NODE_ENV=test
+before_script:
+  - sudo su
+  - iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
 script:
   - yarn test
+after_script:
