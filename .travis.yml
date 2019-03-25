@@ -13,4 +13,4 @@ addons:
 env:
   - NODE_ENV=test
 script:
-  - sudo yarn test
+  - yarn test
