@@ -3,7 +3,7 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const { request, expect } = require('chai');
 
-const port = 8080;
+const port = 80;
 const hostname = 'localhost';
 const url = `${hostname}:${port}`;
 const app = require('../src/app');
