@@ -25,13 +25,14 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "coveralls": "^3.0.3",
     "istanbul": "^0.4.5",
     "mocha": "^6.0.2",
     "nodemon": "^1.18.10",
     "sequelize-cli": "^5.4.0"
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test PORT=80 ./node_modules/.bin/mocha src/test/*.js -t 5000 -exit",
+    "test": "istanbul cover _mocha test/*.js",
     "start": "cross-env NODE_ENV=production ./node_modules/.bin/forever src/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon src/app.js",
     "sequelize": "sequelize --options-path=src/db/config/options.js",
