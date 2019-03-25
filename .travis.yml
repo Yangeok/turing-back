@@ -13,6 +13,6 @@ before_script:
 env:
   - NODE_ENV=test
 install:
-  - npm install
+  - yarn
 script:
-  - npm run test
+  - yarn test

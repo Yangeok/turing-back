@@ -15,7 +15,7 @@ let token =
 
 describe('Root', () => {
   before(() => {
-    app.listen(3000);
+    app.listen(80);
   });
   it('returns http request headers', done => {
     request(url)
