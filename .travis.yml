@@ -12,8 +12,5 @@ addons:
     - localhost
 env:
   - NODE_ENV=test
-before_script:
-  - netstat -atlnp
-  - sudo iptables -t nat -A PREROUTING -i eht0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 script:
   - yarn test
