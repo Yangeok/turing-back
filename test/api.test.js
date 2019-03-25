@@ -14,6 +14,9 @@ let token =
   ' Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZW1haWwiOiJ0ZXN0NUBleGFtcGxlLmNvbSIsImlhdCI6MTU1MzE2ODM4NSwiZXhwIjoxNTU1NzYwMzg1fQ.O0UdnBtSM0JJkLrRUb64s12QZn_-BZXtPGJfB4oFcVw';
 
 describe('Root', () => {
+  before(() => {
+    app.listen(3000);
+  });
   it('returns http request headers', done => {
     request(url)
       .get('/')
