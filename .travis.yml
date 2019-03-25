@@ -13,7 +13,6 @@ addons:
 env:
   - NODE_ENV=test
 before_script:
-  - sudo su
   - netstat -atlnp
   - iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
 script:
