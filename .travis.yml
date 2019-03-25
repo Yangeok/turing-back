@@ -12,9 +12,5 @@ addons:
     - localhost
 env:
   - NODE_ENV=test
-before_script:
-  - yarn global add mocha
-  - chmod 0777 ./node_modules/.bin/mocha
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS turing_test;'
 script:
   - yarn test
