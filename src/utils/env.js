@@ -16,7 +16,7 @@ switch (env.NODE_ENV) {
     break;
 
   case 'test':
-    PORT = env.PORT || 80;
+    PORT = env.TEST_PORT || 8080;
     // force = { force: true };
     break;
 }
