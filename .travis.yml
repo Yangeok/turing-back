@@ -1,6 +1,17 @@
 language: node_js
 node_js:
   - 'node'
+services:
+  - 'mysql'
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS turing_test;'
+addons:
+  apt:
+    sources:
+      - mysql-5.7.trusty
+    packages:
+      - mysql-server
+      - mysql-client
 env:
   - NODE_ENV=test
 install:
