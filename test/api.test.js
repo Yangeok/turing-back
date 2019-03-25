@@ -4,8 +4,8 @@ chai.use(chaiHttp);
 const { request, expect } = require('chai');
 
 const url = 'http://localhost:80';
-const app = require('../app');
-const db = require('../db/models/index');
+const app = require('../src/app');
+const db = require('../src/db/models/index');
 
 let email = 'test1@example.com';
 let password = '12345678qQ!';
