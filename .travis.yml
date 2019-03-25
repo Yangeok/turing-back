@@ -12,5 +12,7 @@ env:
   - NODE_ENV=test
 cache:
   yarn: true
+  directories:
+    - 'node_modules'
 script:
   - yarn test
