@@ -25,7 +25,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(serve('src/images/product_images'));
 
-const { PORT, force } = require('./utils/env');
+const { PORT, hostname, force } = require('./utils/env');
 const db = require('./db/models');
 db.sequelize
   .sync()

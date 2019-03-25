@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 let PORT;
+let hostname;
 let force;
 const env = process.env;
 
@@ -17,8 +18,9 @@ switch (env.NODE_ENV) {
 
   case 'test':
     PORT = env.TEST_PORT || 80;
+    hostname = 'localhost';
     // force = { force: true };
     break;
 }
 
-module.exports = { PORT, force };
+module.exports = { PORT, hostname, force };
