@@ -20,7 +20,8 @@
     "koa2-cors": "^2.0.6",
     "moment-timezone": "^0.5.23",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.1.0"
+    "sequelize": "^5.1.0",
+    "stripe": "^6.28.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

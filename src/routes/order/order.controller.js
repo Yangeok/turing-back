@@ -25,8 +25,14 @@ exports.list = async ctx => {
 };
 
 exports.create = async ctx => {
+  let { cart, user } = ctx.request.body;
+  let total = parseFloat(ctx.request.body.totalAmount.toFixed(2));
   try {
-    const singleOrder = await orders.cerate(ctx.request.body);
+    const singleOrder = await orders.cerate({
+      total_amount: total,
+      created_on: new Date(),
+      customer_id: user.customer_id
+    });
     ctx.body = successMessage('order', singleOrder);
   } catch (err) {
     ctx.status = 400;
