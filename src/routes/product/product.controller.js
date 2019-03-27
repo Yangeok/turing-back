@@ -7,9 +7,6 @@ const {
 } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 
-/**
- * [Example: http://localhost/product/?page=1&limit=10&offset=0&category_name=Animal&department_name=Nature]
- */
 exports.allLists = async ctx => {
   const pageSize = 10;
   const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
@@ -61,9 +58,6 @@ exports.allLists = async ctx => {
   }
 };
 
-/**
- * [Example: http://localhost/product/1]
- */
 exports.list = async ctx => {
   let { id } = ctx.params;
   try {
@@ -86,9 +80,6 @@ exports.list = async ctx => {
   }
 };
 
-/**
- * [Example: http://localhost/product/search?term=love]
- */
 exports.search = async ctx => {
   let { term } = ctx.request.query;
   try {

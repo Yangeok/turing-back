@@ -1,34 +1,31 @@
-# Turing-Backend ![](https://api.travis-ci.org/Yangeok/turing-back.svg?branch=master)[![Coverage Status](https://coveralls.io/repos/github/Yangeok/turing-back/badge.svg?branch=master)](https://coveralls.io/github/Yangeok/turing-back?branch=master)
+# Turing-Backend ![](https://api.travis-ci.org/Yangeok/turing-back.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Yangeok/turing-back/badge.svg?branch=master)](https://coveralls.io/github/Yangeok/turing-back?branch=master)
 
-## TODO
+## Core features
 
-- 핵심 기능
+- 메모리 캐싱
+- 온라인 배포하기
+- 문서화하기
 
-  - 메모리 캐싱
-  - 온라인 배포하기
-  - 문서화하기
+## Requirement
 
-- 요구사항
-  - 루트 페이지에 모든 아이템 보여주기
-  - 선택된 카테고리와 품목관에 대한 아이템 보여주기
-  - 검색박스를 이용해 아이템 검색하기
-  - 페이지네이션 구현하기
-  - 특정 아이템 선택하면 디테일 보여주기
-  - 소셜로그인/로컬폼으로 가입/로그인 추가하기
-  - 장바구니에 아이템 추가하기
-  - 유저 프로필 변경기능 추가하기
-  - 서드파티 페이 기능 추가하기
-  - 주문시 메일링 기능 추가하기
-  - 관리자 기능 추가하기
-  - 품목관 CRUD
-  - 카테고리 CRUD
-  - 상품 CRUD
-  - 상품 특징 CRUD
-  - 오래된 장바구니 비우는 기능 추가하기
+- 루트 페이지에 모든 아이템 보여주기
+- 선택된 카테고리와 품목관에 대한 아이템 보여주기
+- 검색박스를 이용해 아이템 검색하기
+- 페이지네이션 구현하기
+- 특정 아이템 선택하면 디테일 보여주기
+- 소셜로그인/로컬폼으로 가입/로그인 추가하기
+- 장바구니에 아이템 추가하기
+- 유저 프로필 변경기능 추가하기
+- 서드파티 페이 기능 추가하기
+- 주문시 메일링 기능 추가하기
+- 관리자 기능 추가하기
+- 품목관 CRUD
+- 카테고리 CRUD
+- 상품 CRUD
+- 상품 특징 CRUD
+- 오래된 장바구니 비우는 기능 추가하기
 
-## Docs
-
-### Installation
+## Installation
 
 - Install Node.js, MySQL
 - Clone this repository
@@ -37,13 +34,13 @@
 - Change the filename `.env.example` to `.env` in your root dirrectory
 - Create MySQL database and run migrations `yarn db:create && yarn db:migrate`
 
-### Running test
+## Running test
 
 - Run the command `yarn test` to run the test
 
-### Endpoints
+## Endpoints
 
-#### Singup
+### Singup
 
 `POST /customer/signup`
 
@@ -60,7 +57,7 @@
 - No authentication required, returns a user
 - Required fields: `name`, `email`, `password`
 
-#### Login
+### Login
 
 `POST /customer/login`
 
@@ -76,13 +73,13 @@
 - No authentication required, returns a user
 - Required fields: `email`, `password`
 
-#### Get all departments
+### Get all departments
 
 `GET /department`
 
 - No authentication required, returns department object
 
-#### Get all items
+### Get all items
 
 `GET /product`
 
@@ -99,7 +96,7 @@
 
 - No authentication required, returns a default of 10 items per page
 
-#### Search items
+### Search items
 
 `Get /product/search`
 
@@ -109,43 +106,43 @@
 
 - No authentication required, returns specific items
 
-#### Get a single item
+### Get a single item
 
 `GET /product/:id`
 
 - No authentication required, returns a single item object
 
-#### Add item to shopping cart
+### Add item to shopping cart
 
 `POST /cart`
 
 - Authentication required, returns shopping cart object
 
-#### Get customer's items in the shopping cart
+### Get customer's items in the shopping cart
 
 `GET /cart`
 
 - Authentication required, returns shopping cart object
 
-#### Update the quantity of an item in the shopping cart
+### Update the quantity of an item in the shopping cart
 
 `PURT /cart/:id`
 
 - Authentication required, returns updated shopping cart object
 
-#### Delete an item in the shopping cart
+### Delete an item in the shopping cart
 
 `DELTE /cart/:id`
 
 - Authentication required, deletes an item from the shopping cart
 
-#### Get user profile
+### Get user profile
 
 `GET /profile`
 
 - Authentication required, returns an user object
 
-#### Update user profile
+### Update user profile
 
 `PUT /profile`
 
