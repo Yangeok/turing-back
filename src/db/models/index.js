@@ -1,14 +1,25 @@
 'use strict';
-
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config.json')[env];
+let config = require('../config/config.json')[env];
 const db = {};
 
-let sequelize = new Sequelize(
+let sequelize;
+
+if (env === 'production') {
+  config = {
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DATABASE,
+    ...config
+  };
+}
+
+sequelize = new Sequelize(
   config.database,
   config.username,
   config.password,

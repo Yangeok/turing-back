@@ -22,9 +22,6 @@
     }
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "turing",
     "host": "52.79.70.237",
     "dialect": "mysql",
     "define": {
