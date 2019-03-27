@@ -6,6 +6,12 @@ exports.generateJwtToken = payload => {
   return jwt.sign(payload, env.JWT_SECRET, { expiresIn: '30d' });
 };
 
+/**
+ *
+ * @param {*} token
+ *
+ * @returns {*}
+ */
 const verifyJwtToken = token => {
   try {
     return jwt.verify(token, env.JWT_SECRET);
@@ -14,6 +20,13 @@ const verifyJwtToken = token => {
   }
 };
 
+/**
+ *
+ * @param {*} ctx
+ * @param {*} next
+ *
+ * @returns {*}
+ */
 exports.verifyJwt = async (ctx, next) => {
   // console.log(ctx.request.header.authorization);
   const token =
@@ -39,6 +52,13 @@ exports.verifyJwt = async (ctx, next) => {
   await next();
 };
 
+/**
+ *
+ * @param {*} ctx
+ * @param {*} next
+ *
+ * @returns {*}
+ */
 exports.authenticated = async (ctx, next) => {
   if (ctx.request.user.authenticated) {
     // console.log(ctx.request.user);

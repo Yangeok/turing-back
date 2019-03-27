@@ -1,3 +1,7 @@
+/**
+ *
+ * @param {*} email
+ */
 exports.validateEmail = email => {
   let errorMessages = [];
   const regex = /\S+@\S+\.\S+/;
@@ -13,6 +17,10 @@ exports.validateEmail = email => {
   return errorMessages;
 };
 
+/**
+ *
+ * @param {*} password
+ */
 exports.validatePassword = password => {
   const errorMessages = [];
 
@@ -37,6 +45,11 @@ exports.validatePassword = password => {
   return errorMessages;
 };
 
+/**
+ *
+ * @param {*} obj
+ * @param {*} fields
+ */
 exports.removeKeys = (obj, fields) => {
   const newObj = obj;
   const keys = Object.keys(newObj.dataValues);

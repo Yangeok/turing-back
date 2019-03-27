@@ -1,5 +1,18 @@
 const { successMessage } = require('./response');
 
+/**
+ *
+ * @param {*} ctx
+ * @param {*} finalPrice
+ * @param {*} description
+ * @param {*} shippingId
+ * @param {*} shippingCost
+ * @param {*} shippingType
+ * @param {*} customerId
+ * @param {*} stripeToken
+ * @param {*} stripeEmail
+ * @param {*} next
+ */
 exports.checkoutQuery = (
   ctx,
   finalPrice,
@@ -46,8 +59,6 @@ exports.checkoutQuery = (
           CheckoutController.clearShoppingCart(ctx, next);
           ctx.body = successMessage('message', 'Payment Successful');
         })
-        .catch(next)
-        .catch(next)
         .catch(next);
     })
     .catch(next);
