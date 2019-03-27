@@ -1,9 +1,15 @@
-const { department } = require('../../db/models');
+const { department, category } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 
 exports.allLists = async ctx => {
   try {
-    const departments = await department.findAll();
+    const departments = await department.findAll({
+      include: [
+        {
+          model: category
+        }
+      ]
+    });
     ctx.body = successMessage('departments', departments);
   } catch (err) {
     ctx.status = 400;

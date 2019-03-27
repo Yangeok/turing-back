@@ -8,7 +8,7 @@ const {
 const { successMessage, errorMessage } = require('../../utils/response');
 
 /**
- * [Example: http://localhost/product/all?page=1&limit=10&offset=0&category_name=Animal&department_name=Nature]
+ * [Example: http://localhost/product/?page=1&limit=10&offset=0&category_name=Animal&department_name=Nature]
  */
 exports.allLists = async ctx => {
   const pageSize = 10;
@@ -62,7 +62,7 @@ exports.allLists = async ctx => {
 };
 
 /**
- * [Example: http://localhost/product/each/1]
+ * [Example: http://localhost/product/1]
  */
 exports.list = async ctx => {
   let { id } = ctx.params;
@@ -99,8 +99,8 @@ exports.search = async ctx => {
             term
           )}' IN NATURAL LANGUAGE MODE)`
         )
-      }
-      // { include: [{ model: category }] }
+      },
+      { include: [{ model: category }] }
     );
     ctx.body = successMessage('product', result);
   } catch (err) {
