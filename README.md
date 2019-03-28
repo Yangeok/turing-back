@@ -116,6 +116,12 @@
 
 `POST /cart`
 
+- Example request body
+
+  ```json
+
+  ```
+
 - Authentication required, returns shopping cart object
 
 ### Get customer's items in the shopping cart
@@ -126,7 +132,13 @@
 
 ### Update the quantity of an item in the shopping cart
 
-`PURT /cart/:id`
+`PUT /cart/:id`
+
+- Example request body
+
+  ```json
+
+  ```
 
 - Authentication required, returns updated shopping cart object
 
@@ -145,6 +157,12 @@
 ### Update user profile
 
 `PUT /profile`
+
+- Example request body
+
+  ```json
+
+  ```
 
 - Authentication required, returns an updated user object
 

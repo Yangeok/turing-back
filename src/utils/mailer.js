@@ -1,7 +1,7 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 const env = process.env;
-const { shipping_cart, product, customer } = require('../db/models');
+const { shopping_cart, product, customer } = require('../db/models');
 
 let transport = nodemailer.createTransport({
   service: env.EMAIL_PROVIDER,

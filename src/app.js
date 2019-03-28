@@ -7,10 +7,15 @@ const helmet = require('koa-helmet');
 const logger = require('koa-logger');
 const Router = require('koa-router');
 const bodyParser = require('koa-body');
-const { verifyJwt, authenticated } = require('./utils/jwt.js');
+const cache = require('koa-redis-cache');
+const { verifyJwt } = require('./utils/jwt.js');
 
 const app = new Koa();
 const router = new Router();
+const options = {
+  expire: 1,
+  routes: '/category'
+};
 
 const api = require('./routes/index');
 router.use(api.routes());
@@ -20,12 +25,13 @@ app.use(helmet());
 app.use(json());
 app.use(bodyParser());
 app.use(logger());
+app.use(cache(options));
 app.use(verifyJwt);
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(serve('src/images/product_images'));
 
-const { PORT, hostname, force } = require('./utils/env');
+const { PORT, hostname } = require('./utils/env');
 const db = require('./db/models');
 db.sequelize
   .sync()

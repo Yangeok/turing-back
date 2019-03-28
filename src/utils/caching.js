@@ -22,4 +22,5 @@ exports.redisMiddleware = async (ctx, next) => {
       ctx.body = client.set(key, JSON.stringify());
     }
   });
+  next();
 };
