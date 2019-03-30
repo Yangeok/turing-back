@@ -4,6 +4,17 @@ const { checkoutQuery } = require('../../utils/checkout');
 const { shipping, shopping_cart, product } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 
+exports.test = async ctx => {
+  let amount = 500;
+
+  stripe.customers
+    .create({
+      email: ctx.request.body.stripeEmail,
+      source: ctx.request.stripeToken
+    })
+    .then(customer => stripe.charges);
+};
+
 exports.shippingRegion = async ctx => {
   const customer = await stripe.customers.create({
     email: 'wooky92@naver.com'

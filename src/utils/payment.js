@@ -1,13 +1,5 @@
 require('dotenv').config();
+const keySecret = process.env.STRIPE_SECRET;
+const keyPublishable = process.env.STRIPE_PUBLISHABLE;
 
-const env = process.env;
-const stripe = require('stripe')(env.STRIPE_SECRET);
-
-const customer = await stripe.customers.create({
-    email: 'wooky92@naver.com';
-
-    
-})
-
-stripe.setTimeout(60000);
-
+const stripe = require('stripe')(keySecret);
