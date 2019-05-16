@@ -16,6 +16,7 @@
     "database": "turing_test",
     "host": "52.79.70.237",
     "dialect": "mysql",
+    "port": "3305",
     "define": {
       "timestamps": false
     }
@@ -23,6 +24,7 @@
   "production": {
     "host": "52.79.70.237",
     "dialect": "mysql",
+    "port": "3305",
     "define": {
       "freezeTableName": true,
       "timestamps": false
