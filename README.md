@@ -174,3 +174,7 @@
   <!-- (https://github.com/cwizard2011/turing-shop/blob/master/server/helpers/mailer/Mailer.js) -->
 - [koa-pagination](https://github.com/uphold/koa-pagination)
 - [koa error-handling](https://github.com/koajs/koa/blob/master/docs/error-handling.md)
+
+## Database structure
+
+[![](https://res.cloudinary.com/yangeok/image/upload/v1558406432/portfolio/turing-db.jpg)](https://res.cloudinary.com/yangeok/image/upload/v1558406432/portfolio/turing-db.jpg)
