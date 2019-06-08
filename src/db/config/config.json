@@ -3,7 +3,8 @@
     "username": "root",
     "password": "root",
     "database": "turing",
-    "host": "127.0.0.1",
+    "host": "52.79.70.237",
+    "port": "3307",
     "dialect": "mysql",
     "define": {
       "freezeTableName": true,
@@ -23,8 +24,11 @@
   },
   "production": {
     "host": "52.79.70.237",
+    "username": "root",
+    "password": "root",
+    "database": "turing_test",
     "dialect": "mysql",
-    "port": "3305",
+    "port": "3307",
     "define": {
       "freezeTableName": true,
       "timestamps": false
