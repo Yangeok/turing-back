@@ -14,10 +14,10 @@
   "test": {
     "username": "root",
     "password": "root",
-    "database": "turing_test",
+    "database": "turing-test",
     "host": "52.79.70.237",
     "dialect": "mysql",
-    "port": "3305",
+    "port": "3307",
     "define": {
       "timestamps": false
     }
@@ -26,7 +26,7 @@
     "host": "52.79.70.237",
     "username": "root",
     "password": "root",
-    "database": "turing_test",
+    "database": "turing",
     "dialect": "mysql",
     "port": "3307",
     "define": {

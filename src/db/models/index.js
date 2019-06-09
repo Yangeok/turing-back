@@ -10,14 +10,15 @@ const db = {};
 
 let sequelize;
 
-if (env.NODE_ENV === 'production') {
-  config = {
-    username: env.DB_USERNAME,
-    password: env.DB_PASSWORD,
-    database: env.DATABASE,
-    ...config
-  };
-}
+// if (env.NODE_ENV === 'production') {
+//   config = {
+//     username: env.DB_USERNAME,
+//     password: env.DB_PASSWORD,
+//     database: env.DATABASE,
+//     ...config
+//   };
+// }
+console.log(config['test']);
 
 sequelize = new Sequelize(
   config.database,
