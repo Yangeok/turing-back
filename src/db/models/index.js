@@ -3,7 +3,8 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const config = require('../../utils/env');
+// const config = require('../../utils/env');
+const config = require('../config/config');
 
 let sequelize;
 sequelize = new Sequelize(
