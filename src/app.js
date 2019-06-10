@@ -40,6 +40,7 @@ db.sequelize
   .catch(err => {
     console.error(err).log(`> DB connection error`);
     process.exit();
+    3;
   })
   .then(() => {
     app.listen(PORT, hostname, () => {

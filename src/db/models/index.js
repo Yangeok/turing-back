@@ -3,23 +3,9 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env;
-let config = require('../config/config.json')[env];
-const db = {};
+const config = require('../../utils/env');
 
 let sequelize;
-
-// if (env.NODE_ENV === 'production') {
-//   config = {
-//     username: env.DB_USERNAME,
-//     password: env.DB_PASSWORD,
-//     database: env.DATABASE,
-//     ...config
-//   };
-// }
-console.log(config['test']);
-
 sequelize = new Sequelize(
   config.database,
   config.username,
@@ -27,8 +13,10 @@ sequelize = new Sequelize(
   config
 );
 
+const db = {};
 fs.readdirSync(__dirname)
   .filter(file => {
+    const basename = path.basename(__filename);
     return (
       file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
     );

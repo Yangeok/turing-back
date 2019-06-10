@@ -21,6 +21,7 @@ module.exports = {
         }
       }
     });
+    33;
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('product_category');
