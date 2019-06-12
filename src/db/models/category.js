@@ -9,14 +9,14 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      department_id: {
-        type: DataTypes.INTEGER
-      },
       name: {
         type: DataTypes.STRING(100)
       },
       description: {
         type: DataTypes.STRING(1000)
+      },
+      department_id: {
+        type: DataTypes.INTEGER
       }
     },
     {}

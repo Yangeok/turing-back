@@ -7,7 +7,7 @@ const logger = require('koa-logger');
 const Router = require('koa-router');
 const bodyParser = require('koa-body');
 const cache = require('koa-redis-cache');
-const { verifyJwt } = require('./utils/jwt.js');
+const { verifyJwt } = require('./utils/jwt');
 
 const app = new Koa();
 const router = new Router();
@@ -30,7 +30,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(serve('src/images/product_images'));
 
-const { PORT, hostname } = require('./utils/env');
+const { port, hostname } = require('./utils/env');
 const db = require('./db/models');
 db.sequelize
   .sync()
@@ -40,11 +40,10 @@ db.sequelize
   .catch(err => {
     console.error(err).log(`> DB connection error`);
     process.exit();
-    3;
   })
   .then(() => {
-    app.listen(PORT, hostname, () => {
-      console.log(`> Koa server is listening on port ${PORT}`);
+    app.listen(port, hostname, () => {
+      console.log(`> Koa server is listening on port ${port}`);
     });
   });
 

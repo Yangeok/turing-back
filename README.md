@@ -169,9 +169,12 @@
 ## References
 
 - [agatapouglof](https://github.com/Yangeok/turinb-back-ref-01)
-  <!-- (https://github.com/agatapouglof/turing-backend/blob/master/controllers/errors.js) -->
 - [cwizard2011](https://github.com/Yangeok/turinb-back-ref-02)
-  <!-- (https://github.com/cwizard2011/turing-shop/blob/master/server/helpers/mailer/Mailer.js) -->
+- [renancunha](https://github.com/Yangeok/turing-back-ref-03)
+- [Onyedikachi](https://github.com/Yangeok/turing-back-ref-04)
+- [kylejeske](https://github.com/Yangeok/turing-back-ref-06)
+- [nirajgeorgian](https://github.com/Yangeok/turing-back-ref-07)
+
 - [koa-pagination](https://github.com/uphold/koa-pagination)
 - [koa error-handling](https://github.com/koajs/koa/blob/master/docs/error-handling.md)
 
