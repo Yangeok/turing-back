@@ -21,3 +21,7 @@ exports.successMessage = (key, params) => {
     [key]: params
   };
 };
+
+exports.fsErrorMessage = err => {
+  console.log(`> error: ${err}`);
+};
