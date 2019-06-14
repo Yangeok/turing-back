@@ -30,11 +30,11 @@ writeDepartmentObj();
 
 const wrtieCategoryObj = () => {
   const mappedCategory = unrefinedCategory.map(
-    ([category_id, name, description, department_id]) => ({
+    ([category_id, department_id, name, description]) => ({
       category_id,
+      department_id,
       name,
-      description,
-      department_id
+      description
     })
   );
   const stringifiedCategory = JSON.stringify(mappedCategory);
@@ -48,11 +48,26 @@ wrtieCategoryObj();
 
 const writeProductObj = () => {
   const mappedProduct = unrefinedProduct.map(
-    ([shipping_id, shipping_type, shipping_cost, shipping_region_id]) => ({
-      shipping_id,
-      shipping_type,
-      shipping_cost,
-      shipping_region_id
+    ([
+      product_id,
+      name,
+      description,
+      price,
+      discounted_price,
+      image,
+      image_2,
+      thumbnail,
+      display
+    ]) => ({
+      product_id,
+      name,
+      description,
+      price,
+      discounted_price,
+      image,
+      image_2,
+      thumbnail,
+      display
     })
   );
   const stringifiedProduct = JSON.stringify(mappedProduct);

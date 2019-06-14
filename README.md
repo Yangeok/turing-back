@@ -33,6 +33,8 @@
 - Run `yarn` on the terminal to install dependencies
 - Change the filename `.env.example` to `.env` in your root dirrectory
 - Create MySQL database and run migrations `yarn db:create && yarn db:migrate`
+- Generate mock data to seed to dabase `cd src/utils && node generator`
+- Start server `yarn start` to connect to production mode or `yarn start:dev` to development
 
 ## Running test
 
