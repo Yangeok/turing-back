@@ -37,10 +37,17 @@ exports.getCategoryById = async ctx => {
 exports.getCategoriesOfProduct = async ctx => {
   const { id } = ctx.params;
   try {
-    // const data = await product.findOne({ where: { product_id: id } });
-    const data = await product_category.findAll({
-      include: [{ model: product }, { model: category }]
+    const data = await product.findOne({
+      where: { product_id: id },
+      include: [
+        {
+          model: product_category
+        }
+      ]
     });
+    // const data = await product_category.findAll({
+    //   include: [{ model: product }, { model: category }]
+    // });
     ctx.body = successMessage('category', data);
   } catch (err) {
     ctx.status = 400;
