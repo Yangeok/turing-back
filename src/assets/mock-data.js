@@ -1,4 +1,65 @@
-const unrefinedProducts = [
+const unrefinedDepartment = [
+  [
+    1,
+    'Regional',
+    'Proud of your country? Wear a T-shirt with a national symbol stamp!'
+  ],
+  [
+    2,
+    'Nature',
+    'Find beautiful T-shirts with animals and flowers in our Nature department!'
+  ],
+  [
+    3,
+    'Seasonal',
+    'Each time of the year has a special flavor. Our seasonal T-shirts express traditional symbols using unique postal stamp pictures.'
+  ]
+];
+const unrefinedCategory = [
+  [
+    1,
+    1,
+    'French',
+    "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!"
+  ],
+  [
+    2,
+    1,
+    'Italian',
+    "The full and resplendent treasure chest of art, literature, music, and science that Italy has given the world is reflected splendidly in its postal stamps. If we could, we would dedicate hundreds of T-shirts to this amazing treasure of beautiful images, but for now we will have to live with what you see here. You don't have to be Italian to love these gorgeous T-shirts, just someone who appreciates the finer things in life!"
+  ],
+  [
+    3,
+    1,
+    'Irish',
+    "It was Churchill who remarked that he thought the Irish most curious because they didn't want to be English. How right he was! But then, he was half-American, wasn't he? If you have an Irish genealogy you will want these T-shirts! If you suddenly turn Irish on St. Patrick's Day, you too will want these T-shirts! Take a look at some of the coolest T-shirts we have!"
+  ],
+  [
+    4,
+    2,
+    'Animal',
+    " Our ever-growing selection of beautiful animal T-shirts represents critters from everywhere, both wild and domestic. If you don't see the T-shirt with the animal you're looking for, tell us and we'll find it!"
+  ],
+  [
+    5,
+    2,
+    'Flower',
+    'These unique and beautiful flower T-shirts are just the item for the gardener, flower arranger, florist, or general lover of things beautiful. Surprise the flower in your life with one of the beautiful botanical T-shirts or just get a few for yourself!'
+  ],
+  [
+    6,
+    3,
+    'Christmas',
+    " Because this is a unique Christmas T-shirt that you'll only wear a few times a year, it will probably last for decades [unless some grinch nabs it from you, of course]. Far into the future, after you're gone, your grandkids will pull it out and argue over who gets to wear it. What great snapshots they'll make dressed in Grandpa or Grandma's incredibly tasteful and unique Christmas T-shirt! Yes, everyone will remember you forever and what a silly goof you were when you would wear only your Santa beard and cap so you wouldn't cover up your nifty T-shirt."
+  ],
+  [
+    7,
+    3,
+    "Valentine's",
+    'For the more timid, all you have to do is wear your heartfelt message to get it across. Buy one for you and your sweetie[s] today!'
+  ]
+];
+const unrefinedProduct = [
   [
     1,
     `Arc d'Triomphe`,
@@ -1111,5 +1172,155 @@ const unrefinedProducts = [
     0
   ]
 ];
+const unrefinedProductCategory = [
+  [1, 1],
+  [2, 1],
+  [3, 1],
+  [4, 1],
+  [5, 1],
+  [6, 1],
+  [7, 1],
+  [8, 1],
+  [9, 1],
+  [10, 1],
+  [11, 1],
+  [12, 1],
+  [13, 1],
+  [14, 1],
+  [15, 1],
+  [16, 1],
+  [17, 1],
+  [18, 1],
+  [19, 2],
+  [20, 2],
+  [21, 2],
+  [22, 2],
+  [23, 2],
+  [24, 2],
+  [25, 2],
+  [26, 2],
+  [27, 2],
+  [28, 2],
+  [29, 3],
+  [30, 3],
+  [31, 3],
+  [32, 3],
+  [33, 3],
+  [34, 3],
+  [35, 3],
+  [36, 4],
+  [37, 4],
+  [38, 4],
+  [39, 4],
+  [40, 4],
+  [41, 4],
+  [42, 4],
+  [43, 4],
+  [44, 4],
+  [45, 4],
+  [46, 4],
+  [47, 4],
+  [48, 4],
+  [49, 4],
+  [50, 4],
+  [51, 4],
+  [52, 4],
+  [53, 4],
+  [54, 4],
+  [55, 4],
+  [56, 4],
+  [57, 4],
+  [58, 4],
+  [59, 4],
+  [60, 4],
+  [61, 4],
+  [62, 4],
+  [63, 4],
+  [64, 4],
+  [81, 4],
+  [97, 4],
+  [98, 4],
+  [65, 5],
+  [66, 5],
+  [67, 5],
+  [68, 5],
+  [69, 5],
+  [70, 5],
+  [71, 5],
+  [72, 5],
+  [73, 5],
+  [74, 5],
+  [75, 5],
+  [76, 5],
+  [77, 5],
+  [78, 5],
+  [79, 5],
+  [80, 6],
+  [81, 6],
+  [82, 6],
+  [83, 6],
+  [84, 6],
+  [85, 6],
+  [86, 6],
+  [87, 6],
+  [88, 6],
+  [89, 6],
+  [90, 6],
+  [91, 6],
+  [92, 6],
+  [93, 6],
+  [94, 6],
+  [95, 6],
+  [96, 7],
+  [97, 7],
+  [98, 7],
+  [99, 7],
+  [100, 7],
+  [101, 7]
+];
+// const unrefinedProductAttribute = [
+//
+// ]
+const unrefinedAttribute = [[1, 'Size'], [2, 'Color']];
+const unrefinedAttributeValue = [
+  [1, 1, 'S'],
+  [2, 1, 'M'],
+  [3, 1, 'L'],
+  [4, 1, 'XL'],
+  [5, 1, 'XXL'],
+  [6, 2, 'White'],
+  [7, 2, 'Black'],
+  [8, 2, 'Red'],
+  [9, 2, 'Orange'],
+  [10, 2, 'Yellow'],
+  [11, 2, 'Green'],
+  [12, 2, 'Blue'],
+  [13, 2, 'Indigo'],
+  [14, 2, 'Purple']
+];
+const unrefinedShippingRegion = [
+  [1, 'Please Select'],
+  [2, 'US / Canada'],
+  [3, 'Europe'],
+  [4, 'Rest of World']
+];
+const unrefinedShipping = [
+  [1, 'Next Day Delivery [$20]', 20.0, 2],
+  [2, '3-4 Days [$10]', 10.0, 2],
+  [3, '7 Days [$5]', 5.0, 2],
+  [4, 'By air [7 days, $25]', 25.0, 3],
+  [5, 'By sea [28 days, $10]', 10.0, 3],
+  [6, 'By air [10 days, $35]', 35.0, 4],
+  [7, 'By sea [28 days, $30]', 30.0, 4]
+];
 
-module.exports = { unrefinedProducts };
+module.exports = {
+  unrefinedDepartment,
+  unrefinedCategory,
+  unrefinedProduct,
+  unrefinedProductCategory,
+  unrefinedAttribute,
+  unrefinedAttributeValue,
+  unrefinedShippingRegion,
+  unrefinedShipping
+};

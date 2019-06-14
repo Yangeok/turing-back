@@ -44,10 +44,14 @@
     "start:dev": "cross-env NODE_ENV=development nodemon src/app.js",
     "db:generate": "sequelize model:generate",
     "db:create": "sequelize db:create",
-    "db:migrate:dev": "sequelize db:migrate",
-    "db:migrate:undo:dev": "sequelize db:migrate:undo",
     "db:migrate": "sequelize db:migrate --env production",
-    "db:migrate:undo": "sequelize db:migrate --env production"
+    "db:migrate:undo": "sequelize db:migrate --env production",
+    "db:migrate:test": "sequelize db:migrate --env test",
+    "db:migrate:undo:test": "sequelize db:migrate:undo --env test",
+    "db:seed": "sequelize db:seed:all --env production",
+    "db:seed:undo": "sequelize db:seed:undo:all --env production",
+    "db:seed:test": "sequelize db:seed:all --env test",
+    "db:seed:undo:test": "sequelize db:seed:undo:all --env test"
   },
   "engine": {
     "node": "8.11.3",
