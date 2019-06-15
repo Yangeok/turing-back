@@ -41,14 +41,13 @@ exports.getCategoriesOfProduct = async ctx => {
       where: { product_id: id },
       include: [
         {
-          model: product_category
+          model: category,
+          attributes: { exclude: ['description'] }
         }
       ]
     });
-    // const data = await product_category.findAll({
-    //   include: [{ model: product }, { model: category }]
-    // });
-    ctx.body = successMessage('category', data);
+
+    ctx.body = successMessage('category', data.categories);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
