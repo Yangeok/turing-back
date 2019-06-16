@@ -37,17 +37,17 @@ exports.getCategoryById = async ctx => {
 exports.getCategoriesOfProduct = async ctx => {
   const { id } = ctx.params;
   try {
-    const data = await product.findOne({
+    const query = await product.findOne({
       where: { product_id: id },
-      include: [
-        {
-          model: category,
-          attributes: { exclude: ['description'] }
-        }
-      ]
+      include: {
+        model: category,
+        attributes: ['category_id', 'name', 'department_id'],
+        through: { attributes: [] }
+      },
+      attributes: []
     });
-
-    ctx.body = successMessage('category', data.categories);
+    const data = query.categories;
+    ctx.body = successMessage('category', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
