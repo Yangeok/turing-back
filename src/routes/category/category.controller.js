@@ -46,7 +46,7 @@ exports.getCategoriesOfProduct = async ctx => {
       },
       attributes: []
     });
-    const data = query.categories;
+    const data = query.categories[0];
     ctx.body = successMessage('category', data);
   } catch (err) {
     ctx.status = 400;
