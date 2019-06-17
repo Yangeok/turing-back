@@ -1,21 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const product_attribute = sequelize.define(
-    'product_attribute',
-    {
-      product_id: {
-        allowNull: false,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      },
-      attribute_value_id: {
-        allowNull: false,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      }
+  const product_attribute = sequelize.define('product_attribute', {
+    product_id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.INTEGER
     },
-    {}
-  );
+    attribute_value_id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    }
+  });
   product_attribute.associate = function(models) {
     product_attribute.belongsTo(models.product, {
       foreignKey: 'product_id'

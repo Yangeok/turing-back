@@ -57,14 +57,15 @@ exports.getCategoriesOfProduct = async ctx => {
 exports.getCategoriesOfDepartment = async ctx => {
   let { id } = ctx.params;
   try {
-    const updateCategory = await category.update(ctx.request.body, {
-      returning: true,
-      where: { category_id: id }
+    const data = await department.findOne({
+      where: { department_id: id },
+      include: {
+        model: category
+      },
+      attributes: []
     });
-    const singleCategory = await category.findOne({
-      where: { category_id: id }
-    });
-    ctx.body = successMessage('category', [updateCategory, singleCategory]);
+
+    ctx.body = successMessage('category', data);
   } catch (err) {
     ctx.body = errorMessage(err.message);
   }
