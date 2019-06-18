@@ -48,16 +48,17 @@ exports.getValuesFromAttribute = async ctx => {
 exports.getAttributesWithProductId = async ctx => {
   let { id } = ctx.params;
   try {
-    const query = await product.findOne({
-      where: { product_id: id },
-      include: {
-        model: attribute_value,
-        attributes: ['attribute_value_id', 'attribute_id', 'value'],
-        through: { attributes: [] }
-      },
-      attributes: []
+    const data = await product_attribute.findAll({
+      where: { product_id: id }
     });
-    const data = query.attribute_values;
+    // const data = await product.findAll({
+    //   include: {
+    //     model: attribute_value,
+    //     attributes: ['attribute_value_id'],
+    //     through: { attributes: [] }
+    //   },
+    //   attributes: ['product_id']
+    // });
     ctx.body = successMessage('attributes', data);
   } catch (err) {
     ctx.status = 400;

@@ -1,16 +1,13 @@
-const {
-  category,
-  department,
-  product_category,
-  product
-} = require('../../db/models');
+const { category, department, product } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 
 exports.getCategories = async ctx => {
   const pageSize = 10;
   const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
   const offset = (page - 1) * pageSize;
-  const limit = Number(ctx.request.query.limit) || pageSize;
+  const limit = ctx.request.query.limit
+    ? Number(ctx.request.query.limit)
+    : pageSize;
   try {
     const data = await category.findAll({
       offset,
@@ -64,7 +61,6 @@ exports.getCategoriesOfDepartment = async ctx => {
       },
       attributes: []
     });
-
     ctx.body = successMessage('category', data);
   } catch (err) {
     ctx.body = errorMessage(err.message);

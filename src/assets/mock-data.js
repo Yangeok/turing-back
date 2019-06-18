@@ -1172,6 +1172,1927 @@ const unrefinedProduct = [
     0
   ]
 ];
+const unrefinedProductAttribute = [
+  {
+    product_id: 1,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 2,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 3,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 4,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 5,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 6,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 7,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 8,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 9,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 10,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 11,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 12,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 13,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 14,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 15,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 16,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 17,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 18,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 19,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 20,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 21,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 22,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 23,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 24,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 25,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 26,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 27,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 28,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 29,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 30,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 31,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 32,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 33,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 34,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 35,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 36,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 37,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 38,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 39,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 40,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 41,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 42,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 43,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 44,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 45,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 46,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 47,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 48,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 49,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 50,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 51,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 52,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 53,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 54,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 55,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 56,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 57,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 58,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 59,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 60,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 61,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 62,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 63,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 64,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 65,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 66,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 67,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 68,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 69,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 70,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 71,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 72,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 73,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 74,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 75,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 76,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 77,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 78,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 79,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 80,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 81,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 82,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 83,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 84,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 85,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 86,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 87,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 88,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 89,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 90,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 91,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 92,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 93,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 94,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 95,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 96,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 97,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 98,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 99,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 100,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  },
+  {
+    product_id: 101,
+    attribute_values: [
+      { attribute_value_id: 1 },
+      { attribute_value_id: 2 },
+      { attribute_value_id: 3 },
+      { attribute_value_id: 4 },
+      { attribute_value_id: 5 },
+      { attribute_value_id: 6 },
+      { attribute_value_id: 7 },
+      { attribute_value_id: 8 },
+      { attribute_value_id: 9 },
+      { attribute_value_id: 10 },
+      { attribute_value_id: 11 },
+      { attribute_value_id: 12 },
+      { attribute_value_id: 13 },
+      { attribute_value_id: 14 }
+    ]
+  }
+];
 const unrefinedProductCategory = [
   [1, 1],
   [2, 1],
@@ -1278,9 +3199,6 @@ const unrefinedProductCategory = [
   [100, 7],
   [101, 7]
 ];
-// const unrefinedProductAttribute = [
-//
-// ]
 const unrefinedAttribute = [[1, 'Size'], [2, 'Color']];
 const unrefinedAttributeValue = [
   [1, 1, 'S'],
@@ -1318,6 +3236,7 @@ module.exports = {
   unrefinedDepartment,
   unrefinedCategory,
   unrefinedProduct,
+  unrefinedProductAttribute,
   unrefinedProductCategory,
   unrefinedAttribute,
   unrefinedAttributeValue,

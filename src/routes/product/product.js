@@ -2,11 +2,14 @@ const Router = require('koa-router');
 const product = new Router();
 const productCtrl = require('./product.controller');
 
-product.get('/', productCtrl.allLists);
-product.get('/:id', productCtrl.list);
-product.get('/search', productCtrl.search);
-product.post('/new', productCtrl.create);
-product.put('/:id', productCtrl.update);
-product.delete('/:id', productCtrl.delete);
+product.get('/', productCtrl.getProducts);
+product.get('/search', productCtrl.searchProducts);
+product.get('/:id', productCtrl.getProductById);
+product.get('/category/:id', productCtrl.getProductsOfCategories);
+product.get('/department/:id', productCtrl.getProductsOfDepartment);
+product.get('/:id/detail', productCtrl.getProductDetails);
+product.get('/:id/location', productCtrl.getProductLocations);
+product.get('/:id/review', productCtrl.getProductReviews);
+product.post('/:id/review', productCtrl.postProductReviews);
 
 module.exports = product;

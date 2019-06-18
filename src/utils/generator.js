@@ -4,6 +4,7 @@ const {
   unrefinedDepartment,
   unrefinedCategory,
   unrefinedProduct,
+  unrefinedProductAttribute,
   unrefinedProductCategory,
   unrefinedAttribute,
   unrefinedAttributeValue,
@@ -78,6 +79,27 @@ const writeProductObj = () => {
   );
 };
 writeProductObj();
+
+const writeProductAttributeObj = () => {
+  // flatMap
+  const concat = (x, y) => x.concat(y);
+  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+  Array.prototype.flatMap = function(f) {
+    return flatMap(f, this);
+  };
+
+  const mappedProductAttribute = unrefinedProductAttribute.flatMap(
+    ({ product_id, attribute_values }) =>
+      attribute_values.map(o => ({ product_id, ...o }))
+  );
+  const stringifiedProductAttribute = JSON.stringify(mappedProductAttribute);
+  fs.writeFile(
+    '../db/seed-data/product_attribute.js',
+    `exports.product_attribute = ${stringifiedProductAttribute}`,
+    err => fsErrorMessage(err)
+  );
+};
+writeProductAttributeObj();
 
 const writeProductCategoryObj = () => {
   const mappedProductCategory = unrefinedProductCategory.map(
