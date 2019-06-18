@@ -3,99 +3,121 @@ const {
   product_category,
   product,
   department,
-  Sequelize
+  Sequelize,
+  sequelize
 } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 
 exports.getProducts = async ctx => {
-  const page = Number(ctx.request.query.page) || 1;
-  const pageSize = 20;
-  const offset = ctx.request.query.offset
-    ? Number(ctx.request.query.offset) + (page - 1)
-    : (page - 1) * pageSize;
-  const limit = Number(ctx.request.query.limit) || pageSize;
-  const category_name = ctx.request.query.category_name
-    ? { name: decodeURI(ctx.request.query.category_name) }
-    : null;
-  const department_name = ctx.request.query.department_name
-    ? { name: decodeURI(ctx.request.query.department_name) }
-    : null;
-
-  try {
-    const products = await product.findAndCountAll({
-      limit,
-      offset
-    });
-
-    const { count } = products;
-    const pageLimit = ctx.request.query.limit
-      ? Number(ctx.request.query.limit)
-      : 10;
-    const pageOffset = ctx.request.query.offset
-      ? Number(ctx.request.query.offset)
-      : 0;
-    const totalCurrent = page * pageSize - pageSize + pageOffset + pageLimit;
-    const hasNext = totalCurrent < count ? true : false;
-    ctx.body = successMessage('data', {
-      products: products,
-      hasNext
-    });
-  } catch (err) {
-    ctx.status = 400;
-    ctx.body = errorMessage(err.message);
-  }
-};
-exports.s = async ctx => {
   const pageSize = 20;
   const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
+  const limit = ctx.request.query.limit
+    ? Number(ctx.request.query.limit)
+    : pageSize;
+  const description_length = ctx.request.query.description_length
+    ? Number(ctx.request.query.description_length)
+    : 200;
+
   const offset = ctx.request.query.offset
     ? Number(ctx.request.query.offset) + (page - 1)
     : (page - 1) * pageSize;
-  const limit = Number(ctx.request.query.limit) || pageSize;
-  const category_name = ctx.request.query.category_name
-    ? { name: decodeURI(ctx.request.query.category_name) }
-    : null;
-  const department_name = ctx.request.query.department_name
-    ? { name: decodeURI(ctx.request.query.department_name) }
-    : null;
 
   try {
-    const products = await product_category.findAndCountAll({
+    const data = await product.findAndCountAll({
       limit,
       offset,
-      include: [
-        { model: product },
-        {
-          model: category,
-          where: category_name,
-          include: [
-            {
-              model: department,
-              where: department_name
-            }
-          ]
-        }
+      attributes: [
+        'product_id',
+        'name',
+        [
+          sequelize.fn(
+            'substring',
+            sequelize.col('description'),
+            1,
+            description_length
+          ),
+          'description'
+        ],
+        'price',
+        'discounted_price',
+        'thumbnail'
       ]
     });
 
-    const { count } = products;
+    const { count } = data;
     const pageLimit = ctx.request.query.limit
       ? Number(ctx.request.query.limit)
-      : 10;
+      : 20;
     const pageOffset = ctx.request.query.offset
       ? Number(ctx.request.query.offset)
       : 0;
     const totalCurrent = page * pageSize - pageSize + pageOffset + pageLimit;
     const hasNext = totalCurrent < count ? true : false;
-    ctx.body = successMessage('data', {
-      products: products,
-      hasNext
-    });
+    ctx.body = successMessage(
+      'data',
+      data
+      // {
+      //   products: data,
+      //   hasNext
+      // }
+    );
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
   }
 };
+
+// exports.s = async ctx => {
+//   const pageSize = 20;
+//   const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
+//   const offset = ctx.request.query.offset
+//     ? Number(ctx.request.query.offset) + (page - 1)
+//     : (page - 1) * pageSize;
+//   const limit = Number(ctx.request.query.limit) || pageSize;
+//   const category_name = ctx.request.query.category_name
+//     ? { name: decodeURI(ctx.request.query.category_name) }
+//     : null;
+//   const department_name = ctx.request.query.department_name
+//     ? { name: decodeURI(ctx.request.query.department_name) }
+//     : null;
+
+//   try {
+//     const products = await product_category.findAndCountAll({
+//       limit,
+//       offset,
+//       include: [
+//         { model: product },
+//         {
+//           model: category,
+//           where: category_name,
+//           include: [
+//             {
+//               model: department,
+//               where: department_name
+//             }
+//           ]
+//         }
+//       ]
+//     });
+
+//     const { count } = products;
+//     const pageLimit = ctx.request.query.limit
+//       ? Number(ctx.request.query.limit)
+//       : 10;
+//     const pageOffset = ctx.request.query.offset
+//       ? Number(ctx.request.query.offset)
+//       : 0;
+//     const totalCurrent = page * pageSize - pageSize + pageOffset + pageLimit;
+//     const hasNext = totalCurrent < count ? true : false;
+//     ctx.body = successMessage('data', {
+//       products: products,
+//       hasNext
+//     });
+//   } catch (err) {
+//     ctx.status = 400;
+//     ctx.body = errorMessage(err.message);
+//   }
+// };
 
 exports.searchProducts = async ctx => {
   let { term } = ctx.request.query;
