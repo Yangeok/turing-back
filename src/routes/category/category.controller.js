@@ -9,7 +9,7 @@ exports.getCategories = async ctx => {
     ? Number(ctx.request.query.limit)
     : pageSize;
   try {
-    const data = await category.findAll({
+    const data = await category.findAndCountAll({
       offset,
       limit
     });

@@ -7,6 +7,7 @@ const {
   sequelize
 } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
+const Op = Sequelize.Op;
 
 exports.getProducts = async ctx => {
   const pageSize = 20;
@@ -17,7 +18,6 @@ exports.getProducts = async ctx => {
   const description_length = ctx.request.query.description_length
     ? Number(ctx.request.query.description_length)
     : 200;
-
   const offset = ctx.request.query.offset
     ? Number(ctx.request.query.offset) + (page - 1)
     : (page - 1) * pageSize;
@@ -43,98 +43,59 @@ exports.getProducts = async ctx => {
         'thumbnail'
       ]
     });
-
-    const { count } = data;
-    const pageLimit = ctx.request.query.limit
-      ? Number(ctx.request.query.limit)
-      : 20;
-    const pageOffset = ctx.request.query.offset
-      ? Number(ctx.request.query.offset)
-      : 0;
-    const totalCurrent = page * pageSize - pageSize + pageOffset + pageLimit;
-    const hasNext = totalCurrent < count ? true : false;
-    ctx.body = successMessage(
-      'data',
-      data
-      // {
-      //   products: data,
-      //   hasNext
-      // }
-    );
+    ctx.body = successMessage('products', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
   }
 };
 
-// exports.s = async ctx => {
-//   const pageSize = 20;
-//   const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
-//   const offset = ctx.request.query.offset
-//     ? Number(ctx.request.query.offset) + (page - 1)
-//     : (page - 1) * pageSize;
-//   const limit = Number(ctx.request.query.limit) || pageSize;
-//   const category_name = ctx.request.query.category_name
-//     ? { name: decodeURI(ctx.request.query.category_name) }
-//     : null;
-//   const department_name = ctx.request.query.department_name
-//     ? { name: decodeURI(ctx.request.query.department_name) }
-//     : null;
-
-//   try {
-//     const products = await product_category.findAndCountAll({
-//       limit,
-//       offset,
-//       include: [
-//         { model: product },
-//         {
-//           model: category,
-//           where: category_name,
-//           include: [
-//             {
-//               model: department,
-//               where: department_name
-//             }
-//           ]
-//         }
-//       ]
-//     });
-
-//     const { count } = products;
-//     const pageLimit = ctx.request.query.limit
-//       ? Number(ctx.request.query.limit)
-//       : 10;
-//     const pageOffset = ctx.request.query.offset
-//       ? Number(ctx.request.query.offset)
-//       : 0;
-//     const totalCurrent = page * pageSize - pageSize + pageOffset + pageLimit;
-//     const hasNext = totalCurrent < count ? true : false;
-//     ctx.body = successMessage('data', {
-//       products: products,
-//       hasNext
-//     });
-//   } catch (err) {
-//     ctx.status = 400;
-//     ctx.body = errorMessage(err.message);
-//   }
-// };
-
 exports.searchProducts = async ctx => {
-  let { term } = ctx.request.query;
+  const pageSize = 20;
+  const query_string = ctx.request.query.query_string;
+  const all_words = ctx.request.query.all_words
+    ? Boolean(ctx.request.query.all_words)
+    : on;
+  const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
+  const limit = ctx.request.query.limit
+    ? Number(ctx.request.query.limit)
+    : pageSize;
+  const description_length = ctx.request.query.description_length
+    ? Number(ctx.request.query.description_length)
+    : 200;
+  const offset = ctx.request.query.offset
+    ? Number(ctx.request.query.offset) + (page - 1)
+    : (page - 1) * pageSize;
+
   try {
-    const result = await product.findAll(
-      {
-        where: Sequelize.literal(
-          `MATCH (name, description) AGAINST('${decodeURI(
-            term
-          )}' IN NATURAL LANGUAGE MODE)`
-        )
+    const data = await product.findAndCountAll({
+      limit,
+      offset,
+      where: {
+        [Op.or]: [
+          { description: { [Op.like]: `%${query_string}%` } },
+          { name: { [Op.like]: `%${query_string}%` } }
+        ]
       },
-      { include: [{ model: category }] }
-    );
-    ctx.body = successMessage('product', result);
+      attributes: [
+        'product_id',
+        'name',
+        [
+          sequelize.fn(
+            'substring',
+            sequelize.col('description'),
+            1,
+            description_length
+          ),
+          'description'
+        ],
+        'price',
+        'discounted_price',
+        'thumbnail'
+      ]
+    });
+    ctx.body = successMessage('products', data);
   } catch (err) {
-    console.log(err);
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
   }
@@ -142,20 +103,22 @@ exports.searchProducts = async ctx => {
 
 exports.getProductById = async ctx => {
   let { id } = ctx.params;
+  const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
+  const limit = ctx.request.query.limit
+    ? Number(ctx.request.query.limit)
+    : pageSize;
+  const description_length = ctx.request.query.description_length
+    ? Number(ctx.request.query.description_length)
+    : 200;
+  const offset = ctx.request.query.offset
+    ? Number(ctx.request.query.offset) + (page - 1)
+    : (page - 1) * pageSize;
+
   try {
-    const singleProduct = await product.findByPk(decodeURI(id), {
-      include: [
-        {
-          model: category,
-          include: [
-            {
-              model: department
-            }
-          ]
-        }
-      ]
+    const data = await product.findOne({
+      where: { product_id: id }
     });
-    ctx.body = successMessage('product', singleProduct);
+    ctx.body = successMessage('products', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
@@ -163,16 +126,46 @@ exports.getProductById = async ctx => {
 };
 
 exports.getProductsOfCategories = async ctx => {
+  const pageSize = 20;
+  const { id } = ctx.params;
+  const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
+  const limit = ctx.request.query.limit
+    ? Number(ctx.request.query.limit)
+    : pageSize;
+  const description_length = ctx.request.query.description_length
+    ? Number(ctx.request.query.description_length)
+    : 200;
+  const offset = ctx.request.query.offset
+    ? Number(ctx.request.query.offset) + (page - 1)
+    : (page - 1) * pageSize;
+
   try {
-    const singleProduct = await product.create(ctx.request.body);
-    const createProductCategory = await product_category.create({
-      product_id: singleProduct.product_id,
-      category_id: ctx.request.body.category_id
+    const data = await product.findAndCountAll({
+      limit,
+      offset,
+      attributes: [
+        'product_id',
+        'name',
+        [
+          sequelize.fn(
+            'substring',
+            sequelize.col('product.description'),
+            1,
+            description_length
+          ),
+          'description'
+        ],
+        'price',
+        'discounted_price',
+        'thumbnail'
+      ],
+      include: {
+        model: category,
+        where: { category_id: id },
+        attributes: []
+      }
     });
-    ctx.body = successMessage('product', [
-      singleProduct,
-      { category_id: createProductCategory.category_id }
-    ]);
+    ctx.body = successMessage('products', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
@@ -181,15 +174,47 @@ exports.getProductsOfCategories = async ctx => {
 
 exports.getProductsOfDepartment = async ctx => {
   let { id } = ctx.params;
+  const pageSize = 20;
+  const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
+  const limit = ctx.request.query.limit
+    ? Number(ctx.request.query.limit)
+    : pageSize;
+  const description_length = ctx.request.query.description_length
+    ? Number(ctx.request.query.description_length)
+    : 200;
+  const offset = ctx.request.query.offset
+    ? Number(ctx.request.query.offset) + (page - 1)
+    : (page - 1) * pageSize;
+
   try {
-    const updateProduct = await product.update(ctx.request.body, {
-      returning: true,
-      where: { product_id: id }
+    const data = await product.findAndCountAll({
+      limit,
+      offset,
+      attributes: [
+        'product_id',
+        'name',
+        [
+          sequelize.fn(
+            'substring',
+            sequelize.col('product.description'),
+            1,
+            description_length
+          ),
+          'description'
+        ],
+        'price',
+        'discounted_price',
+        'thumbnail'
+      ],
+      include: [
+        {
+          model: category,
+          attributes: [],
+          include: { model: department, where: { department_id: id } }
+        }
+      ]
     });
-    const singleProduct = await product.findOne({
-      where: { product_id: id }
-    });
-    ctx.body = successMessage('product', [updateProduct, singleProduct]);
+    ctx.body = successMessage('product', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
@@ -198,14 +223,21 @@ exports.getProductsOfDepartment = async ctx => {
 
 exports.getProductDetails = async ctx => {
   let { id } = ctx.params;
+
   try {
-    const singleProduct = await product.destroy({ where: { product_id: id } });
-    if (singleProduct == 1) {
-      ctx.body = successMessage('message', `Product id ${id} is deleted`);
-    } else {
-      ctx.status = 400;
-      ctx.body = errorMessage(`Product id ${id} is already deleted`);
-    }
+    const data = await product.findOne({
+      attributes: [
+        'product_id',
+        'name',
+        'description',
+        'price',
+        'discounted_price',
+        'image',
+        'image_2'
+      ],
+      where: { product_id: id }
+    });
+    ctx.body = successMessage('product', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
@@ -213,15 +245,30 @@ exports.getProductDetails = async ctx => {
 };
 
 exports.getProductLocations = async ctx => {
+  const concat = (x, y) => x.concat(y);
+
+  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+
+  Array.prototype.flatMap = function(f) {
+    return flatMap(f, this);
+  };
+
   let { id } = ctx.params;
   try {
-    const singleProduct = await product.destroy({ where: { product_id: id } });
-    if (singleProduct == 1) {
-      ctx.body = successMessage('message', `Product id ${id} is deleted`);
-    } else {
-      ctx.status = 400;
-      ctx.body = errorMessage(`Product id ${id} is already deleted`);
-    }
+    const query = await product.findOne({
+      where: { product_id: id },
+      include: {
+        model: category,
+        attributes: ['category_id', ['name', 'category_name']],
+        include: {
+          model: department,
+          attributes: ['department_id', ['name', 'department_name']]
+        }
+      },
+      attributes: []
+    });
+    const data = query.categories;
+    ctx.body = successMessage('product', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);

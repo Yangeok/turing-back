@@ -51,14 +51,6 @@ exports.getAttributesWithProductId = async ctx => {
     const data = await product_attribute.findAll({
       where: { product_id: id }
     });
-    // const data = await product.findAll({
-    //   include: {
-    //     model: attribute_value,
-    //     attributes: ['attribute_value_id'],
-    //     through: { attributes: [] }
-    //   },
-    //   attributes: ['product_id']
-    // });
     ctx.body = successMessage('attributes', data);
   } catch (err) {
     ctx.status = 400;
