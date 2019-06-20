@@ -30,6 +30,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "coveralls": "^3.0.3",
+    "faker": "^4.1.0",
     "istanbul": "^0.4.5",
     "lodash": "^4.17.11",
     "mocha": "^6.0.2",

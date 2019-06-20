@@ -1,3 +1,4 @@
+const faker = require('faker');
 const fs = require('fs');
 const { fsErrorMessage } = require('./response');
 const {
@@ -181,3 +182,101 @@ const writeShippingObj = () => {
   );
 };
 writeShippingObj();
+
+const writeReviewObj = () => {
+  const reviewLength = 3030;
+  const productLength = 30;
+
+  const mappedReview = [];
+  let product_id = 1;
+  let product_counter = 1;
+
+  for (let review_id = 1; review_id <= reviewLength; review_id++) {
+    const createDatetime = () => {
+      const a = faker.date.past();
+      const b = JSON.stringify(a);
+      return b
+        .replace('"', '')
+        .replace('"', '')
+        .replace('T', ' ')
+        .replace('Z', '');
+    };
+
+    const customer_id = faker.random.number({ min: 1, max: 1000 });
+    const review = faker.lorem.sentences();
+    const rating = faker.random.number({ min: 1, max: 100 });
+    const created_on = createDatetime();
+
+    mappedReview.push({
+      review_id,
+      product_id,
+      customer_id,
+      review,
+      rating,
+      created_on
+    });
+    if (product_counter++ === productLength) {
+      ++product_id;
+      product_counter = 1;
+    }
+  }
+  const stringifiedReview = JSON.stringify(mappedReview);
+  fs.writeFile(
+    '../db/seed-data/review.js',
+    `exports.review = ${stringifiedReview}`,
+    err => fsErrorMessage(err)
+  );
+};
+
+writeReviewObj();
+
+const writeCustomerObj = () => {
+  const mappedCustomer = [];
+
+  for (let i = 0; i < 1000; i++) {
+    const customer_id = i;
+    const name = faker.name.findName();
+    const email = faker.internet.email();
+    const password = faker.internet.password();
+    const credit_card = `${faker.random.number({
+      min: 10 ^ 8,
+      max: 9999999999999999
+    })}`;
+    const address_1 = faker.address.streetAddress();
+    const address_2 = faker.address.secondaryAddress();
+    const city = faker.address.city();
+    const region = faker.address.stateAbbr();
+    const postal_code = faker.address.zipCode();
+    const country = faker.address.country();
+    const shipping_region_id = 1;
+    const day_phone = '111';
+    const eve_phone = '111';
+    const mob_phone = '111';
+
+    mappedCustomer[i] = {
+      customer_id,
+      name,
+      email,
+      password,
+      credit_card,
+      address_1,
+      address_2,
+      city,
+      region,
+      postal_code,
+      country,
+      shipping_region_id,
+      day_phone,
+      eve_phone,
+      mob_phone
+    };
+  }
+  const stringifiedCustomer = JSON.stringify(mappedCustomer);
+  fs.writeFile(
+    '../db/seed-data/customer.js',
+    `exports.customer = ${stringifiedCustomer}`,
+    err => fsErrorMessage(err)
+  );
+};
+
+writeCustomerObj();

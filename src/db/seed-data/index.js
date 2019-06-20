@@ -6,6 +6,8 @@ const { product_category } = require('./product_category');
 const { product } = require('./product');
 const { shipping_region } = require('./shipping_region');
 const { shipping } = require('./shipping');
+const { review } = require('./review');
+const { customer } = require('./customer');
 
 module.exports = {
   attribute_value,
@@ -15,5 +17,7 @@ module.exports = {
   product_category,
   product,
   shipping_region,
-  shipping
+  shipping,
+  review,
+  customer
 };

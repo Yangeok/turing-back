@@ -245,21 +245,15 @@ exports.getProductDetails = async ctx => {
 };
 
 exports.getProductLocations = async ctx => {
-  const concat = (x, y) => x.concat(y);
-
-  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
-
-  Array.prototype.flatMap = function(f) {
-    return flatMap(f, this);
-  };
-
   let { id } = ctx.params;
+
   try {
     const query = await product.findOne({
       where: { product_id: id },
       include: {
         model: category,
         attributes: ['category_id', ['name', 'category_name']],
+        through: { attributes: [] },
         include: {
           model: department,
           attributes: ['department_id', ['name', 'department_name']]
@@ -267,8 +261,20 @@ exports.getProductLocations = async ctx => {
       },
       attributes: []
     });
-    const data = query.categories;
-    ctx.body = successMessage('product', data);
+    const getProduct = () => {
+      const a = query.categories[0];
+      const b = a.get({ plain: true });
+      const { category_id, category_name } = b;
+      const { department_id, department_name } = b.department;
+
+      return {
+        category_id,
+        category_name,
+        department_id,
+        department_name
+      };
+    };
+    ctx.body = successMessage('product', getProduct());
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
@@ -277,6 +283,7 @@ exports.getProductLocations = async ctx => {
 
 exports.getProductReviews = async ctx => {
   let { id } = ctx.params;
+
   try {
     const singleProduct = await product.destroy({ where: { product_id: id } });
     if (singleProduct == 1) {
