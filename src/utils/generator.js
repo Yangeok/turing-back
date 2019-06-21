@@ -215,6 +215,7 @@ const writeReviewObj = () => {
       rating,
       created_on
     });
+
     if (product_counter++ === productLength) {
       ++product_id;
       product_counter = 1;
@@ -227,14 +228,13 @@ const writeReviewObj = () => {
     err => fsErrorMessage(err)
   );
 };
-
 writeReviewObj();
 
 const writeCustomerObj = () => {
   const mappedCustomer = [];
 
   for (let i = 0; i < 1000; i++) {
-    const customer_id = i;
+    const customer_id = i + 1;
     const name = faker.name.findName();
     const email = faker.internet.email();
     const password = faker.internet.password();
@@ -278,5 +278,4 @@ const writeCustomerObj = () => {
     err => fsErrorMessage(err)
   );
 };
-
 writeCustomerObj();

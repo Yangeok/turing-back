@@ -3,6 +3,7 @@ const {
   product_category,
   product,
   department,
+  review,
   Sequelize,
   sequelize
 } = require('../../db/models');
@@ -285,13 +286,13 @@ exports.getProductReviews = async ctx => {
   let { id } = ctx.params;
 
   try {
-    const singleProduct = await product.destroy({ where: { product_id: id } });
-    if (singleProduct == 1) {
-      ctx.body = successMessage('message', `Product id ${id} is deleted`);
-    } else {
-      ctx.status = 400;
-      ctx.body = errorMessage(`Product id ${id} is already deleted`);
-    }
+    const query = await product.findOne({
+      where: { product_id: id },
+      attributes: [],
+      include: { model: review }
+    });
+    const data = query.reviews;
+    ctx.body = successMessage('product', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
@@ -300,14 +301,22 @@ exports.getProductReviews = async ctx => {
 
 exports.postProductReviews = async ctx => {
   let { id } = ctx.params;
+  const comment = ctx.request.body.comment;
+  const rating = ctx.request.body.rating && Number(ctx.request.body.rating);
+
+  /**
+   * customer_id
+   */
+  let customer_id;
+
   try {
-    const singleProduct = await product.destroy({ where: { product_id: id } });
-    if (singleProduct == 1) {
-      ctx.body = successMessage('message', `Product id ${id} is deleted`);
-    } else {
-      ctx.status = 400;
-      ctx.body = errorMessage(`Product id ${id} is already deleted`);
-    }
+    const data = await review.create({
+      review: comment,
+      rating,
+      created_on: new Date(Date.now())
+      // customer_id
+    });
+    ctx.body = successMessage('product', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);

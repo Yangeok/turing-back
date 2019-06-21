@@ -1,18 +1,18 @@
 const Router = require('koa-router');
 const router = new Router();
 
-const attribute = require('./attribute/attribute');
-const cart = require('./cart/cart');
-const category = require('./category/category');
-const customer = require('./customer/customer');
-const department = require('./department/department');
-const home = require('./home/home');
-const order = require('./order/order');
-const payment = require('./payment/payment');
-const product = require('./product/product');
-const profile = require('./profile/profile');
-const shipping = require('./shipping/shipping');
-const tax = require('./tax/tax');
+const attribute = require('./attribute');
+const cart = require('./cart');
+const category = require('./category');
+const customer = require('./customer');
+const department = require('./department');
+const home = require('./home');
+const order = require('./order');
+const payment = require('./payment');
+const product = require('./product');
+const profile = require('./profile');
+const shipping = require('./shipping');
+const tax = require('./tax');
 
 const { verifyJwt, authenticated } = require('../utils/jwt');
 
