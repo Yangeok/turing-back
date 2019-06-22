@@ -184,49 +184,39 @@ const writeShippingObj = () => {
 writeShippingObj();
 
 const writeReviewObj = () => {
-  const reviewLength = 3030;
-  const productLength = 30;
+  const writeReviewObj = () => {
+    const reviewLength = 3030;
+    const productLength = 30;
 
-  const mappedReview = [];
-  let product_id = 1;
-  let product_counter = 1;
-
-  for (let review_id = 1; review_id <= reviewLength; review_id++) {
     const createDatetime = () => {
-      const a = faker.date.past();
-      const b = JSON.stringify(a);
-      return b
+      const date = JSON.stringify(faker.date.past());
+      return date
         .replace('"', '')
         .replace('"', '')
         .replace('T', ' ')
         .replace('Z', '');
     };
 
-    const customer_id = faker.random.number({ min: 1, max: 1000 });
-    const review = faker.lorem.sentences();
-    const rating = faker.random.number({ min: 1, max: 100 });
-    const created_on = createDatetime();
+    const mappedReview = Array(reviewLength)
+      .fill(0)
+      .map((_, index) => ({
+        review_id: index + 1,
+        product_id: Math.ceil((index + 1) / productLength),
+        customer_id: faker.random.number({ min: 1, max: 1000 }),
+        review: faker.lorem.sentences(),
+        rating: faker.random.number({ min: 1, max: 100 }),
+        created_on: createDatetime()
+      }));
 
-    mappedReview.push({
-      review_id,
-      product_id,
-      customer_id,
-      review,
-      rating,
-      created_on
-    });
+    const stringifiedReview = JSON.stringify(mappedReview);
+    fs.writeFile(
+      '../db/seed-data/review.js',
+      `exports.review = ${stringifiedReview}`,
+      err => fsErrorMessage(err)
+    );
+  };
 
-    if (product_counter++ === productLength) {
-      ++product_id;
-      product_counter = 1;
-    }
-  }
-  const stringifiedReview = JSON.stringify(mappedReview);
-  fs.writeFile(
-    '../db/seed-data/review.js',
-    `exports.review = ${stringifiedReview}`,
-    err => fsErrorMessage(err)
-  );
+  writeReviewObj();
 };
 writeReviewObj();
 
@@ -237,7 +227,12 @@ const writeCustomerObj = () => {
     const customer_id = i + 1;
     const name = faker.name.findName();
     const email = faker.internet.email();
+
+    /**
+     * password
+     */
     const password = faker.internet.password();
+
     const credit_card = `${faker.random.number({
       min: 10 ^ 8,
       max: 9999999999999999
@@ -279,3 +274,74 @@ const writeCustomerObj = () => {
   );
 };
 writeCustomerObj();
+
+const writeOrderObj = () => {
+  const mappedOrder = [];
+  const createDatetime = () => {
+    const a = faker.date.past();
+    const b = JSON.stringify(a);
+    return b
+      .replace('"', '')
+      .replace('"', '')
+      .replace('T', ' ')
+      .replace('Z', '');
+  };
+  for (let i = 0; i < 1000; i++) {
+    const order_id = i;
+    const total_amount = faker.finance.amount(0, 1000, 2);
+    const created_on = createDatetime();
+    const shipped_on = createDatetime();
+    const status = faker.random.number({ min: 0, max: 5 });
+    const comments = faker.lorem.sentence();
+    const customer_id = faker.random.number({ min: 1, max: 1000 });
+    const auth_code = faker.internet.password(10);
+    const reference = faker.lorem.sentence();
+    const shipping_id = faker.random.number({ mix: 0, max: 100 });
+    const tax_id = faker.random.number({ mix: 0, max: 100 });
+
+    mappedOrder[i] = {
+      order_id,
+      total_amount,
+      created_on,
+      shipped_on,
+      status,
+      comments,
+      customer_id,
+      auth_code,
+      reference,
+      shipping_id,
+      tax_id
+    };
+  }
+
+  const stringifiedOrder = JSON.stringify(mappedOrder);
+  fs.writeFile(
+    '../db/seed-data/review.js',
+    `exports.order = ${stringifiedOrder}`,
+    err => fsErrorMessage(err)
+  );
+};
+writeOrderObj();
+
+// const writeOrderDetailObj = () => {
+//   const item_id = i
+//   const order_id =
+//   const product_id
+//   const attributes
+//   const product_name
+//   const quantity
+//   const unit_cost
+// };
+// writeOrderDetailObj();
+
+// const writeShoppingCartObj = () => {
+//   const item_id = i
+//   const cart_id
+//   const product_id
+//   const attributes
+//     const quantity
+//     const buy_not
+//     const add_on
+//     const customer_id
+// };
+// writeShoppingCartObj();
