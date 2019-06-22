@@ -8,14 +8,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     tax_type: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING(100)
     },
     tax_percentage: {
-      type: DataTypes.FLOAT(10, 2)
+      type: DataTypes.DECIMAL(10, 2)
     }
   });
   tax.associate = function(models) {
-    tax.hasMany(models.orders, {
+    tax.hasMany(models.order, {
       foreignKey: 'tax_id'
     });
   };

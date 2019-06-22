@@ -53,10 +53,8 @@
     "db:seed": "sequelize db:seed:all --env production",
     "db:seed:undo": "sequelize db:seed:undo:all --env production",
     "db:seed:test": "sequelize db:seed:all --env test",
-    "db:seed:undo:test": "sequelize db:seed:undo:all --env test"
-  },
-  "engine": {
-    "node": "8.11.3",
-    "npm": "5.6.0"
+    "db:seed:undo:test": "sequelize db:seed:undo:all --env test",
+    "migrate": "yarn db:migrate:undo && yarn db:migrate",
+    "seed": "yarn db:seed:undo && yarn db:seed"
   }
 }

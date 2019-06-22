@@ -1,19 +1,19 @@
-const unrefinedDepartment = [
-  [
-    1,
-    'Regional',
-    'Proud of your country? Wear a T-shirt with a national symbol stamp!'
-  ],
-  [
-    2,
-    'Nature',
-    'Find beautiful T-shirts with animals and flowers in our Nature department!'
-  ],
-  [
-    3,
-    'Seasonal',
-    'Each time of the year has a special flavor. Our seasonal T-shirts express traditional symbols using unique postal stamp pictures.'
-  ]
+const unrefinedAttribute = [[1, 'Size'], [2, 'Color']];
+const unrefinedAttributeValue = [
+  [1, 1, 'S'],
+  [2, 1, 'M'],
+  [3, 1, 'L'],
+  [4, 1, 'XL'],
+  [5, 1, 'XXL'],
+  [6, 2, 'White'],
+  [7, 2, 'Black'],
+  [8, 2, 'Red'],
+  [9, 2, 'Orange'],
+  [10, 2, 'Yellow'],
+  [11, 2, 'Green'],
+  [12, 2, 'Blue'],
+  [13, 2, 'Indigo'],
+  [14, 2, 'Purple']
 ];
 const unrefinedCategory = [
   [
@@ -57,6 +57,23 @@ const unrefinedCategory = [
     3,
     "Valentine's",
     'For the more timid, all you have to do is wear your heartfelt message to get it across. Buy one for you and your sweetie[s] today!'
+  ]
+];
+const unrefinedDepartment = [
+  [
+    1,
+    'Regional',
+    'Proud of your country? Wear a T-shirt with a national symbol stamp!'
+  ],
+  [
+    2,
+    'Nature',
+    'Find beautiful T-shirts with animals and flowers in our Nature department!'
+  ],
+  [
+    3,
+    'Seasonal',
+    'Each time of the year has a special flavor. Our seasonal T-shirts express traditional symbols using unique postal stamp pictures.'
   ]
 ];
 const unrefinedProduct = [
@@ -3199,23 +3216,6 @@ const unrefinedProductCategory = [
   [100, 7],
   [101, 7]
 ];
-const unrefinedAttribute = [[1, 'Size'], [2, 'Color']];
-const unrefinedAttributeValue = [
-  [1, 1, 'S'],
-  [2, 1, 'M'],
-  [3, 1, 'L'],
-  [4, 1, 'XL'],
-  [5, 1, 'XXL'],
-  [6, 2, 'White'],
-  [7, 2, 'Black'],
-  [8, 2, 'Red'],
-  [9, 2, 'Orange'],
-  [10, 2, 'Yellow'],
-  [11, 2, 'Green'],
-  [12, 2, 'Blue'],
-  [13, 2, 'Indigo'],
-  [14, 2, 'Purple']
-];
 const unrefinedShippingRegion = [
   [1, 'Please Select'],
   [2, 'US / Canada'],
@@ -3231,15 +3231,28 @@ const unrefinedShipping = [
   [6, 'By air [10 days, $35]', 35.0, 4],
   [7, 'By sea [28 days, $30]', 30.0, 4]
 ];
+const unrefinedTax = [
+  {
+    tax_id: 1,
+    tax_type: 'Sales Tax at 8.5%',
+    tax_percentage: '8.50'
+  },
+  {
+    tax_id: 2,
+    tax_type: 'No Tax',
+    tax_percentage: '0.00'
+  }
+];
 
 module.exports = {
-  unrefinedDepartment,
+  unrefinedAttribute,
+  unrefinedAttributeValue,
   unrefinedCategory,
+  unrefinedDepartment,
   unrefinedProduct,
   unrefinedProductAttribute,
   unrefinedProductCategory,
-  unrefinedAttribute,
-  unrefinedAttributeValue,
   unrefinedShippingRegion,
-  unrefinedShipping
+  unrefinedShipping,
+  unrefinedTax
 };

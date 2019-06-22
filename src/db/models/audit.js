@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   audit.associate = function(models) {
-    audit.belongsTo(models.orders, {
+    audit.belongsTo(models.order, {
       foreignKey: 'order_id'
     });
   };

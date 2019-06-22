@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING(100)
       },
       tax_percentage: {
-        type: Sequelize.NUMERIC(10, 2)
+        type: Sequelize.DECIMAL(10, 2)
       }
     });
   },

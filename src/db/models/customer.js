@@ -75,6 +75,9 @@ module.exports = (sequelize, DataTypes) => {
     customer.hasMany(models.shopping_cart, {
       foreignKey: 'customer_id'
     });
+    customer.hasMany(models.order, {
+      foreignKey: 'customer_id'
+    });
   };
 
   customer.prototype.validPassword = function(password) {

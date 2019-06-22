@@ -1,35 +1,47 @@
 const faker = require('faker');
 const fs = require('fs');
 const { fsErrorMessage } = require('./response');
+const { createDatetime, getRandomIndex } = require('./helper');
 const {
-  unrefinedDepartment,
+  unrefinedAttribute,
+  unrefinedAttributeValue,
   unrefinedCategory,
+  unrefinedDepartment,
   unrefinedProduct,
   unrefinedProductAttribute,
   unrefinedProductCategory,
-  unrefinedAttribute,
-  unrefinedAttributeValue,
   unrefinedShippingRegion,
-  unrefinedShipping
+  unrefinedShipping,
+  unrefinedTax
 } = require('../assets/mock-data');
 
-const writeDepartmentObj = () => {
-  const mappedDepartment = unrefinedDepartment.map(
-    ([department_id, name, description]) => ({
-      department_id,
-      name,
-      description
-    })
-  );
-  const stringifiedDepartment = JSON.stringify(mappedDepartment);
+const writeAttributeObj = () => {
+  const mappedAttribute = unrefinedAttribute.map(([attribute_id, name]) => ({
+    attribute_id,
+    name
+  }));
+  const stringifiedAttribute = JSON.stringify(mappedAttribute);
   fs.writeFile(
-    '../db/seed-data/department.js',
-    `exports.department = ${stringifiedDepartment}`,
+    '../db/seed-data/attribute.js',
+    `exports.attribute = ${stringifiedAttribute}`,
     err => fsErrorMessage(err)
   );
 };
-writeDepartmentObj();
-
+const writeAttributeValueObj = () => {
+  const mappedAttributeValue = unrefinedAttributeValue.map(
+    ([attribute_value_id, attribute_id, value]) => ({
+      attribute_value_id,
+      attribute_id,
+      value
+    })
+  );
+  const stringifiedAttributeValue = JSON.stringify(mappedAttributeValue);
+  fs.writeFile(
+    '../db/seed-data/attribute_value.js',
+    `exports.attribute_value = ${stringifiedAttributeValue}`,
+    err => fsErrorMessage(err)
+  );
+};
 const wrtieCategoryObj = () => {
   const mappedCategory = unrefinedCategory.map(
     ([category_id, department_id, name, description]) => ({
@@ -46,8 +58,108 @@ const wrtieCategoryObj = () => {
     err => fsErrorMessage(err)
   );
 };
-wrtieCategoryObj();
+const writeCustomerObj = () => {
+  const customerLength = 1000;
+  const mappedCustomer = Array(customerLength)
+    .fill(0)
+    .map((_, idx) => ({
+      customer_id: idx + 1,
+      name: faker.name.findName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+      credit_card: faker.random.number({
+        min: 10 ^ 8,
+        max: 9999999999999999
+      }),
+      address_1: faker.address.streetAddress(),
+      address_2: faker.address.secondaryAddress(),
+      city: faker.address.city(),
+      region: faker.address.stateAbbr(),
+      postal_code: faker.address.zipCode(),
+      country: faker.address.country(),
+      shipping_region_id: 1,
+      day_phone: faker.phone.phoneNumberFormat(0),
+      eve_phone: faker.phone.phoneNumberFormat(0),
+      mob_phone: faker.phone.phoneNumberFormat(0)
+    }));
 
+  const stringifiedCustomer = JSON.stringify(mappedCustomer);
+  fs.writeFile(
+    '../db/seed-data/customer.js',
+    `exports.customer = ${stringifiedCustomer}`,
+    err => fsErrorMessage(err)
+  );
+};
+const writeDepartmentObj = () => {
+  const mappedDepartment = unrefinedDepartment.map(
+    ([department_id, name, description]) => ({
+      department_id,
+      name,
+      description
+    })
+  );
+  const stringifiedDepartment = JSON.stringify(mappedDepartment);
+  fs.writeFile(
+    '../db/seed-data/department.js',
+    `exports.department = ${stringifiedDepartment}`,
+    err => fsErrorMessage(err)
+  );
+};
+const writeOrderObj = () => {
+  const orderLength = 1000;
+  const mappedOrder = Array(orderLength)
+    .fill(0)
+    .map((_, idx) => ({
+      order_id: idx + 1,
+      total_amount: faker.finance.amount(0, 1000, 2),
+      created_on: createDatetime(),
+      shipped_on: createDatetime(),
+      status: faker.random.number({ min: 0, max: 5 }),
+      comments: faker.lorem.sentence(),
+      customer_id: faker.random.number({ min: 1, max: 1000 }),
+      auth_code: faker.internet.password(10),
+      reference: faker.lorem.words(),
+      shipping_id: faker.random.number({ mix: 0, max: 100 }),
+      tax_id: faker.random.number({ mix: 0, max: 100 })
+    }));
+
+  const stringifiedOrder = JSON.stringify(mappedOrder);
+  fs.writeFile(
+    '../db/seed-data/order.js',
+    `exports.order = ${stringifiedOrder}`,
+    err => fsErrorMessage(err)
+  );
+};
+const writeOrderDetailObj = () => {
+  const orderDetailLength = 1000;
+  const attributes = ['Size', 'Color'];
+
+  const mappedOrderDetail = Array(orderDetailLength)
+    .fill(0)
+    .map((_, idx) => {
+      const getProducts = unrefinedProduct.map(([product_id, name]) => ({
+        product_id,
+        name
+      }));
+
+      return {
+        item_id: idx + 1,
+        order_id: faker.random.number({ min: 1, max: 1000 }),
+        product_id: getProducts.product_id,
+        attributes: getRandomIndex(attributes),
+        product_name: getProducts.name,
+        quantity: faker.random.number({ min: 1, max: 10 }),
+        unit_cost: faker.finance.amount(0, 1000, 2)
+      };
+    });
+
+  const stringifiedOrderDetail = JSON.stringify(mappedOrderDetail);
+  fs.writeFile(
+    '../db/seed-data/order_detail.js',
+    `exports.order_detail = ${stringifiedOrderDetail}`,
+    err => fsErrorMessage(err)
+  );
+};
 const writeProductObj = () => {
   const mappedProduct = unrefinedProduct.map(
     ([
@@ -79,8 +191,6 @@ const writeProductObj = () => {
     err => fsErrorMessage(err)
   );
 };
-writeProductObj();
-
 const writeProductAttributeObj = () => {
   // flatMap
   const concat = (x, y) => x.concat(y);
@@ -100,8 +210,6 @@ const writeProductAttributeObj = () => {
     err => fsErrorMessage(err)
   );
 };
-writeProductAttributeObj();
-
 const writeProductCategoryObj = () => {
   const mappedProductCategory = unrefinedProductCategory.map(
     ([product_id, category_id]) => ({
@@ -116,55 +224,37 @@ const writeProductCategoryObj = () => {
     err => fsErrorMessage(err)
   );
 };
-writeProductCategoryObj();
+const writeReviewObj = () => {
+  const reviewLength = 3030;
+  const productLength = 30;
 
-const writeAttributeObj = () => {
-  const mappedAttribute = unrefinedAttribute.map(([attribute_id, name]) => ({
-    attribute_id,
-    name
-  }));
-  const stringifiedAttribute = JSON.stringify(mappedAttribute);
+  const createDatetime = () => {
+    const date = JSON.stringify(faker.date.past());
+    return date
+      .replace('"', '')
+      .replace('"', '')
+      .replace('T', ' ')
+      .replace('Z', '');
+  };
+
+  const mappedReview = Array(reviewLength)
+    .fill(0)
+    .map((_, idx) => ({
+      review_id: idx + 1,
+      product_id: Math.ceil((idx + 1) / productLength),
+      customer_id: faker.random.number({ min: 1, max: 1000 }),
+      review: faker.lorem.sentences(),
+      rating: faker.random.number({ min: 1, max: 100 }),
+      created_on: createDatetime()
+    }));
+
+  const stringifiedReview = JSON.stringify(mappedReview);
   fs.writeFile(
-    '../db/seed-data/attribute.js',
-    `exports.attribute = ${stringifiedAttribute}`,
+    '../db/seed-data/review.js',
+    `exports.review = ${stringifiedReview}`,
     err => fsErrorMessage(err)
   );
 };
-writeAttributeObj();
-
-const writeAttributeValueObj = () => {
-  const mappedAttributeValue = unrefinedAttributeValue.map(
-    ([attribute_value_id, attribute_id, value]) => ({
-      attribute_value_id,
-      attribute_id,
-      value
-    })
-  );
-  const stringifiedAttributeValue = JSON.stringify(mappedAttributeValue);
-  fs.writeFile(
-    '../db/seed-data/attribute_value.js',
-    `exports.attribute_value = ${stringifiedAttributeValue}`,
-    err => fsErrorMessage(err)
-  );
-};
-writeAttributeValueObj();
-
-const writeShippingRegionObj = () => {
-  const mappedShippingRegion = unrefinedShippingRegion.map(
-    ([shipping_region_id, shipping_region]) => ({
-      shipping_region_id,
-      shipping_region
-    })
-  );
-  const stringifiedShippingRegion = JSON.stringify(mappedShippingRegion);
-  fs.writeFile(
-    '../db/seed-data/shipping_region.js',
-    `exports.shipping_region = ${stringifiedShippingRegion}`,
-    err => fsErrorMessage(err)
-  );
-};
-writeShippingRegionObj();
-
 const writeShippingObj = () => {
   const mappedShipping = unrefinedShipping.map(
     ([shipping_id, shipping_type, shipping_cost, shipping_region_id]) => ({
@@ -181,167 +271,73 @@ const writeShippingObj = () => {
     err => fsErrorMessage(err)
   );
 };
-writeShippingObj();
+const writeShoppingCartObj = () => {
+  const shoppingCartLength = 1000;
+  const attributes = ['Size', 'Color'];
+  const buyNow = [0, 1];
 
-const writeReviewObj = () => {
-  const writeReviewObj = () => {
-    const reviewLength = 3030;
-    const productLength = 30;
+  const mappedShoppingCart = Array(shoppingCartLength)
+    .fill(0)
+    .map((_, idx) => ({
+      item_id: idx + 1,
+      cart_id: faker.random.number({ min: 1, max: 1000 }),
+      product_id: faker.random.number({ min: 1, max: 101 }),
+      attributes: getRandomIndex(attributes),
+      quantity: faker.random.number({ min: 1, max: 100 }),
+      buy_now: getRandomIndex(buyNow),
+      add_on: createDatetime(),
+      customer_id: faker.random.number({ min: 1, max: 1000 })
+    }));
 
-    const createDatetime = () => {
-      const date = JSON.stringify(faker.date.past());
-      return date
-        .replace('"', '')
-        .replace('"', '')
-        .replace('T', ' ')
-        .replace('Z', '');
-    };
-
-    const mappedReview = Array(reviewLength)
-      .fill(0)
-      .map((_, index) => ({
-        review_id: index + 1,
-        product_id: Math.ceil((index + 1) / productLength),
-        customer_id: faker.random.number({ min: 1, max: 1000 }),
-        review: faker.lorem.sentences(),
-        rating: faker.random.number({ min: 1, max: 100 }),
-        created_on: createDatetime()
-      }));
-
-    const stringifiedReview = JSON.stringify(mappedReview);
-    fs.writeFile(
-      '../db/seed-data/review.js',
-      `exports.review = ${stringifiedReview}`,
-      err => fsErrorMessage(err)
-    );
-  };
-
-  writeReviewObj();
+  const stringifiedShoppingCart = JSON.stringify(mappedShoppingCart);
+  fs.writeFile(
+    '../db/seed-data/shopping_cart.js',
+    `exports.shopping_cart = ${stringifiedShoppingCart}`,
+    err => fsErrorMessage(err)
+  );
 };
-writeReviewObj();
-
-const writeCustomerObj = () => {
-  const mappedCustomer = [];
-
-  for (let i = 0; i < 1000; i++) {
-    const customer_id = i + 1;
-    const name = faker.name.findName();
-    const email = faker.internet.email();
-
-    /**
-     * password
-     */
-    const password = faker.internet.password();
-
-    const credit_card = `${faker.random.number({
-      min: 10 ^ 8,
-      max: 9999999999999999
-    })}`;
-    const address_1 = faker.address.streetAddress();
-    const address_2 = faker.address.secondaryAddress();
-    const city = faker.address.city();
-    const region = faker.address.stateAbbr();
-    const postal_code = faker.address.zipCode();
-    const country = faker.address.country();
-    const shipping_region_id = 1;
-    const day_phone = '111';
-    const eve_phone = '111';
-    const mob_phone = '111';
-
-    mappedCustomer[i] = {
-      customer_id,
-      name,
-      email,
-      password,
-      credit_card,
-      address_1,
-      address_2,
-      city,
-      region,
-      postal_code,
-      country,
+const writeShippingRegionObj = () => {
+  const mappedShippingRegion = unrefinedShippingRegion.map(
+    ([shipping_region_id, shipping_region]) => ({
       shipping_region_id,
-      day_phone,
-      eve_phone,
-      mob_phone
-    };
-  }
-  const stringifiedCustomer = JSON.stringify(mappedCustomer);
+      shipping_region
+    })
+  );
+  const stringifiedShippingRegion = JSON.stringify(mappedShippingRegion);
   fs.writeFile(
-    '../db/seed-data/customer.js',
-    `exports.customer = ${stringifiedCustomer}`,
+    '../db/seed-data/shipping_region.js',
+    `exports.shipping_region = ${stringifiedShippingRegion}`,
     err => fsErrorMessage(err)
   );
 };
+const writeTaxObj = () => {
+  const mappedTax = unrefinedTax.map(
+    ({ tax_id, tax_type, tax_percentage }) => ({
+      tax_id,
+      tax_type,
+      tax_percentage
+    })
+  );
+  const stringifiedTax = JSON.stringify(mappedTax);
+  fs.writeFile(
+    '../db/seed-data/tax.js',
+    `exports.tax = ${stringifiedTax}`,
+    err => fsErrorMessage(err)
+  );
+};
+
+writeAttributeObj();
+writeAttributeValueObj();
+wrtieCategoryObj();
 writeCustomerObj();
-
-const writeOrderObj = () => {
-  const mappedOrder = [];
-  const createDatetime = () => {
-    const a = faker.date.past();
-    const b = JSON.stringify(a);
-    return b
-      .replace('"', '')
-      .replace('"', '')
-      .replace('T', ' ')
-      .replace('Z', '');
-  };
-  for (let i = 0; i < 1000; i++) {
-    const order_id = i;
-    const total_amount = faker.finance.amount(0, 1000, 2);
-    const created_on = createDatetime();
-    const shipped_on = createDatetime();
-    const status = faker.random.number({ min: 0, max: 5 });
-    const comments = faker.lorem.sentence();
-    const customer_id = faker.random.number({ min: 1, max: 1000 });
-    const auth_code = faker.internet.password(10);
-    const reference = faker.lorem.sentence();
-    const shipping_id = faker.random.number({ mix: 0, max: 100 });
-    const tax_id = faker.random.number({ mix: 0, max: 100 });
-
-    mappedOrder[i] = {
-      order_id,
-      total_amount,
-      created_on,
-      shipped_on,
-      status,
-      comments,
-      customer_id,
-      auth_code,
-      reference,
-      shipping_id,
-      tax_id
-    };
-  }
-
-  const stringifiedOrder = JSON.stringify(mappedOrder);
-  fs.writeFile(
-    '../db/seed-data/review.js',
-    `exports.order = ${stringifiedOrder}`,
-    err => fsErrorMessage(err)
-  );
-};
+writeDepartmentObj();
 writeOrderObj();
-
-// const writeOrderDetailObj = () => {
-//   const item_id = i
-//   const order_id =
-//   const product_id
-//   const attributes
-//   const product_name
-//   const quantity
-//   const unit_cost
-// };
-// writeOrderDetailObj();
-
-// const writeShoppingCartObj = () => {
-//   const item_id = i
-//   const cart_id
-//   const product_id
-//   const attributes
-//     const quantity
-//     const buy_not
-//     const add_on
-//     const customer_id
-// };
-// writeShoppingCartObj();
+writeOrderDetailObj();
+writeProductObj();
+writeProductAttributeObj();
+writeProductCategoryObj();
+writeReviewObj();
+writeShippingObj();
+writeShoppingCartObj();
+writeShippingRegionObj();
+writeTaxObj();
