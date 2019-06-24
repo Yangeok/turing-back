@@ -119,8 +119,8 @@ const writeOrderObj = () => {
       customer_id: faker.random.number({ min: 1, max: 1000 }),
       auth_code: faker.internet.password(10),
       reference: faker.lorem.words(),
-      shipping_id: faker.random.number({ mix: 0, max: 100 }),
-      tax_id: faker.random.number({ mix: 0, max: 100 })
+      shipping_id: faker.random.number({ min: 1, max: 7 }),
+      tax_id: faker.random.number({ min: 1, max: 2 })
     }));
 
   const stringifiedOrder = JSON.stringify(mappedOrder);

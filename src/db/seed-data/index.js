@@ -11,6 +11,7 @@ const { product } = require('./product');
 const { review } = require('./review');
 const { shipping_region } = require('./shipping_region');
 const { shipping } = require('./shipping');
+const { shopping_cart } = require('./shopping_cart');
 const { tax } = require('./tax');
 
 module.exports = {
@@ -27,5 +28,6 @@ module.exports = {
   review,
   shipping_region,
   shipping,
+  shopping_cart,
   tax
 };
