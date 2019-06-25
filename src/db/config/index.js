@@ -1,43 +1,44 @@
 require('dotenv').config();
 const env = process.env;
 
+const username = env.MYSQL_USERNAME;
+const password = env.MYSQL_PASSWORD;
+const host = env.MYSQL_HOST;
+const dialect = env.MYSQL_DIALECT;
+const port = env.MYSQL_PORT;
+const define = {
+  freezeTableName: true,
+  timestamps: false
+};
+
 const development = {
-  username: env.MYSQL_USERNAME,
-  password: env.MYSQL_PASSWORD,
+  username,
+  password,
   database: env.MYSQL_DATABASE,
-  host: env.MYSQL_HOST,
-  dialect: env.MYSQL_DIALECT,
-  port: env.MYSQL_PORT,
-  define: {
-    freezeTableName: true,
-    timestamps: false
-  }
+  host,
+  dialect,
+  port,
+  define
 };
 
 const production = {
-  username: env.MYSQL_USERNAME,
-  password: env.MYSQL_PASSWORD,
+  username,
+  password,
   database: env.MYSQL_DATABASE,
-  host: env.MYSQL_HOST,
-  dialect: env.MYSQL_DIALECT,
-  port: env.MYSQL_PORT,
-  define: {
-    freezeTableName: true,
-    timestamps: false
-  }
+  host,
+  dialect,
+  port,
+  define
 };
 
 const test = {
-  username: env.MYSQL_USERNAME,
-  password: env.MYSQL_PASSWORD,
+  username,
+  password,
   database: env.MYSQL_DATABASE_TEST,
-  host: env.MYSQL_HOST,
-  dialect: env.MYSQL_DIALECT,
-  port: env.MYSQL_PORT,
-  define: {
-    freezeTableName: true,
-    timestamps: false
-  }
+  host,
+  dialect,
+  port,
+  define
 };
 
 module.exports = {

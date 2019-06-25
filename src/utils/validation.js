@@ -1,8 +1,9 @@
 /**
  *
- * @param {*} email
+ * @param {string} email
+ * @description make sure the email is in the correct format
  */
-exports.validateEmail = email => {
+const validateEmail = email => {
   let errorMessages = [];
   const regex = /\S+@\S+\.\S+/;
   const trimmedEmail = email.trim();
@@ -19,9 +20,10 @@ exports.validateEmail = email => {
 
 /**
  *
- * @param {*} password
+ * @param {string} password
+ * @description make sure the password is in the correct format
  */
-exports.validatePassword = password => {
+const validatePassword = password => {
   const errorMessages = [];
 
   if (password.length > 50) {
@@ -45,20 +47,7 @@ exports.validatePassword = password => {
   return errorMessages;
 };
 
-/**
- *
- * @param {*} obj
- * @param {*} fields
- */
-exports.removeKeys = (obj, fields) => {
-  const newObj = obj;
-  const keys = Object.keys(newObj.dataValues);
-  keys.forEach(key => {
-    fields.forEach(field => {
-      if (key === field) {
-        delete newObj.dataValues[key];
-      }
-    });
-  });
-  return newObj;
+module.exports = {
+  validateEmail,
+  validatePassword
 };

@@ -16,20 +16,25 @@ const options = {
   routes: '/category'
 };
 
+// Middlewares
+const middlewares = require('./middleware');
+middlewares(app);
+// app.use(cors());
+// app.use(helmet());
+// app.use(json());
+// app.use(bodyParser());
+// app.use(logger());
+// app.use(cache(options));
+// app.use(verifyJwt);
+// app.use(serve('src/images/product_images'));
+
+// Routes
 const api = require('./routes/index');
 router.use(api.routes());
-
-app.use(cors());
-app.use(helmet());
-app.use(json());
-app.use(bodyParser());
-app.use(logger());
-app.use(cache(options));
-app.use(verifyJwt);
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.use(serve('src/images/product_images'));
 
+// HTTP
 const { port, hostname } = require('./utils/env');
 const db = require('./db/models');
 db.sequelize
@@ -46,5 +51,3 @@ db.sequelize
       console.log(`> Koa server is listening on port ${port}`);
     });
   });
-
-module.exports = app;

@@ -2,15 +2,18 @@ const jwt = require('jsonwebtoken');
 const { errorMessage } = require('./response');
 const env = process.env;
 
-exports.generateJwtToken = payload => {
-  return jwt.sign(payload, env.JWT_SECRET, { expiresIn: '30d' });
+/**
+ * @param {object} payload
+ * @returns {function}
+ */
+const generateJwtToken = payload => {
+  return jwt.sign(payload, env.JWT_SECRET, { expiresIn: '24h' });
 };
 
 /**
  *
- * @param {*} token
- *
- * @returns {*}
+ * @param {string} token
+ * @returns {function}
  */
 const verifyJwtToken = token => {
   try {
@@ -22,18 +25,15 @@ const verifyJwtToken = token => {
 
 /**
  *
- * @param {*} ctx
- * @param {*} next
- *
- * @returns {*}
+ * @param {object} ctx
+ * @param {function} next
  */
-exports.verifyJwt = async (ctx, next) => {
+const verifyJwt = async (ctx, next) => {
   const token =
     ctx.request.header.authorization &&
     ctx.request.header.authorization.split(' ')[0] === 'Bearer'
       ? ctx.request.header.authorization.split(' ')[1]
       : '';
-
   if (token) {
     const payload = verifyJwtToken(token);
     if (payload !== null || payload !== undefined) {
@@ -50,16 +50,20 @@ exports.verifyJwt = async (ctx, next) => {
 
 /**
  *
- * @param {*} ctx
- * @param {*} next
- *
- * @returns {*}
+ * @param {object} ctx
+ * @param {function} next
  */
-exports.authenticated = async (ctx, next) => {
+const authenticated = async (ctx, next) => {
   if (ctx.request.user.authenticated) {
     await next();
   } else {
     ctx.status = 401;
     ctx.body = errorMessage('Login and try again');
   }
+};
+
+module.exports = {
+  generateJwtToken,
+  verifyJwt,
+  authenticated
 };

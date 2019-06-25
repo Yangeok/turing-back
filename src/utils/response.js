@@ -1,4 +1,8 @@
-exports.errorHandler = (ctx, next) => {
+/**
+ * @param {*} ctx
+ * @param {*} next
+ */
+const errorHandler = (ctx, next) => {
   try {
     next();
   } catch (err) {
@@ -8,20 +12,40 @@ exports.errorHandler = (ctx, next) => {
   }
 };
 
-exports.errorMessage = message => {
+/**
+ * @param {string} message
+ * @return error message
+ */
+const errorMessage = message => {
   return {
     status: false,
     message
   };
 };
 
-exports.successMessage = (key, params) => {
+/**
+ * @param {string} key
+ * @param {object} params
+ * @return {object} the key of the object is key and the value is params.
+ */
+const successMessage = (key, params) => {
   return {
     status: true,
     [key]: params
   };
 };
 
-exports.fsErrorMessage = err => {
+/**
+ * @param {string} err
+ * @return {string}
+ */
+const fsErrorMessage = err => {
   console.log(`> error: ${err}`);
+};
+
+module.exports = {
+  errorHandler,
+  errorMessage,
+  successMessage,
+  fsErrorMessage
 };

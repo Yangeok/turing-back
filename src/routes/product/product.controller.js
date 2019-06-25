@@ -300,21 +300,18 @@ exports.getProductReviews = async ctx => {
 };
 
 exports.postProductReviews = async ctx => {
-  let { id } = ctx.params;
+  let product_id = ctx.params.id;
+  let customer_id = ctx.request.user.id;
   const comment = ctx.request.body.comment;
   const rating = ctx.request.body.rating && Number(ctx.request.body.rating);
-
-  /**
-   * customer_id
-   */
-  let customer_id;
 
   try {
     const data = await review.create({
       review: comment,
       rating,
-      created_on: new Date(Date.now())
-      // customer_id
+      created_on: new Date(Date.now()),
+      product_id,
+      customer_id
     });
     ctx.body = successMessage('product', data);
   } catch (err) {
