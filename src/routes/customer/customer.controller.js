@@ -153,12 +153,9 @@ exports.signinCustomerWithFacebook = async ctx => {
 
 exports.signinCustomerWithFacebookCallback = async ctx => {
   passport.authenticate('facebook', {
-    successRedirect: '/login_success',
-    failureRedirect: '/login_fail'
+    failureRedirect: '/'
   });
-
-  ctx.status = 301;
-  ctx.redirect('/');
+  ctx.redirect('/customer');
 };
 exports.updateAddressFromCustomer = async ctx => {
   try {

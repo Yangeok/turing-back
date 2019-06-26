@@ -1,16 +1,13 @@
 const Koa = require('koa');
-const Router = require('koa-router');
-
 const app = new Koa();
-const router = new Router();
 
 // Middlewares
 const middlewares = require('./middleware');
 middlewares(app);
 
 // Routes
-const routerConfig = require('./routes');
-routerConfig(app);
+const routers = require('./routes');
+routers(app);
 
 // HTTP
 const { port } = require('./utils/env');

@@ -7,7 +7,7 @@ const ignoreFavicon = (ctx, next) => {
     ctx.request.originalUrl &&
     ctx.request.originalUrl.split('/').pop() === 'favicon.ico'
   ) {
-    return res.sendStatus(204);
+    return (ctx.status = 204);
   }
   return next();
 };
@@ -18,8 +18,8 @@ const ignoreFavicon = (ctx, next) => {
  */
 const ignoreRobots = (ctx, next) => {
   if (ctx.request.url === '/robots.txt') {
-    res.type('text/plain');
-    return res.send('User-agent: *\nDisallow: /');
+    ctx.type = 'text/plain';
+    ctx.body = { 'User-agent': '*\nDisallow: /' };
   }
   return next();
 };

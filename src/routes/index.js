@@ -25,9 +25,9 @@ router.use('/product', product.routes());
 router.use('/shipping', shipping.routes());
 router.use('/tax', tax.routes());
 
-const rotuerConfig = app => {
+const rotuers = app => {
   app.use(router.routes());
   app.use(router.allowedMethods());
 };
 
-module.exports = rotuerConfig;
+module.exports = rotuers;
