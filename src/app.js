@@ -1,41 +1,19 @@
 const Koa = require('koa');
-const json = require('koa-json');
-const cors = require('koa2-cors');
-const serve = require('koa-static');
-const helmet = require('koa-helmet');
-const logger = require('koa-logger');
 const Router = require('koa-router');
-const bodyParser = require('koa-body');
-const cache = require('koa-redis-cache');
-const { verifyJwt } = require('./utils/jwt');
 
 const app = new Koa();
 const router = new Router();
-const options = {
-  expire: 1,
-  routes: '/category'
-};
 
 // Middlewares
 const middlewares = require('./middleware');
 middlewares(app);
-// app.use(cors());
-// app.use(helmet());
-// app.use(json());
-// app.use(bodyParser());
-// app.use(logger());
-// app.use(cache(options));
-// app.use(verifyJwt);
-// app.use(serve('src/images/product_images'));
 
 // Routes
-const api = require('./routes/index');
-router.use(api.routes());
-app.use(router.routes());
-app.use(router.allowedMethods());
+const routerConfig = require('./routes');
+routerConfig(app);
 
 // HTTP
-const { port, hostname } = require('./utils/env');
+const { port } = require('./utils/env');
 const db = require('./db/models');
 db.sequelize
   .sync()
@@ -47,7 +25,7 @@ db.sequelize
     process.exit();
   })
   .then(() => {
-    app.listen(port, hostname, () => {
+    app.listen(port, () => {
       console.log(`> Koa server is listening on port ${port}`);
     });
   });

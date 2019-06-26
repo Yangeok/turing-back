@@ -1,6 +1,6 @@
 require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
-const { checkoutQuery } = require('../../utils/checkout');
+// const { checkoutQuery } = require('../../utils/checkout');
 const { shipping, shopping_cart, product } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 

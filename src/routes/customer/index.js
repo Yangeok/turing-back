@@ -7,7 +7,11 @@ customer.put('/', authenticated, customerCtrl.updateCustomer);
 customer.get('/', authenticated, customerCtrl.getCustomerById);
 customer.post('/', customerCtrl.registerCustomer);
 customer.post('/login', customerCtrl.signinCustomer);
-customer.post('/facebook', customerCtrl.signinCustomerWithFacebook);
+customer.get('/facebook', customerCtrl.signinCustomerWithFacebook);
+customer.get(
+  '/facebook/callback',
+  customerCtrl.signinCustomerWithFacebookCallback
+);
 customer.put('/address', authenticated, customerCtrl.updateAddressFromCustomer);
 customer.put(
   '/credit-card',

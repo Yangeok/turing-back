@@ -13,9 +13,6 @@ const product = require('./product');
 const shipping = require('./shipping');
 const tax = require('./tax');
 
-const { verifyJwt, authenticated } = require('../utils/jwt');
-
-// router.use(verifyJwt);
 router.use('/', home.routes());
 router.use('/attribute', attribute.routes());
 router.use('/cart', cart.routes());
@@ -28,4 +25,9 @@ router.use('/product', product.routes());
 router.use('/shipping', shipping.routes());
 router.use('/tax', tax.routes());
 
-module.exports = router;
+const rotuerConfig = app => {
+  app.use(router.routes());
+  app.use(router.allowedMethods());
+};
+
+module.exports = rotuerConfig;

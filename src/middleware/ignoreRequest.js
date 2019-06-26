@@ -1,3 +1,7 @@
+/**
+ * @param {*} ctx
+ * @param {*} next
+ */
 const ignoreFavicon = (ctx, next) => {
   if (
     ctx.request.originalUrl &&
@@ -8,6 +12,10 @@ const ignoreFavicon = (ctx, next) => {
   return next();
 };
 
+/**
+ * @param {*} ctx
+ * @param {*} next
+ */
 const ignoreRobots = (ctx, next) => {
   if (ctx.request.url === '/robots.txt') {
     res.type('text/plain');
@@ -16,6 +24,9 @@ const ignoreRobots = (ctx, next) => {
   return next();
 };
 
+/**
+ * @param {*} app
+ */
 const ignoreRequest = app => {
   app.use(ignoreFavicon);
   app.use(ignoreRobots);

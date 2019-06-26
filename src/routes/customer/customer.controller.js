@@ -2,6 +2,7 @@ const { customer } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 const { validateEmail, validatePassword } = require('../../utils/validation');
 const { generateJwtToken } = require('../../utils/jwt');
+const passport = require('koa-passport');
 
 exports.updateCustomer = async ctx => {
   const {
@@ -57,7 +58,6 @@ exports.updateCustomer = async ctx => {
 
 exports.getCustomerById = async ctx => {
   const { email } = ctx.request.user;
-  console.log(ctx.request.user);
   try {
     const data = await customer.findOne({
       where: { email },
@@ -148,12 +148,17 @@ exports.signinCustomer = async ctx => {
 };
 
 exports.signinCustomerWithFacebook = async ctx => {
-  try {
-    ctx.body = '';
-  } catch (e) {
-    ctx.status = 400;
-    ctx.body = errorMessage(e.message);
-  }
+  passport.authenticate('facebook');
+};
+
+exports.signinCustomerWithFacebookCallback = async ctx => {
+  passport.authenticate('facebook', {
+    successRedirect: '/login_success',
+    failureRedirect: '/login_fail'
+  });
+
+  ctx.status = 301;
+  ctx.redirect('/');
 };
 exports.updateAddressFromCustomer = async ctx => {
   try {
