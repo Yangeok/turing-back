@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   order_detail.associate = function(models) {
-    order_detail.belongsTo(models.order, {
+    order_detail.belongsTo(models.orders, {
       foreignKey: 'order_id'
     });
     order_detail.belongsTo(models.product, {

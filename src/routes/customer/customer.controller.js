@@ -2,7 +2,6 @@ const { customer } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 const { validateEmail, validatePassword } = require('../../utils/validation');
 const { generateJwtToken } = require('../../utils/jwt');
-const passport = require('koa-passport');
 
 exports.updateCustomer = async ctx => {
   const {
@@ -23,33 +22,33 @@ exports.updateCustomer = async ctx => {
   } = ctx.request.body;
   const { id } = ctx.request.user;
   try {
-    const data = await customer.findByPk(id);
-    if (!data) {
+    const query = await customer.findByPk(id);
+    if (!query) {
       ctx.status = 400;
       ctx.body = errorMessage('Customer with this id does not exist');
     }
-    const profile = await customer.update(
+    const data = await customer.update(
       {
-        email: email || data.email,
-        name: name || data.name,
-        password: password || data.password,
-        credit_card: credit_card || data.credit_card,
-        address_1: address_1 || data.address_1,
-        address_2: address_2 || data.address_2,
-        city: city || data.city,
-        region: region || data.region,
-        postal_code: postal_code || data.postal_code,
-        country: country || data.country,
-        shipping_region_id: shipping_region_id || data.shipping_region_id,
-        day_phone: day_phone || data.day_phone,
-        eve_phone: eve_phone || data.eve_phone,
-        mob_phone: mob_phone || data.mob_phone
+        email: email || query.email,
+        name: name || query.name,
+        password: password || query.password,
+        credit_card: credit_card || query.credit_card,
+        address_1: address_1 || query.address_1,
+        address_2: address_2 || query.address_2,
+        city: city || query.city,
+        region: region || query.region,
+        postal_code: postal_code || query.postal_code,
+        country: country || query.country,
+        shipping_region_id: shipping_region_id || query.shipping_region_id,
+        day_phone: day_phone || query.day_phone,
+        eve_phone: eve_phone || query.eve_phone,
+        mob_phone: mob_phone || query.mob_phone
       },
       {
         where: { customer_id: id }
       }
     );
-    ctx.body = successMessage('customer', profile);
+    ctx.body = successMessage('customer', data);
   } catch (err) {
     ctx.status = 400;
     ctx.body = errorMessage(err.message);
@@ -147,29 +146,54 @@ exports.signinCustomer = async ctx => {
   }
 };
 
-exports.signinCustomerWithFacebook = async ctx => {
-  passport.authenticate('facebook');
+exports.signinCustomerWithFacebookCallback = async ctx => {
+  ctx.redirect('/');
 };
 
-exports.signinCustomerWithFacebookCallback = async ctx => {
-  passport.authenticate('facebook', {
-    failureRedirect: '/'
-  });
-  ctx.redirect('/customer');
-};
 exports.updateAddressFromCustomer = async ctx => {
+  const {
+    address_1,
+    address_2,
+    city,
+    region,
+    postal_code,
+    country,
+    shipping_region_id
+  } = ctx.request.body;
+  const { id } = ctx.request.user;
+
   try {
-    ctx.body = '';
-  } catch (e) {
+    const data = await customer.update(
+      {
+        address_1,
+        address_2,
+        city,
+        region,
+        postal_code,
+        country,
+        shipping_region_id
+      },
+      { where: { customer_id: id } }
+    );
+    ctx.body = successMessage('customer', data);
+  } catch (err) {
     ctx.status = 400;
-    ctx.body = errorMessage(e.message);
+    ctx.body = errorMessage(err.message);
   }
 };
+
 exports.updateCreditCardFromCustomer = async ctx => {
+  const { credit_card } = ctx.request.body;
+  const { id } = ctx.request.user;
+
   try {
-    ctx.body = '';
-  } catch (e) {
+    const data = await customer.update(
+      { credit_card },
+      { where: { customer_id: id } }
+    );
+    ctx.body = successMessage('customer', data);
+  } catch (err) {
     ctx.status = 400;
-    ctx.body = errorMessage(e.message);
+    ctx.body = errorMessage(err.message);
   }
 };

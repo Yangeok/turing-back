@@ -3,10 +3,10 @@ const { order } = require('../seed-data');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('order', order);
+    return queryInterface.bulkInsert('orders', order);
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('order', null, {});
+    return queryInterface.bulkDelete('orders', null, {});
   }
 };

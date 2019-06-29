@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   tax.associate = function(models) {
-    tax.hasMany(models.order, {
+    tax.hasMany(models.orders, {
       foreignKey: 'tax_id'
     });
   };

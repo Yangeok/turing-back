@@ -1,9 +1,11 @@
 const Router = require('koa-router');
 const order = new Router();
 const orderCtrl = require('./order.controller');
+const { authenticated } = require('../../utils/jwt');
 
-order.post('/', orderCtrl.createOrder);
-order.get('/:id', orderCtrl.getOrder);
-order.get('/customer', orderCtrl.getOrdersByCustomer);
-order.get('/detail/:id', orderCtrl.getOrderDetail);
+order.post('/', authenticated, orderCtrl.createOrder);
+order.get('/:id', authenticated, orderCtrl.getOrder);
+order.get('/customer', authenticated, orderCtrl.getOrdersByCustomer);
+order.get('/detail/:id', authenticated, orderCtrl.getOrderDetail);
+
 module.exports = order;

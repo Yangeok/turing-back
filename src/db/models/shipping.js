@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     shipping.belongsTo(models.shipping_region, {
       foreignKey: 'shipping_region_id'
     });
-    shipping.hasMany(models.order, {
+    shipping.hasMany(models.orders, {
       foreignKey: 'shipping_id'
     });
   };

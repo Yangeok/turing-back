@@ -9,6 +9,6 @@ middlewares(app);
 const routers = require('./routes');
 routers(app);
 
-// HTTP
+// Servers
 const servers = require('./server');
 servers(app);

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const order = sequelize.define(
-    'order',
+  const orders = sequelize.define(
+    'orders',
     {
       order_id: {
         allowNull: false,
@@ -44,19 +44,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     { freezeTableName: true }
   );
-  order.associate = function(models) {
-    order.belongsTo(models.shipping, {
+  orders.associate = function(models) {
+    orders.belongsTo(models.shipping, {
       foreignKey: 'shipping_id'
     });
-    order.belongsTo(models.tax, {
+    orders.belongsTo(models.tax, {
       foreignKey: 'tax_id'
     });
-    order.belongsTo(models.customer, {
+    orders.belongsTo(models.customer, {
       foreignKey: 'customer_id'
     });
-    order.hasMany(models.audit, {
-      foreignKey: 'order_id'
-    });
   };
-  return order;
+  return orders;
 };
