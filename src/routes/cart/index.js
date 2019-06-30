@@ -1,7 +1,6 @@
 const Router = require('koa-router');
 const cart = new Router();
 const cartCtrl = require('./cart.controller');
-const { authenticated } = require('../../utils/jwt');
 
 cart.get('/generate-unique-id', cartCtrl.genereateUniqueCartId);
 cart.post('/add', cartCtrl.addProductInCart);
