@@ -116,7 +116,7 @@ const writeOrderObj = () => {
       shipped_on: createDatetime(),
       status: faker.random.number({ min: 0, max: 5 }),
       comments: faker.lorem.sentence(),
-      customer_id: faker.random.number({ min: 1, max: 1000 }),
+      customer_id: faker.random.number({ min: 1, max: orderLength }),
       auth_code: faker.internet.password(10),
       reference: faker.lorem.words(),
       shipping_id: faker.random.number({ min: 1, max: 7 }),
@@ -144,7 +144,7 @@ const writeOrderDetailObj = () => {
 
       return {
         item_id: idx + 1,
-        order_id: faker.random.number({ min: 1, max: 1000 }),
+        order_id: faker.random.number({ min: 1, max: orderDetailLength }),
         product_id: getProducts.product_id,
         attributes: getRandomIndex(attributes),
         product_name: getProducts.name,
@@ -228,15 +228,6 @@ const writeReviewObj = () => {
   const reviewLength = 3030;
   const productLength = 30;
 
-  const createDatetime = () => {
-    const date = JSON.stringify(faker.date.past());
-    return date
-      .replace('"', '')
-      .replace('"', '')
-      .replace('T', ' ')
-      .replace('Z', '');
-  };
-
   const mappedReview = Array(reviewLength)
     .fill(0)
     .map((_, idx) => ({
@@ -280,13 +271,16 @@ const writeShoppingCartObj = () => {
     .fill(0)
     .map((_, idx) => ({
       item_id: idx + 1,
-      cart_id: faker.random.number({ min: 1, max: 1000 }),
+      cart_id: faker.random
+        .uuid()
+        .replace(/-/g, '')
+        .substring(0, 18),
       product_id: faker.random.number({ min: 1, max: 101 }),
       attributes: getRandomIndex(attributes),
       quantity: faker.random.number({ min: 1, max: 100 }),
       buy_now: getRandomIndex(buyNow),
       add_on: createDatetime(),
-      customer_id: faker.random.number({ min: 1, max: 1000 })
+      customer_id: faker.random.number({ min: 1, max: shoppingCartLength })
     }));
 
   const stringifiedShoppingCart = JSON.stringify(mappedShoppingCart);

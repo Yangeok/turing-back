@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const cart = new Router();
 const cartCtrl = require('./cart.controller');
 
-cart.get('/generate-unique-id', cartCtrl.genereateUniqueCartId);
+cart.get('/gen-id', cartCtrl.genereateUniqueCartId);
 cart.post('/add', cartCtrl.addProductInCart);
 cart.get('/:cartId', cartCtrl.getProductsInCart);
 cart.put('/update/:itemId', cartCtrl.updateCartByItem);

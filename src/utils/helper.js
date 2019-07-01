@@ -6,8 +6,7 @@ const faker = require('faker');
 const createDatetime = () => {
   const a = JSON.stringify(faker.date.past());
   return a
-    .replace('"', '')
-    .replace('"', '')
+    .replace(/"/g, '')
     .replace('T', ' ')
     .replace('Z', '');
 };
