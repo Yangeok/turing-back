@@ -177,33 +177,113 @@ exports.addProductInCart = async ctx => {
     }
   }
 };
+
 exports.getProductsInCart = async ctx => {
+  // flatMap
+  const concat = (x, y) => x.concat(y);
+  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+  Array.prototype.flatMap = function(f) {
+    return flatMap(f, this);
+  };
+
+  const { id } = ctx.params;
   try {
-    ctx.body = successMessage('cart', '');
+    const query = await product
+      .findAll({
+        attributes: ['price', 'discounted_price', 'name', 'image'],
+        include: {
+          model: shopping_cart,
+          where: { cart_id: id },
+          attributes: { exclude: ['buy_now', 'customer_id'] }
+        }
+      })
+      .map(el => el.get({ plain: true }));
+    const data = query.flatMap(
+      ({ price, discounted_price, name, image, shopping_carts }) =>
+        shopping_carts.map(o => ({
+          price,
+          subtotal: price * o.quantity,
+          discounted_price,
+          discounted_subtotal: discounted_price * o.quantity,
+          name,
+          image,
+          ...o
+        }))
+    );
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
   }
 };
+
 exports.updateCartByItem = async ctx => {
+  // flatMap
+  const concat = (x, y) => x.concat(y);
+  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+  Array.prototype.flatMap = function(f) {
+    return flatMap(f, this);
+  };
+
+  const { id } = ctx.params;
+  const { quantity } = ctx.request.body;
+
   try {
-    ctx.body = successMessage('cart', '');
+    const updateQuery = await shopping_cart.update(
+      {
+        quantity
+      },
+      { where: { item_id: id } }
+    );
+    const query = await product
+      .findAll({
+        attributes: ['price', 'discounted_price', 'name', 'image'],
+        include: {
+          model: shopping_cart,
+          where: { item_id: id },
+          attributes: { exclude: ['cart_id', 'buy_now', 'customer_id'] }
+        }
+      })
+      .map(el => el.get({ plain: true }));
+
+    const data = query.flatMap(
+      ({ price, discounted_price, name, image, shopping_carts }) =>
+        shopping_carts.map(o => ({
+          price,
+          subtotal: price * o.quantity,
+          discounted_price,
+          discounted_subtotal: discounted_price * o.quantity,
+          name,
+          image,
+          ...o
+        }))
+    );
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
   }
 };
+
 exports.deleteCart = async ctx => {
+  const { id } = ctx.params;
+
   try {
-    ctx.body = successMessage('cart', '');
+    const data = await shopping_cart.destroy({
+      where: { cart_id: id }
+    });
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
   }
 };
+
 exports.moveProductToCart = async ctx => {
+  const { id } = ctx.params;
   try {
-    ctx.body = successMessage('cart', '');
+    const data = await shopping_cart.update({}, { where: { item_id: id } });
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
