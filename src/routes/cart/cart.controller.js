@@ -27,6 +27,13 @@ exports.genereateUniqueCartId = async ctx => {
 };
 
 exports.addProductInCart = async ctx => {
+  // flatMap
+  const concat = (x, y) => x.concat(y);
+  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+  Array.prototype.flatMap = function(f) {
+    return flatMap(f, this);
+  };
+
   const { cart_id, product_id, attributes } = ctx.request.body;
   const add_on = JSON.stringify(new Date(Date.now()))
     .replace(/"/g, '')
@@ -34,69 +41,140 @@ exports.addProductInCart = async ctx => {
     .replace('Z', '');
 
   try {
-    const row = await shopping_cart.findOne({ where: { cart_id } });
-    const plainRow = row.get({ plain: true });
-    const condition = 'condition';
-    const isEmptyCart = !plainRow.product_id || !plainRow.attributes;
-    const hasSameProductId = plainRow.product_id == product_id;
-    const hasSameAttributes = plainRow.attributes == attributes;
-    const isSame =
-      plainRow.product_id == product_id && plainRow.attributes == attributes;
-
-    switch (condition) {
-      case isEmptyCart:
-        await shopping_cart.update(
-          {
-            product_id,
-            attributes,
-            add_on,
-            quantity: 1
-          },
-          { where: { cart_id } }
-        );
-        break;
-
-      case hasSameProductId:
-        await shopping_cart.update(
-          {
-            attributes,
-            add_on,
-            quantity: sequelize.literal('quantity + 1')
-          },
-          { where: { [Op.and]: [{ cart_id }, { product_id }] } }
-        );
-        break;
-    }
-    // if (isEmptyCart) {
-
-    // }
-    // else if (hasSameProductId) {
-    //   query = await shopping_cart.create({
-    //     cart_id,
-    //     product_id,
-    //     attributes,
-    //     add_on,
-
-    //   });
-    // } else if (isSameProductIdAndAttributes) {
-    //   query = await shopping_cart.update(
-    //     { quantity: sequelize.literal('quantity + 1'), add_on },
-    //     {
-    //       where: {
-    //         [Op.and]: { cart_id },
-    //         [Op.or]: [{ product_id }, { attributes }]
-    //       }
-    //     }
-    //   );
-    // }
-
-    const data = await product.findOne({
-      include: { model: shopping_cart, where: { cart_id } }
+    const getEmptyCartQuery = await shopping_cart.findOne({
+      where: {
+        [Op.and]: [{ cart_id }, { product_id: null }, { attributes: null }]
+      }
     });
+    const getEmptyCart = getEmptyCartQuery.get({ plain: true });
+    if (getEmptyCart) {
+      await shopping_cart.update(
+        {
+          product_id,
+          attributes,
+          add_on,
+          quantity: 1
+        },
+        { where: { cart_id } }
+      );
+    }
+
+    const query = await product
+      .findAll({
+        attributes: ['price', 'discounted_price', 'name', 'image'],
+        include: {
+          model: shopping_cart,
+          where: { cart_id },
+          attributes: { exclude: ['buy_now', 'customer_id'] }
+        }
+      })
+      .map(el => el.get({ plain: true }));
+    const data = query.flatMap(
+      ({ price, discounted_price, name, image, shopping_carts }) =>
+        shopping_carts.map(o => ({
+          price,
+          subtotal: price * o.quantity,
+          discounted_price,
+          discounted_subtotal: discounted_price * o.quantity,
+          name,
+          image,
+          ...o
+        }))
+    );
     ctx.body = successMessage('cart', data);
   } catch (e) {
-    ctx.status = 400;
-    ctx.body = errorMessage(e.message);
+    try {
+      const needsUpdatedQuantityQuery = await shopping_cart.findOne({
+        where: {
+          [Op.and]: [{ cart_id }, { product_id }, { attributes }]
+        }
+      });
+      const needsUpdatedQuantity = needsUpdatedQuantityQuery.get({
+        plain: true
+      });
+      if (needsUpdatedQuantity) {
+        await shopping_cart.update(
+          {
+            quantity: sequelize.literal('quantity + 1'),
+            add_on
+          },
+          { where: { [Op.and]: [{ cart_id }, { product_id }, { attributes }] } }
+        );
+      }
+
+      const query = await product
+        .findAll({
+          attributes: ['price', 'discounted_price', 'name', 'image'],
+          include: {
+            model: shopping_cart,
+            where: { cart_id },
+            attributes: { exclude: ['buy_now', 'customer_id'] }
+          }
+        })
+        .map(el => el.get({ plain: true }));
+      const data = query.flatMap(
+        ({ price, discounted_price, name, image, shopping_carts }) =>
+          shopping_carts.map(o => ({
+            price,
+            subtotal: price * o.quantity,
+            discounted_price,
+            discounted_subtotal: discounted_price * o.quantity,
+            name,
+            image,
+            ...o
+          }))
+      );
+      ctx.body = successMessage('cart', data);
+    } catch (e) {
+      try {
+        const needsNewCartQuery = await shopping_cart.findOne({
+          where: {
+            [Op.and]: [{ cart_id }],
+            [Op.or]: [
+              { product_id: { [Op.ne]: product_id } },
+              { attributes: { [Op.ne]: attributes } }
+            ]
+          }
+        });
+        const needsNewCart = needsNewCartQuery.get({ plain: true });
+        if (needsNewCart) {
+          await shopping_cart.create({
+            cart_id,
+            product_id,
+            attributes,
+            quantity: 1,
+            add_on
+          });
+        }
+
+        const query = await product
+          .findAll({
+            attributes: ['price', 'discounted_price', 'name', 'image'],
+            include: {
+              model: shopping_cart,
+              where: { cart_id },
+              attributes: { exclude: ['buy_now', 'customer_id'] }
+            }
+          })
+          .map(el => el.get({ plain: true }));
+        const data = query.flatMap(
+          ({ price, discounted_price, name, image, shopping_carts }) =>
+            shopping_carts.map(o => ({
+              price,
+              subtotal: price * o.quantity,
+              discounted_price,
+              discounted_subtotal: discounted_price * o.quantity,
+              name,
+              image,
+              ...o
+            }))
+        );
+        ctx.body = successMessage('cart', data);
+      } catch (e) {
+        ctx.status = 400;
+        ctx.body = errorMessage(e.message);
+      }
+    }
   }
 };
 exports.getProductsInCart = async ctx => {
