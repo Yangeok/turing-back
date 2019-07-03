@@ -192,12 +192,13 @@ const writeProductObj = () => {
   );
 };
 const writeProductAttributeObj = () => {
-  // flatMap
-  const concat = (x, y) => x.concat(y);
-  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
-  Array.prototype.flatMap = function(f) {
-    return flatMap(f, this);
-  };
+  const flatMap = require('./helper');
+  // // flatMap
+  // const concat = (x, y) => x.concat(y);
+  // const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+  // Array.prototype.flatMap = function(f) {
+  //   return flatMap(f, this);
+  // };
 
   const mappedProductAttribute = unrefinedProductAttribute.flatMap(
     ({ product_id, attribute_values }) =>

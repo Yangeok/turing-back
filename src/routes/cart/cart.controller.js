@@ -281,41 +281,130 @@ exports.deleteCart = async ctx => {
 
 exports.moveProductToCart = async ctx => {
   const { id } = ctx.params;
+  const cart_id = uuidv1()
+    .replace(/-/g, '')
+    .substring(0, 18);
+  const add_on = JSON.stringify(new Date(Date.now()))
+    .replace(/"/g, '')
+    .replace('T', ' ')
+    .replace('Z', '');
+
   try {
-    const data = await shopping_cart.update({}, { where: { item_id: id } });
+    const data = await shopping_cart.update(
+      { cart_id, add_on, quantity: 1 },
+      { where: { item_id: id } }
+    );
     ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
   }
 };
+
 exports.returnTotalAmountFromCart = async ctx => {
+  // flatMap
+  const concat = (x, y) => x.concat(y);
+  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+  Array.prototype.flatMap = function(f) {
+    return flatMap(f, this);
+  };
+  const { id } = ctx.params;
+
   try {
-    ctx.body = successMessage('cart', '');
+    const query = await product
+      .findAll({
+        attributes: ['price', 'discounted_price'],
+        include: {
+          model: shopping_cart,
+          where: { cart_id: id },
+          attributes: ['quantity']
+        }
+      })
+      .map(el => el.get({ plain: true }));
+    const data = query.flatMap(({ price, discounted_price, shopping_carts }) =>
+      shopping_carts.map(o => ({
+        subtotal: price * o.quantity,
+        discounted_subtotal: discounted_price * o.quantity
+      }))
+    );
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
   }
 };
+
 exports.saveProductForLater = async ctx => {
+  const { id } = ctx.params;
+  const add_on = JSON.stringify(new Date(Date.now()))
+    .replace(/"/g, '')
+    .replace('T', ' ')
+    .replace('Z', '');
+
   try {
-    ctx.body = successMessage('cart', '');
+    const query = await shopping_cart.update(
+      { buy_now: 0, add_on },
+      { where: { item_id: id } }
+    );
+    const data = await shopping_cart.findOne({
+      where: { item_id: id }
+    });
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
   }
 };
+
 exports.getProductsForLater = async ctx => {
+  // flatMap
+  const concat = (x, y) => x.concat(y);
+  const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
+  Array.prototype.flatMap = function(f) {
+    return flatMap(f, this);
+  };
+  const { id } = ctx.params;
+
   try {
-    ctx.body = successMessage('cart', '');
+    // const data = await product.findAll({
+    //   include: {
+    //     model: shopping_cart,
+    //     where: { cart_id: id }
+    //   }
+    // });
+    const query = await product
+      .findAll({
+        attributes: ['price', 'discounted_price', 'name'],
+        include: {
+          model: shopping_cart,
+          where: { cart_id: id },
+          attributes: ['item_id', 'attributes', 'quantity', 'buy_now']
+        }
+      })
+      .map(el => el.get({ plain: true }));
+    const data = query.flatMap(
+      ({ price, discounted_price, name, shopping_carts }) =>
+        shopping_carts.map(o => ({
+          price,
+          discounted_price,
+          name,
+          ...o
+        }))
+    );
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
   }
 };
 exports.deleteProductInCart = async ctx => {
+  const { id } = ctx.params;
+
   try {
-    ctx.body = successMessage('cart', '');
+    const data = await shopping_cart.destroy({
+      where: { item_id: id }
+    });
+    ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
