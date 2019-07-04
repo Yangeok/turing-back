@@ -31,12 +31,12 @@ module.exports = (sequelize, DataTypes) => {
   });
   shopping_cart.associate = function(models) {
     shopping_cart.belongsTo(models.product, {
-      foreignKey: 'product_id',
-      as: 'product'
+      foreignKey: 'product_id'
+      // as: 'product'
     });
     shopping_cart.belongsTo(models.customer, {
-      foreignKey: 'customer_id',
-      as: 'customer'
+      foreignKey: 'customer_id'
+      // as: 'customer'
     });
   };
   return shopping_cart;

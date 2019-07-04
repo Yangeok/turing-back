@@ -1,7 +1,6 @@
 const { successMessage } = require('./response');
 
 /**
- *
  * @param {*} ctx
  * @param {*} finalPrice
  * @param {*} description
@@ -25,27 +24,28 @@ exports.checkoutQuery = (
   stripeEmail,
   next
 ) => {
-  stripePayment.customers
+  stripe.customers
     .create({
       email: stripeEmail,
       source: stripeToken
     })
     .then(customer =>
-      stripePayment.charges.create({
+      stripe.charges.create({
         amount: finalPrice,
         currency: 'usd',
         customer: customer.id
       })
     )
     .then(payment => {
-      Mailer.sendOrderConfirmation(customerId, shippingCost, shippingType);
-      Customer.findOne({
-        where: {
-          id: customerId
-        }
-      })
+      // Mailer.sendOrderConfirmation(customerId, shippingCost, shippingType);
+      customer
+        .findOne({
+          where: {
+            id: customerId
+          }
+        })
         .then(user => {
-          Order.create({
+          orders.create({
             total_amount: finalPrice / 100,
             status: 1,
             comments: description,
@@ -56,10 +56,17 @@ exports.checkoutQuery = (
           });
         })
         .then(() => {
-          CheckoutController.clearShoppingCart(ctx, next);
+          clearShoppingCart(ctx, next);
           ctx.body = successMessage('message', 'Payment Successful');
         })
         .catch(next);
     })
     .catch(next);
+};
+
+exports.clearShoppingCart = async (ctx, next) => {
+  const { id } = ctx.request.body;
+  await shopping_cart.destroy({
+    where: { customer_id: id }
+  });
 };
