@@ -1,4 +1,7 @@
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET);
 const { successMessage } = require('./response');
+const { customer, orders, shopping_cart } = require('../db/models');
 
 /**
  * @param {*} ctx
@@ -12,7 +15,7 @@ const { successMessage } = require('./response');
  * @param {*} stripeEmail
  * @param {*} next
  */
-exports.checkoutQuery = (
+exports.checkoutQuery = async (
   ctx,
   finalPrice,
   description = null,
@@ -24,7 +27,7 @@ exports.checkoutQuery = (
   stripeEmail,
   next
 ) => {
-  stripe.customers
+  await stripe.customers
     .create({
       email: stripeEmail,
       source: stripeToken
@@ -38,35 +41,33 @@ exports.checkoutQuery = (
     )
     .then(payment => {
       // Mailer.sendOrderConfirmation(customerId, shippingCost, shippingType);
-      customer
+      return customer
         .findOne({
           where: {
-            id: customerId
+            customer_id: customerId
           }
         })
-        .then(user => {
+        .then(user =>
           orders.create({
             total_amount: finalPrice / 100,
             status: 1,
             comments: description,
-            customer_id: user.id,
+            customer_id: user.customer_id,
             auth_code: ctx.request.body.stripeToken || null,
             reference: payment.balance_transaction,
             shipping_id: shippingId
-          });
-        })
-        .then(() => {
-          clearShoppingCart(ctx, next);
-          ctx.body = successMessage('message', 'Payment Successful');
-        })
-        .catch(next);
+          })
+        )
+        .then(() => clearShoppingCart(ctx, next));
     })
     .catch(next);
 };
 
-exports.clearShoppingCart = async (ctx, next) => {
-  const { id } = ctx.request.body;
+const clearShoppingCart = async (ctx, next) => {
+  const { id } = ctx.request.user;
   await shopping_cart.destroy({
     where: { customer_id: id }
   });
+
+  next();
 };

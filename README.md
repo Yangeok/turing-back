@@ -8,21 +8,21 @@
 
 ## Requirement
 
-- 루트 페이지에 모든 아이템 보여주기
-- 선택된 카테고리와 품목관에 대한 아이템 보여주기
-- 검색박스를 이용해 아이템 검색하기
-- 페이지네이션 구현하기
-- 특정 아이템 선택하면 디테일 보여주기
-- 소셜로그인/로컬폼으로 가입/로그인 추가하기
-- 장바구니에 아이템 추가하기
-- 유저 프로필 변경기능 추가하기
-- 서드파티 페이 기능 추가하기
+- 루트 페이지에 모든 아이템 보여주기 🗸
+- 선택된 카테고리와 품목관에 대한 아이템 보여주기 🗸
+- 검색박스를 이용해 아이템 검색하기 🗸
+- 페이지네이션 구현하기 🗸
+- 특정 아이템 선택하면 디테일 보여주기 🗸
+- 소셜로그인/로컬폼으로 가입/로그인 추가하기 🗸
+- 장바구니에 아이템 추가하기 🗸
+- 유저 프로필 변경기능 추가하기 🗸
+- 서드파티 페이 기능 추가하기 🗸
 - 주문시 메일링 기능 추가하기
 - 관리자 기능 추가하기
-- 품목관 CRUD
-- 카테고리 CRUD
-- 상품 CRUD
-- 상품 특징 CRUD
+- 품목관 CRUD 🗸
+- 카테고리 CRUD 🗸
+- 상품 CRUD 🗸
+- 상품 특징 CRUD 🗸
 - 오래된 장바구니 비우는 기능 추가하기
 
 ## Installation
@@ -79,7 +79,11 @@
 
 `GET /department`
 
-- No authentication required, returns department object
+- No authentication required, returns departments object
+
+`GET /department/:id`
+
+- No authentication required, returns department object (by department id)
 
 ### Get all items
 
@@ -146,7 +150,7 @@
 
 ### Delete an item in the shopping cart
 
-`DELTE /cart/:id`
+`DELETE /cart/:id`
 
 - Authentication required, deletes an item from the shopping cart
 
