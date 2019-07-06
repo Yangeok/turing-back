@@ -22,32 +22,34 @@ exports.updateCustomer = async ctx => {
   } = ctx.request.body;
   const { id } = ctx.request.user;
   try {
-    const query = await customer.findByPk(id);
-    if (!query) {
+    const hasCustomer = await customer.findOne({ where: { customer_id: id } });
+    if (!hasCustomer) {
       ctx.status = 400;
       ctx.body = errorMessage('Customer with this id does not exist');
     }
-    const data = await customer.update(
+    const query = await customer.update(
       {
-        email: email || query.email,
-        name: name || query.name,
-        password: password || query.password,
-        credit_card: credit_card || query.credit_card,
-        address_1: address_1 || query.address_1,
-        address_2: address_2 || query.address_2,
-        city: city || query.city,
-        region: region || query.region,
-        postal_code: postal_code || query.postal_code,
-        country: country || query.country,
-        shipping_region_id: shipping_region_id || query.shipping_region_id,
-        day_phone: day_phone || query.day_phone,
-        eve_phone: eve_phone || query.eve_phone,
-        mob_phone: mob_phone || query.mob_phone
+        email: email || hasCustomer.email,
+        name: name || hasCustomer.name,
+        password: password || hasCustomer.password,
+        credit_card: credit_card || hasCustomer.credit_card,
+        address_1: address_1 || hasCustomer.address_1,
+        address_2: address_2 || hasCustomer.address_2,
+        city: city || hasCustomer.city,
+        region: region || hasCustomer.region,
+        postal_code: postal_code || hasCustomer.postal_code,
+        country: country || hasCustomer.country,
+        shipping_region_id:
+          shipping_region_id || hasCustomer.shipping_region_id,
+        day_phone: day_phone || hasCustomer.day_phone,
+        eve_phone: eve_phone || hasCustomer.eve_phone,
+        mob_phone: mob_phone || hasCustomer.mob_phone
       },
       {
         where: { customer_id: id }
       }
     );
+    const data = await customer.findOne({ where: { customer_id: id } });
     ctx.body = successMessage('customer', data);
   } catch (err) {
     ctx.status = 400;
