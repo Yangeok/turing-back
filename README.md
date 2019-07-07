@@ -277,14 +277,9 @@
   ```
 
 - `POST /customer`
-  - Returns 
-  - Example request body
 
-  ```json
-
-  ```
-
-  - Required fields:
+  - Returns a customer object by token.
+  - Required fields: `name`, `email`, `password`
   - No authentication required.
   - Example response
 
@@ -294,13 +289,8 @@
 
 - `POST /customer/login`
 
-  - Example request body
-
-  ```json
-
-  ```
-
-  - Required fields:
+  - Returns a token.
+  - Required fields: `email`, `password`
   - No authentication required.
   - Example response
 
@@ -308,8 +298,10 @@
 
   ```
 
-- `GET /customer/facebook`
+- `POST /customer/facebook`
 
+  - Returns
+  - Required fields: `access_token`
   - No authentication required.
   - Example response
 
