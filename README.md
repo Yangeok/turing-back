@@ -32,7 +32,7 @@
 
 - `GET /department`
 
-  - Returns departments object.
+  - Returns a departments object.
   - No authentication required.
   - No parameters required.
   - Example response
@@ -55,7 +55,7 @@
 
 - `GET /category`
 
-  - Returns categories object.
+  - Returns a categories object.
   - No authentication required.
   - Query parameters
     - Sorting a field. Allowed fields are 'category_id', 'name' `?order=French`
@@ -79,7 +79,7 @@
 
 - `GET /category/product/:id`
 
-  - Returns categories object by product ID.
+  - Returns a categories object by product ID.
   - No authentication required.
   - Example response
 
@@ -89,7 +89,7 @@
 
 - `GET /category/department/:id`
 
-  - Returns categories object by department ID.
+  - Returns a categories object by department ID.
   - No authentication required.
   - Example response
 
@@ -101,7 +101,7 @@
 
 - `GET /attribute`
 
-  - Returns attributes object.
+  - Returns a attributes object.
   - No authentication required.
   - Example response
 
@@ -121,7 +121,7 @@
 
 - `GET /attribute/value/:id`
 
-  - Returns attribute values object by attribute ID.
+  - Returns a attribute values object by attribute ID.
   - No authentication required.
   - Example response
 
@@ -131,7 +131,7 @@
 
 - `GET /attribute/product/:id`
 
-  - Returns attributes object by product ID.
+  - Returns a attributes object by product ID.
   - No authentication required.
   - Example response
 
@@ -143,7 +143,7 @@
 
 - `GET /product`
 
-  - Returns products object.
+  - Returns a products object.
   - No authentication required.
   - Example response
 
@@ -153,7 +153,7 @@
 
 - `GET /product/search`
 
-  - Returns the retrieved product object
+  - Returns a retrieved product object
   - No authentication required.
   - Query parameters
     - Query to search. `?query_string=French`
@@ -169,7 +169,7 @@
 
 - `GET /product/:id`
 
-  - Returns product object by ID.
+  - Returns a product object by ID.
   - No authentication required.
   - Example response
 
@@ -179,7 +179,7 @@
 
 - `GET /product/category/:id`
 
-  - Returns products object by category ID.
+  - Returns a products object by category ID.
   - No authentication required.
   - Query parameters
     - Inform the page and starting with 1. (default: 1) `?page=1`
@@ -193,7 +193,7 @@
 
 - `GET /product/department/:id`
 
-  - Returns products object by department ID.
+  - Returns a products object by department ID.
   - No authentication required.
   - Query parameters
     - Inform the page and starting with 1. (default: 1) `?page=1`
@@ -207,7 +207,7 @@
 
 - `GET /product/:id/detail`
 
-  - Returns product details object by product ID.
+  - Returns a product details object by product ID.
   - No authentication required.
   - Example response
 
@@ -217,7 +217,7 @@
 
 - `GET /product/:id/location`
 
-  - Returns product locations object by product ID.
+  - Returns a product locations object by product ID.
   - No authentication required.
   - Example response
 
@@ -227,7 +227,7 @@
 
 - `GET /product/:id/review`
 
-  - Returns product reviews object by product ID.
+  - Returns a product reviews object by product ID.
   - No authentication required.
   - Example response
 
@@ -239,12 +239,6 @@
 
   - Returns a created product review object.
   - Authentication required.
-  - Example request body
-
-  ```json
-
-  ```
-
   - Required fields: `comment`, `rating`
   - Authentication required.
   - Example response
@@ -300,26 +294,19 @@
 
 - `POST /customer/facebook`
 
-  - Returns
+  - Redirect to `/customer/facebook/callback/`.
   - Required fields: `access_token`
   - No authentication required.
-  - Example response
-
-  ```json
-
-  ```
 
 - `GET /customer/facebook/callback`
 
+  - Redirects to root on success or `/customer/login` on failure.
   - No authentication required.
-  - Example response
-
-  ```json
-
-  ```
 
 - `PUT /customer/address`
 
+  - Returns a updated customer object.
+  - Required fields: `address_1`, `address_2`, `city`, `region`, `postal_code`, `country`, `shipping_region_id`
   - Authentication required.
   - Example response
 
@@ -329,6 +316,8 @@
 
 - `PUT /customer/credit-card`
 
+  - Returns a updated customer object.
+  - Required field: `credit_card`
   - Authentication required.
   - Example response
 
@@ -340,13 +329,8 @@
 
 - `POST /order`
 
-  - Example request body
-
-  ```json
-
-  ```
-
-  - Required fields:
+  - Returns a created order object.
+  - Required fields: `cart_id`, `shipping_id`, `tax_id`
   - Authentication required.
   - Example response
 
@@ -356,6 +340,7 @@
 
 - `GET /order/customer`
 
+  - Returns a orders object by token.
   - Authentication required.
   - Example response
 
@@ -365,6 +350,7 @@
 
 - `GET /order/detail/:id`
 
+  - Returns a order details object by order ID.
   - Authentication required.
   - Example response
 
@@ -374,6 +360,7 @@
 
 - `GET /order/:id`
 
+  - Returns a order object by order ID.
   - Authentication required.
   - Example response
 
@@ -385,6 +372,7 @@
 
 - `GET /cart/gen-id`
 
+  - Returns a created cart object.
   - No authentication required.
   - Example response
 
@@ -394,13 +382,8 @@
 
 - `POST /cart/add`
 
-  - Example request body
-
-  ```json
-
-  ```
-
-  - Required fields:
+  - Returns a created cart object.
+  - Required fields: `cart_id`, `product_id`, `attributes`
   - No authentication required.
   - Example response
 
@@ -410,6 +393,7 @@
 
 - `GET /cart/:id`
 
+  - Returns a cart object by cart ID.
   - No authentication required.
   - Example response
 
@@ -419,6 +403,8 @@
 
 - `PUT /cart/update/:id`
 
+  - Returns a updated cart object by item ID.
+  - Required field: `quantity`
   - No authentication required.
   - Example response
 
@@ -428,6 +414,8 @@
 
 - `DELETE /cart/delete/:id`
 
+  - Deletes a cart object by cart ID.
+  - Returns a message.
   - No authentication required.
   - Example response
 
@@ -437,6 +425,17 @@
 
 - `GET /cart/move-to-cart/:id`
 
+  - Returns a moved cart object by item ID.
+  - No authentication required.
+  - Example response
+
+  ```json
+
+  ```
+
+- `GET /cart/total-amount/:id`
+
+  - Returns a cart object by cart ID.
   - No authentication required.
   - Example response
 
@@ -446,6 +445,7 @@
 
 - `GET /cart/save-for-later/:id`
 
+  - Returns a cart object by item ID.
   - No authentication required.
   - Example response
 
@@ -455,6 +455,7 @@
 
 - `GET /cart/get-saved/:id`
 
+  - Returns a cart object by cart ID.
   - No authentication required.
   - Example response
 
@@ -464,6 +465,7 @@
 
 - `DELETE /cart/remove-product/:id`
 
+  - Deletes a cart object by item ID.
   - No authentication required.
   - Example response
 
@@ -475,6 +477,7 @@
 
 - `GET /tax`
 
+  - Returns a taxes object
   - No authentication required.
   - Example response
 
@@ -484,6 +487,7 @@
 
 - `GET /tax/:id`
 
+  - Returns a tax object by tax ID.
   - No authentication required.
   - Example response
 
@@ -495,6 +499,7 @@
 
 - `GET /shipping/region`
 
+  - Returns a shipping regions object.
   - No authentication required.
   - Example response
 
@@ -504,6 +509,7 @@
 
 - `GET /shipping/region/:id`
 
+  - Returns a shipping region objec by shopping region ID.
   - No authentication required.
   - Example response
 
@@ -515,13 +521,8 @@
 
 - `POST /payment/charge`
 
-  - Example request body
-
-  ```json
-
-  ```
-
-  - Required fields:
+  - Receives a front-end payment and create a charge.
+  - Required fields: `stripeToken`, `stripeEmail`, `shippingId`, `currency`
   - Authentication required.
   - Example response
 
@@ -531,12 +532,7 @@
 
 - `POST /payment/webhook`
 
-  - Example request body
-
-  ```json
-
-  ```
-
+  - Provides a synchronization with front-end.
   - Required fields:
   - Authentication required.
   - Example response
@@ -552,8 +548,42 @@
 
 ## Architecture
 
+```sh
+├─assets
+│  └─images
+├─db
+│  ├─config
+│  ├─migrations
+│  ├─models
+│  ├─seed-data
+│  └─seeders
+├─middleware
+├─not-available
+├─routes
+│  ├─attribute
+│  ├─cart
+│  ├─category
+│  ├─customer
+│  ├─department
+│  ├─home
+│  ├─order
+│  ├─payment
+│  ├─product
+│  ├─shipping
+│  └─tax
+└─utils
+```
+
 - 폴더나 파일구조 자세하게 작성하기 :)
+
+### Middlewares
+
 - 미들웨어 구조도 여기다가 말해주자
+
+### Routes
+
+### Servers
+
 - 적으면서 개똥코드도 같이 정돈해보기
 
 ## Database

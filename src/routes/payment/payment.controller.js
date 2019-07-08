@@ -11,7 +11,7 @@ exports.createCharge = async (ctx, next) => {
   // });
 
   // ctx.body = data;
-  const { shippingId, stripeToken, stripeEmail } = ctx.request.body;
+  const { shippingId, stripeToken, stripeEmail, currency } = ctx.request.body;
 
   const hasShipping = await shipping.findOne({
     plain: true,
@@ -48,7 +48,7 @@ exports.createCharge = async (ctx, next) => {
     (prev, curr) => prev + curr
   );
   const finalPrice = Math.round(totalDiscountedPrice + shippingCost);
-  const description = 'Payment for your order on tshirt shop';
+  const description = 'Payment for your order';
   checkoutQuery(
     ctx,
     finalPrice,
@@ -59,6 +59,7 @@ exports.createCharge = async (ctx, next) => {
     customerId,
     stripeToken,
     stripeEmail,
+    currency,
     next
   );
 

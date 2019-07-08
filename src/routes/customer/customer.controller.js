@@ -165,7 +165,7 @@ exports.updateAddressFromCustomer = async ctx => {
   const { id } = ctx.request.user;
 
   try {
-    const data = await customer.update(
+    await customer.update(
       {
         address_1,
         address_2,
@@ -177,6 +177,9 @@ exports.updateAddressFromCustomer = async ctx => {
       },
       { where: { customer_id: id } }
     );
+    const data = await customer.findOne({
+      where: { customer_id: id }
+    });
     ctx.body = successMessage('customer', data);
   } catch (err) {
     ctx.status = 400;
@@ -189,10 +192,10 @@ exports.updateCreditCardFromCustomer = async ctx => {
   const { id } = ctx.request.user;
 
   try {
-    const data = await customer.update(
-      { credit_card },
-      { where: { customer_id: id } }
-    );
+    customer.update({ credit_card }, { where: { customer_id: id } });
+    const data = await customer.findOne({
+      where: { customer_id: id }
+    });
     ctx.body = successMessage('customer', data);
   } catch (err) {
     ctx.status = 400;

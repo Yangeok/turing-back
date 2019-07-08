@@ -25,6 +25,7 @@ exports.checkoutQuery = async (
   customerId,
   stripeToken,
   stripeEmail,
+  currency,
   next
 ) => {
   await stripe.customers
@@ -35,7 +36,7 @@ exports.checkoutQuery = async (
     .then(customer =>
       stripe.charges.create({
         amount: finalPrice,
-        currency: 'usd',
+        currency,
         customer: customer.id
       })
     )

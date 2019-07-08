@@ -272,7 +272,7 @@ exports.deleteCart = async ctx => {
     const data = await shopping_cart.destroy({
       where: { cart_id: id }
     });
-    ctx.body = successMessage('cart', data);
+    ctx.body = successMessage('cart', 'is deleted');
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);
@@ -366,12 +366,6 @@ exports.getProductsForLater = async ctx => {
   const { id } = ctx.params;
 
   try {
-    // const data = await product.findAll({
-    //   include: {
-    //     model: shopping_cart,
-    //     where: { cart_id: id }
-    //   }
-    // });
     const query = await product
       .findAll({
         attributes: ['price', 'discounted_price', 'name'],

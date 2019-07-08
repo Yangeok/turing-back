@@ -17,28 +17,29 @@ const passportConfig = passport => {
         profileFields,
         enableProof: true
       },
-      (token, tokenSecret, profile, done) => {
-        console.log('profile: ');
-        console.log(profile);
-        return done(null, profile);
+      async (token, tokenSecret, profile, done) => {
+        const user = await customer.findOne({
+          where: { email: profile.emails[0].value },
+          plain: true
+        });
+        if (user) {
+          return done(null, user);
+        } else if (!user) {
+          const data = await customer.create({
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            password: ''
+          });
+          return done(null, data);
+        }
       }
     )
   );
   passport.serializeUser((user, done) => {
-    console.log('serialized user: ');
-    console.log(user);
     done(null, user);
   });
   passport.deserializeUser(async (user, done) => {
-    console.log('deserialized user: ');
-    console.log(user);
-
-    try {
-      const data = await customer.findOne({ where: { customer_id: user } });
-      done(null, data);
-    } catch (err) {
-      done(err, null);
-    }
+    done(null, user);
   });
 };
 
