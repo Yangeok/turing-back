@@ -35,6 +35,8 @@ exports.addProductInCart = async ctx => {
   };
 
   const { cart_id, product_id, attributes } = ctx.request.body;
+  const customer_id = ctx.request.user.id;
+  console.log(customer_id);
   const add_on = JSON.stringify(new Date(Date.now()))
     .replace(/"/g, '')
     .replace('T', ' ')
@@ -53,7 +55,8 @@ exports.addProductInCart = async ctx => {
           product_id,
           attributes,
           add_on,
-          quantity: 1
+          quantity: 1,
+          customer_id
         },
         { where: { cart_id } }
       );
@@ -65,7 +68,7 @@ exports.addProductInCart = async ctx => {
         include: {
           model: shopping_cart,
           where: { cart_id },
-          attributes: { exclude: ['buy_now', 'customer_id'] }
+          attributes: { exclude: ['buy_now'] }
         }
       })
       .map(el => el.get({ plain: true }));
@@ -96,7 +99,8 @@ exports.addProductInCart = async ctx => {
         await shopping_cart.update(
           {
             quantity: sequelize.literal('quantity + 1'),
-            add_on
+            add_on,
+            customer_id
           },
           { where: { [Op.and]: [{ cart_id }, { product_id }, { attributes }] } }
         );
@@ -108,7 +112,7 @@ exports.addProductInCart = async ctx => {
           include: {
             model: shopping_cart,
             where: { cart_id },
-            attributes: { exclude: ['buy_now', 'customer_id'] }
+            attributes: { exclude: ['buy_now'] }
           }
         })
         .map(el => el.get({ plain: true }));
@@ -143,7 +147,8 @@ exports.addProductInCart = async ctx => {
             product_id,
             attributes,
             quantity: 1,
-            add_on
+            add_on,
+            customer_id
           });
         }
 
@@ -153,7 +158,7 @@ exports.addProductInCart = async ctx => {
             include: {
               model: shopping_cart,
               where: { cart_id },
-              attributes: { exclude: ['buy_now', 'customer_id'] }
+              attributes: { exclude: ['buy_now'] }
             }
           })
           .map(el => el.get({ plain: true }));
@@ -194,7 +199,7 @@ exports.getProductsInCart = async ctx => {
         include: {
           model: shopping_cart,
           where: { cart_id: id },
-          attributes: { exclude: ['buy_now', 'customer_id'] }
+          attributes: { exclude: ['buy_now'] }
         }
       })
       .map(el => el.get({ plain: true }));
@@ -241,7 +246,7 @@ exports.updateCartByItem = async ctx => {
         include: {
           model: shopping_cart,
           where: { item_id: id },
-          attributes: { exclude: ['cart_id', 'buy_now', 'customer_id'] }
+          attributes: { exclude: ['cart_id', 'buy_now'] }
         }
       })
       .map(el => el.get({ plain: true }));
@@ -257,7 +262,7 @@ exports.updateCartByItem = async ctx => {
           image,
           ...o
         }))
-    );
+    )[0];
     ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
@@ -290,10 +295,13 @@ exports.moveProductToCart = async ctx => {
     .replace('Z', '');
 
   try {
-    const data = await shopping_cart.update(
+    const query = await shopping_cart.update(
       { cart_id, add_on, quantity: 1 },
       { where: { item_id: id } }
     );
+    const data = await shopping_cart.findOne({
+      where: { item_id: id }
+    });
     ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
@@ -326,7 +334,7 @@ exports.returnTotalAmountFromCart = async ctx => {
         subtotal: price * o.quantity,
         discounted_subtotal: discounted_price * o.quantity
       }))
-    );
+    )[0];
     ctx.body = successMessage('cart', data);
   } catch (e) {
     ctx.status = 400;
@@ -398,7 +406,7 @@ exports.deleteProductInCart = async ctx => {
     const data = await shopping_cart.destroy({
       where: { item_id: id }
     });
-    ctx.body = successMessage('cart', data);
+    ctx.body = successMessage('cart', 'successfully deleted product');
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);

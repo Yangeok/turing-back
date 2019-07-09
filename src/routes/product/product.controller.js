@@ -104,16 +104,6 @@ exports.searchProducts = async ctx => {
 
 exports.getProductById = async ctx => {
   let { id } = ctx.params;
-  const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
-  const limit = ctx.request.query.limit
-    ? Number(ctx.request.query.limit)
-    : pageSize;
-  const description_length = ctx.request.query.description_length
-    ? Number(ctx.request.query.description_length)
-    : 200;
-  const offset = ctx.request.query.offset
-    ? Number(ctx.request.query.offset) + (page - 1)
-    : (page - 1) * pageSize;
 
   try {
     const data = await product.findOne({

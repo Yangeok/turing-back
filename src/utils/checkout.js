@@ -40,16 +40,16 @@ exports.checkoutQuery = async (
         customer: customer.id
       })
     )
-    .then(payment => {
+    .then(async payment => {
       // Mailer.sendOrderConfirmation(customerId, shippingCost, shippingType);
-      return customer
+      await customer
         .findOne({
           where: {
             customer_id: customerId
           }
         })
-        .then(user =>
-          orders.create({
+        .then(async user => {
+          await orders.create({
             total_amount: finalPrice / 100,
             status: 1,
             comments: description,
@@ -57,9 +57,9 @@ exports.checkoutQuery = async (
             auth_code: ctx.request.body.stripeToken || null,
             reference: payment.balance_transaction,
             shipping_id: shippingId
-          })
-        )
-        .then(() => clearShoppingCart(ctx, next));
+          });
+        });
+      // .then(() => clearShoppingCart(ctx, next));
     })
     .catch(next);
 };

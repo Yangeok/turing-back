@@ -178,7 +178,16 @@ exports.updateAddressFromCustomer = async ctx => {
       { where: { customer_id: id } }
     );
     const data = await customer.findOne({
-      where: { customer_id: id }
+      where: { customer_id: id },
+      attributes: [
+        'address_1',
+        'address_2',
+        'city',
+        'region',
+        'postal_code',
+        'country',
+        'shipping_region_id'
+      ]
     });
     ctx.body = successMessage('customer', data);
   } catch (err) {
@@ -194,7 +203,8 @@ exports.updateCreditCardFromCustomer = async ctx => {
   try {
     customer.update({ credit_card }, { where: { customer_id: id } });
     const data = await customer.findOne({
-      where: { customer_id: id }
+      where: { customer_id: id },
+      attributes: ['credit_card']
     });
     ctx.body = successMessage('customer', data);
   } catch (err) {

@@ -2,11 +2,10 @@ const { orders, order_detail } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 
 exports.createOrder = async ctx => {
-  const { cart_id, shipping_id, tax_id } = ctx.request.body;
+  const { shipping_id, tax_id } = ctx.request.body;
   const { customer_id } = ctx.request.user;
   try {
     const data = await orders.create({
-      cart_id,
       shipping_id,
       tax_id,
       customer_id

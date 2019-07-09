@@ -38,17 +38,27 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "department_id": 1,
+      "name": "Regional",
+      "description": "Proud of your country? Wear a T-shirt with a national symbol stamp!"
+    }
+  ]
   ```
 
 - `GET /department/:id`
 
-  - Returns a department object by ID.
+  - Returns a department object by department ID.
   - No authentication required.
   - Example response
 
   ```json
-
+  {
+    "department_id": 1,
+    "name": "Regional",
+    "description": "Proud of your country? Wear a T-shirt with a national symbol stamp!"
+  }
   ```
 
 ### Categories
@@ -64,17 +74,32 @@
   - Example response
 
   ```json
-
+  {
+    "count": 7,
+    "rows": [
+      {
+        "category_id": 1,
+        "name": "French",
+        "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
+        "department_id": 1
+      }
+    ]
+  }
   ```
 
 - `GET /category/:id`
 
-  - Returns a category object by ID.
+  - Returns a category object by category ID.
   - No authentication required.
   - Example response
 
   ```json
-
+  {
+    "category_id": 1,
+    "name": "French",
+    "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
+    "department_id": 1
+  }
   ```
 
 - `GET /category/product/:id`
@@ -84,7 +109,13 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "category_id": 1,
+      "department_id": 1,
+      "name": "French"
+    }
+  ]
   ```
 
 - `GET /category/department/:id`
@@ -94,7 +125,14 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "category_id": 1,
+      "name": "French",
+      "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
+      "department_id": 1
+    }
+  ]
   ```
 
 ### Attributes
@@ -106,17 +144,27 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "attribute_id": 1,
+      "name": "Size"
+    }
+  ]
   ```
 
 - `GET /attribute/:id`
 
-  - Returns a attribute object by ID.
+  - Returns a attributes object by attribute ID.
   - No authentication required.
   - Example response
 
   ```json
-
+  [
+    {
+      "attribute_id": 1,
+      "name": "Size"
+    }
+  ]
   ```
 
 - `GET /attribute/value/:id`
@@ -126,7 +174,12 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "attribute_value_id": 1,
+      "value": "S"
+    }
+  ]
   ```
 
 - `GET /attribute/product/:id`
@@ -136,7 +189,13 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "attribute_name": "Color",
+      "attribute_value_id": 6,
+      "attribute_value": "White"
+    }
+  ]
   ```
 
 ### Products
@@ -145,15 +204,29 @@
 
   - Returns a products object.
   - No authentication required.
+  - Query parameters
+    - Inform the page and starting with 1. (default: 1) `?page=1`
+    - Limit per page. (default: 20) `?limit=20`
+    - Limit of the description. (default: 200) `?description_length=200`
   - Example response
 
   ```json
-
+  "count": 101,
+  "rows": [
+      {
+          "product_id": 1,
+          "name": "Arc d'Triomphe",
+          "description": "This beautiful and iconic T-shirt will no doubt lead you to your own triumph.",
+          "price": "14.99",
+          "discounted_price": "0.00",
+          "thumbnail": "arc-d-triomphe-thumbnail.gif"
+      }
+    ]
   ```
 
 - `GET /product/search`
 
-  - Returns a retrieved product object
+  - Returns a retrieved product object.
   - No authentication required.
   - Query parameters
     - Query to search. `?query_string=French`
@@ -164,17 +237,39 @@
   - Example response
 
   ```json
-
+  {
+    "count": 101,
+    "rows": [
+      {
+        "product_id": 2,
+        "name": "Chartres Cathedral",
+        "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+        "price": "16.95",
+        "discounted_price": "15.95",
+        "thumbnail": "chartres-cathedral-thumbnail.gif"
+      }
+    ]
+  }
   ```
 
 - `GET /product/:id`
 
-  - Returns a product object by ID.
+  - Returns a product object by product ID.
   - No authentication required.
   - Example response
 
   ```json
-
+  {
+    "product_id": 2,
+    "name": "Chartres Cathedral",
+    "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+    "price": "16.95",
+    "discounted_price": "15.95",
+    "image": "chartres-cathedral.gif",
+    "image_2": "chartres-cathedral-2.gif",
+    "thumbnail": "chartres-cathedral-thumbnail.gif",
+    "display": 2
+  }
   ```
 
 - `GET /product/category/:id`
@@ -188,7 +283,19 @@
   - Example response
 
   ```json
-
+  {
+    "count": 101,
+    "rows": [
+      {
+        "product_id": 2,
+        "name": "Chartres Cathedral",
+        "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+        "price": "16.95",
+        "discounted_price": "15.95",
+        "thumbnail": "chartres-cathedral-thumbnail.gif"
+      }
+    ]
+  }
   ```
 
 - `GET /product/department/:id`
@@ -202,7 +309,19 @@
   - Example response
 
   ```json
-
+  {
+    "count": 101,
+    "rows": [
+      {
+        "product_id": 2,
+        "name": "Chartres Cathedral",
+        "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+        "price": "16.95",
+        "discounted_price": "15.95",
+        "thumbnail": "chartres-cathedral-thumbnail.gif"
+      }
+    ]
+  }
   ```
 
 - `GET /product/:id/detail`
@@ -212,7 +331,15 @@
   - Example response
 
   ```json
-
+  {
+    "product_id": 2,
+    "name": "Chartres Cathedral",
+    "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+    "price": "16.95",
+    "discounted_price": "15.95",
+    "image": "chartres-cathedral.gif",
+    "image2": "chartres-cathedral2.gif"
+  }
   ```
 
 - `GET /product/:id/location`
@@ -222,7 +349,12 @@
   - Example response
 
   ```json
-
+  {
+    "category_id": 1,
+    "category_name": "French",
+    "department_id": 1,
+    "department_name": "Regional"
+  }
   ```
 
 - `GET /product/:id/review`
@@ -232,7 +364,14 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "name": "Eder Taveira",
+      "review": "That's a good product. The best for me.",
+      "rating": 5,
+      "created_on": "2019-02-17 13:57:29"
+    }
+  ]
   ```
 
 - `POST /product/:id/review`
@@ -244,7 +383,12 @@
   - Example response
 
   ```json
-
+  {
+    "name": "Eder Taveira",
+    "review": "That's a good product. The best for me.",
+    "rating": 5,
+    "created_on": "2019-02-17 13:57:29"
+  }
   ```
 
 ### Customers
@@ -257,39 +401,76 @@
   - Example response
 
   ```json
-
+  {
+    "customer_id": 1,
+    "name": "Karlie Abshire",
+    "email": "Eva_Pfeffer@yahoo.com",
+    "address_1": "458 Tavares Extensions",
+    "address_2": "Apt. 026",
+    "city": "Tromptown",
+    "region": "ID",
+    "postal_code": "04707",
+    "country": "Afghanistan",
+    "shipping_region_id": 1,
+    "day_phone": "338-633-1760",
+    "eve_phone": "058-979-9247",
+    "mob_phone": "219-113-5933",
+    "credit_card": "7071123439818621"
+  }
   ```
 
 - `GET /customer`
 
-  - Returns a customer object by ID.
+  - Returns a customer object by token.
   - Authentication required.
   - Example response
 
   ```json
-
+  {
+    "customer_id": 1,
+    "name": "Karlie Abshire",
+    "email": "Eva_Pfeffer@yahoo.com",
+    "address_1": "458 Tavares Extensions",
+    "address_2": "Apt. 026",
+    "city": "Tromptown",
+    "region": "ID",
+    "postal_code": "04707",
+    "country": "Afghanistan",
+    "shipping_region_id": 1,
+    "day_phone": "338-633-1760",
+    "eve_phone": "058-979-9247",
+    "mob_phone": "219-113-5933",
+    "credit_card": "7071123439818621"
+  }
   ```
 
 - `POST /customer`
 
-  - Returns a customer object by token.
+  - Registers a customer.
+  - Returns a created customer object.
   - Required fields: `name`, `email`, `password`
   - No authentication required.
   - Example response
 
   ```json
-
+  {
+    "customer_id": 1016,
+    "name": "Administrator",
+    "email": "admin@gmafil.com"
+  }
   ```
 
 - `POST /customer/login`
 
-  - Returns a token.
+  - Returns a jwt token.
   - Required fields: `email`, `password`
   - No authentication required.
   - Example response
 
   ```json
-
+  {
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTg4LCJlbWFpbCI6IkRhcGhuZS5TcG9yZXI0NkBob3RtYWlsLmNvbSIsImlhdCI6MTU2MjU1MDQzMSwiZXhwIjoxNTYyNjM2ODMxfQ.KGEDMbeu-z6HCwK_SoJmffz9AfSat5_wnLBw4gyyjdY"
+  }
   ```
 
 - `POST /customer/facebook`
@@ -311,7 +492,15 @@
   - Example response
 
   ```json
-
+  {
+    "address_1": "458 Tavares Extensions",
+    "address_2": "Apt. 026",
+    "city": "Tromptown",
+    "region": "ID",
+    "postal_code": "04707",
+    "country": "Afghanistan",
+    "shipping_region_id": 1
+  }
   ```
 
 - `PUT /customer/credit-card`
@@ -322,7 +511,9 @@
   - Example response
 
   ```json
-
+  {
+    "credit_card": "7071123439818621"
+  }
   ```
 
 ### Orders
@@ -330,32 +521,16 @@
 - `POST /order`
 
   - Returns a created order object.
-  - Required fields: `cart_id`, `shipping_id`, `tax_id`
+  - Required fields: `shipping_id`, `tax_id`
   - Authentication required.
   - Example response
 
   ```json
-
-  ```
-
-- `GET /order/customer`
-
-  - Returns a orders object by token.
-  - Authentication required.
-  - Example response
-
-  ```json
-
-  ```
-
-- `GET /order/detail/:id`
-
-  - Returns a order details object by order ID.
-  - Authentication required.
-  - Example response
-
-  ```json
-
+  {
+    "order_id": 1026,
+    "shipping_id": 1,
+    "tax_id": 1
+  }
   ```
 
 - `GET /order/:id`
@@ -365,7 +540,58 @@
   - Example response
 
   ```json
+  {
+    "order_id": 1,
+    "product_id": 1,
+    "attributes": "LG, Red",
+    "product_name": "Arc d'Triomphe",
+    "quantity": 1,
+    "subtotal": "14.99"
+  }
+  ```
 
+- `GET /order/customer`
+
+  - Returns a orders object by token.
+  - Authentication required.
+  - Example response
+
+  ```json
+  {
+    "order_id": 988,
+    "total_amount": "692.82",
+    "created_on": "2019-04-01T16:07:18.000Z",
+    "shipped_on": "2018-09-30T10:50:33.000Z",
+    "status": 5,
+    "comments": "Quidem id ad suscipit at.",
+    "customer_id": 734,
+    "auth_code": "kEuIAUu_A4",
+    "reference": "non laborum pariatur",
+    "shipping_id": 1,
+    "tax_id": 1
+  }
+  ```
+
+- `GET /order/detail/:id`
+
+  - Returns a order details object by order ID.
+  - Authentication required.
+  - Example response
+
+  ```json
+  {
+    "order_id": 1,
+    "total_amount": "79.89",
+    "created_on": "2019-04-09T15:22:30.000Z",
+    "shipped_on": "2019-01-21T00:32:41.000Z",
+    "status": 5,
+    "comments": "Similique in rem.",
+    "customer_id": 120,
+    "auth_code": "fYX4t5oj7A",
+    "reference": "est delectus ea",
+    "shipping_id": 2,
+    "tax_id": 2
+  }
   ```
 
 ### Shopping cart
@@ -377,28 +603,64 @@
   - Example response
 
   ```json
-
+  {
+    "item_id": 1038,
+    "cart_id": "49132550a18311e98b",
+    "add_on": "2019-07-08T04:21:25.030Z"
+  }
   ```
 
 - `POST /cart/add`
 
-  - Returns a created cart object.
+  - Returns a created carts object.
   - Required fields: `cart_id`, `product_id`, `attributes`
   - No authentication required.
   - Example response
 
   ```json
-
+  [
+    {
+      "price": "14.99",
+      "subtotal": 14.99,
+      "discounted_price": "0.00",
+      "discounted_subtotal": 0,
+      "name": "Arc d'Triomphe",
+      "image": "arc-d-triomphe.gif",
+      "item_id": 1039,
+      "cart_id": "49132550a18311e98b",
+      "product_id": 1,
+      "attributes": "lorem ipsum",
+      "quantity": 1,
+      "add_on": "2019-07-08T04:26:04.000Z",
+      "customer_id": 988
+    }
+  ]
   ```
 
 - `GET /cart/:id`
 
-  - Returns a cart object by cart ID.
+  - Returns a carts object by cart ID.
   - No authentication required.
   - Example response
 
   ```json
-
+  [
+    {
+      "price": "14.99",
+      "subtotal": 14.99,
+      "discounted_price": "0.00",
+      "discounted_subtotal": 0,
+      "name": "Arc d'Triomphe",
+      "image": "arc-d-triomphe.gif",
+      "item_id": 1039,
+      "cart_id": "49132550a18311e98b",
+      "product_id": 1,
+      "attributes": "lorem ipsum",
+      "quantity": 1,
+      "add_on": "2019-07-08T04:26:04.000Z",
+      "customer_id": 988
+    }
+  ]
   ```
 
 - `PUT /cart/update/:id`
@@ -409,18 +671,31 @@
   - Example response
 
   ```json
-
+  {
+    "price": "19.99",
+    "subtotal": 39.98,
+    "discounted_price": "17.99",
+    "discounted_subtotal": 35.98,
+    "name": "Christmas Seal",
+    "image": "christmas-seal.gif",
+    "item_id": 1,
+    "product_id": 82,
+    "attributes": "Color",
+    "quantity": 2,
+    "add_on": "2019-04-12T02:09:19.000Z",
+    "customer_id": 988
+  }
   ```
 
 - `DELETE /cart/delete/:id`
 
   - Deletes a cart object by cart ID.
-  - Returns a message.
+  - Returns true on success or error on failure.
   - No authentication required.
   - Example response
 
   ```json
-
+  "successfully deleted cart"
   ```
 
 - `GET /cart/move-to-cart/:id`
@@ -430,7 +705,16 @@
   - Example response
 
   ```json
-
+  {
+    "item_id": 1,
+    "cart_id": "9d201ac0a18511e994",
+    "product_id": 82,
+    "attributes": "Color",
+    "quantity": 1,
+    "buy_now": true,
+    "add_on": "2019-07-08T04:38:05.000Z",
+    "customer_id": 647
+  }
   ```
 
 - `GET /cart/total-amount/:id`
@@ -440,7 +724,10 @@
   - Example response
 
   ```json
-
+  {
+    "subtotal": 19.99,
+    "discounted_subtotal": 17.99
+  }
   ```
 
 - `GET /cart/save-for-later/:id`
@@ -450,27 +737,47 @@
   - Example response
 
   ```json
-
+  {
+    "item_id": 1,
+    "cart_id": "bc750a20a18511e994",
+    "product_id": 82,
+    "attributes": "Color",
+    "quantity": 1,
+    "buy_now": false,
+    "add_on": "2019-07-08T04:39:48.000Z",
+    "customer_id": 647
+  }
   ```
 
 - `GET /cart/get-saved/:id`
 
-  - Returns a cart object by cart ID.
+  - Returns a carts object by cart ID.
   - No authentication required.
   - Example response
 
   ```json
-
+  [
+    {
+      "price": "19.99",
+      "discounted_price": "17.99",
+      "name": "Christmas Seal",
+      "item_id": 1,
+      "attributes": "Color",
+      "quantity": 1,
+      "buy_now": false
+    }
+  ]
   ```
 
 - `DELETE /cart/remove-product/:id`
 
   - Deletes a cart object by item ID.
+  - Returns true on success or error on failure.
   - No authentication required.
   - Example response
 
   ```json
-
+  "successfully deleted product"
   ```
 
 ### Tax
@@ -482,7 +789,13 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "tax_id": 1,
+      "tax_type": "Sales Tax at 8.5%",
+      "tax_percentage": "8.50"
+    }
+  ]
   ```
 
 - `GET /tax/:id`
@@ -492,7 +805,11 @@
   - Example response
 
   ```json
-
+  {
+    "tax_id": 1,
+    "tax_type": "Sales Tax at 8.5%",
+    "tax_percentage": "8.50"
+  }
   ```
 
 ### Shipping
@@ -504,7 +821,12 @@
   - Example response
 
   ```json
-
+  [
+    {
+      "shipping_region_id": 1,
+      "shipping_region": "Please Select"
+    }
+  ]
   ```
 
 - `GET /shipping/region/:id`
@@ -514,7 +836,10 @@
   - Example response
 
   ```json
-
+  {
+    "shipping_region_id": 1,
+    "shipping_region": "Please Select"
+  }
   ```
 
 ### Payment
@@ -522,23 +847,24 @@
 - `POST /payment/charge`
 
   - Receives a front-end payment and create a charge.
+  - To get a return value, `stripeToken` should be entered as`tok_visa`.
   - Required fields: `stripeToken`, `stripeEmail`, `shippingId`, `currency`
   - Authentication required.
   - Example response
 
   ```json
-
+  "successfully completed payment"
   ```
 
 - `POST /payment/webhook`
 
+  - Returns the webhook endpoint object with the secret field populated.
   - Provides a synchronization with front-end.
-  - Required fields:
   - Authentication required.
   - Example response
 
   ```json
-
+  "successfully webhooks received"
   ```
 
 ## References
