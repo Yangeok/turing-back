@@ -1,12 +1,11 @@
 require('dotenv').config();
-const env = process.env;
-
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 const {
   shipping,
   shopping_cart,
   product,
-  customer
+  customer,
+  orders
 } = require('../../db/models');
 const { successMessage, errorMessage } = require('../../utils/response');
 const { checkoutQuery } = require('../../utils/checkout');
@@ -62,6 +61,9 @@ exports.createCharge = async (ctx, next) => {
     stripeToken,
     stripeEmail,
     currency,
+    customer,
+    orders,
+    stripe,
     next
   );
   ctx.body = successMessage('message', 'successfully completed payment');
@@ -70,7 +72,7 @@ exports.createCharge = async (ctx, next) => {
 exports.provideSync = async ctx => {
   const ngrokHostname = '3cdeee07';
   try {
-    webhook(ngrokHostname);
+    webhook(ngrokHostname, stripe);
     ctx.body = successMessage('webhook', 'successfully webhooks received');
   } catch (e) {
     ctx.status = 400;

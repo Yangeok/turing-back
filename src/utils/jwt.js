@@ -1,8 +1,10 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const { errorMessage } = require('./response');
 const env = process.env;
 
 /**
+ *
  * @param {object} payload
  * @returns {function}
  */

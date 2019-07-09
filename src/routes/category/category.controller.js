@@ -8,31 +8,34 @@ exports.getCategories = async ctx => {
   const limit = ctx.request.query.limit
     ? Number(ctx.request.query.limit)
     : pageSize;
+
   try {
     const data = await category.findAndCountAll({
       offset,
       limit
     });
     ctx.body = successMessage('categories', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
 exports.getCategoryById = async ctx => {
   let { id } = ctx.params;
+
   try {
     const data = await category.findByPk(id);
     ctx.body = successMessage('category', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
 exports.getCategoriesOfProduct = async ctx => {
   const { id } = ctx.params;
+
   try {
     const query = await product.findOne({
       where: { product_id: id },
@@ -45,14 +48,15 @@ exports.getCategoriesOfProduct = async ctx => {
     });
     const data = query.categories[0];
     ctx.body = successMessage('category', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
 exports.getCategoriesOfDepartment = async ctx => {
   let { id } = ctx.params;
+
   try {
     const data = await department.findOne({
       where: { department_id: id },
@@ -62,7 +66,7 @@ exports.getCategoriesOfDepartment = async ctx => {
       attributes: []
     });
     ctx.body = successMessage('category', data);
-  } catch (err) {
-    ctx.body = errorMessage(err.message);
+  } catch (e) {
+    ctx.body = errorMessage(e.message);
   }
 };

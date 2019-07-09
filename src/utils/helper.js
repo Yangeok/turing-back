@@ -1,6 +1,7 @@
 const faker = require('faker');
 
 /**
+ *
  * @returns {object}
  */
 const createDatetime = () => {
@@ -12,6 +13,7 @@ const createDatetime = () => {
 };
 
 /**
+ *
  * @param {array} arr
  * @returns {array}
  */

@@ -1,7 +1,7 @@
 /**
  *
  * @param {string} email
- * @description make sure the email is in the correct format
+ * @description make sure the email is in the correct format.
  */
 const validateEmail = email => {
   let errorMessages = [];
@@ -21,7 +21,7 @@ const validateEmail = email => {
 /**
  *
  * @param {string} password
- * @description make sure the password is in the correct format
+ * @description make sure the password is in the correct format.
  */
 const validatePassword = password => {
   const errorMessages = [];

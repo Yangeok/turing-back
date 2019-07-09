@@ -13,6 +13,7 @@ exports.getTaxes = async ctx => {
 
 exports.getTaxById = async ctx => {
   const { id } = ctx.params;
+
   try {
     const data = await tax.findOne({
       where: { tax_id: id }

@@ -1,9 +1,5 @@
-require('dotenv').config();
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
-const { successMessage } = require('./response');
-const { customer, orders, shopping_cart } = require('../db/models');
-
 /**
+ *
  * @param {*} ctx
  * @param {*} finalPrice
  * @param {*} description
@@ -13,6 +9,10 @@ const { customer, orders, shopping_cart } = require('../db/models');
  * @param {*} customerId
  * @param {*} stripeToken
  * @param {*} stripeEmail
+ * @param {*} currency
+ * @param {*} customer
+ * @param {*} orders
+ * @param {*} stripe
  * @param {*} next
  */
 exports.checkoutQuery = async (
@@ -26,6 +26,9 @@ exports.checkoutQuery = async (
   stripeToken,
   stripeEmail,
   currency,
+  customer,
+  orders,
+  stripe,
   next
 ) => {
   await stripe.customers

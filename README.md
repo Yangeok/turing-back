@@ -230,7 +230,6 @@
   - No authentication required.
   - Query parameters
     - Query to search. `?query_string=French`
-    - All words or no. (default: on) `?all_words=on`
     - Inform the page and starting with 1. (default: 1) `?page=1`
     - Limit per page. (default: 20) `?limit=20`
     - Limit of the description. (default: 200) `?description_length=200`

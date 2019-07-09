@@ -13,11 +13,10 @@ let transport = nodemailer.createTransport({
 
 /**
  *
- * @param {String} emailAddress Email address of the customer
- * @param {String} mailSubject Subject of the email
- * @param {String} mailBody body of the email
- *
- * @returns {*} Sends email
+ * @param {string} emailAddress email address of the customer
+ * @param {string} mailSubject subject of the email
+ * @param {string} mailBody body of the email
+ * @return {*} sends email
  */
 const emailSender = async (emailAddress, mailSubject, mailBody) => {
   let emailOption = {
@@ -48,11 +47,10 @@ const emailSender = async (emailAddress, mailSubject, mailBody) => {
 
 /**
  *
- * @param {*} customerId Id of the customer placing the order
+ * @param {*} customerId id of the customer placing the order
  * @param {*} shippingCost
  * @param {*} shippingType
- *
- * @returns {*} Sends order confirmation email
+ * @return {*} sends order confirmation email
  */
 exports.sendOrderConfirmation = (customerId, shippingCost, shippingType) => {
   const cart = shopping_cart.findAll({

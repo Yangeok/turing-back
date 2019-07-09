@@ -21,13 +21,15 @@ exports.updateCustomer = async ctx => {
     mob_phone
   } = ctx.request.body;
   const { id } = ctx.request.user;
+
   try {
     const hasCustomer = await customer.findOne({ where: { customer_id: id } });
     if (!hasCustomer) {
       ctx.status = 400;
-      ctx.body = errorMessage('Customer with this id does not exist');
+      ctx.body = errorMessage('customer with this id does not exist');
     }
-    const query = await customer.update(
+
+    await customer.update(
       {
         email: email || hasCustomer.email,
         name: name || hasCustomer.name,
@@ -51,22 +53,23 @@ exports.updateCustomer = async ctx => {
     );
     const data = await customer.findOne({ where: { customer_id: id } });
     ctx.body = successMessage('customer', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
 exports.getCustomerById = async ctx => {
   const { email } = ctx.request.user;
+
   try {
     const data = await customer.findOne({
       where: { email },
       attributes: { exclude: ['password'] }
     });
     ctx.body = successMessage('customer', data);
-  } catch (err) {
-    ctx.body = errorMessage(err.message);
+  } catch (e) {
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -79,7 +82,7 @@ exports.registerCustomer = async ctx => {
 
   if (!name || !email || !password) {
     ctx.status = 400;
-    ctx.body = errorMessage('All input required');
+    ctx.body = errorMessage('all input required');
   }
 
   const emailValidationError = validateEmail(email);
@@ -97,7 +100,7 @@ exports.registerCustomer = async ctx => {
   const query = await customer.findAll({ where: { email } });
   if (query && query.length > 0) {
     ctx.status = 400;
-    ctx.body = errorMessage('The email is already registered');
+    ctx.body = errorMessage('the email is already registered');
   } else {
     try {
       const data = await customer.create({ name, email, password });
@@ -107,9 +110,9 @@ exports.registerCustomer = async ctx => {
         name: data.name,
         email: data.email
       });
-    } catch (err) {
+    } catch (e) {
       ctx.status = 400;
-      ctx.body = errorMessage(err.message);
+      ctx.body = errorMessage(e.message);
     }
   }
 };
@@ -124,6 +127,7 @@ exports.signinCustomer = async ctx => {
     ctx.status = 400;
     ctx.body = errorMessage('All input required');
   }
+
   const emailValidationError = validateEmail(email);
   if (emailValidationError.length > 0) {
     ctx.status = 400;
@@ -136,7 +140,6 @@ exports.signinCustomer = async ctx => {
       id: data.customer_id,
       email: data.email
     };
-
     const token = generateJwtToken(payload);
     ctx.status = 200;
     ctx.body = successMessage('customer', {
@@ -144,7 +147,7 @@ exports.signinCustomer = async ctx => {
     });
   } else {
     ctx.status = 400;
-    ctx.body = errorMessage('No user exist with desired email address');
+    ctx.body = errorMessage('no user exist with desired email address');
   }
 };
 
@@ -190,9 +193,9 @@ exports.updateAddressFromCustomer = async ctx => {
       ]
     });
     ctx.body = successMessage('customer', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -201,14 +204,14 @@ exports.updateCreditCardFromCustomer = async ctx => {
   const { id } = ctx.request.user;
 
   try {
-    customer.update({ credit_card }, { where: { customer_id: id } });
+    await customer.update({ credit_card }, { where: { customer_id: id } });
     const data = await customer.findOne({
       where: { customer_id: id },
       attributes: ['credit_card']
     });
     ctx.body = successMessage('customer', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };

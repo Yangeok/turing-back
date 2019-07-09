@@ -36,7 +36,6 @@ exports.addProductInCart = async ctx => {
 
   const { cart_id, product_id, attributes } = ctx.request.body;
   const customer_id = ctx.request.user.id;
-  console.log(customer_id);
   const add_on = JSON.stringify(new Date(Date.now()))
     .replace(/"/g, '')
     .replace('T', ' ')
@@ -192,6 +191,7 @@ exports.getProductsInCart = async ctx => {
   };
 
   const { id } = ctx.params;
+
   try {
     const query = await product
       .findAll({
@@ -234,7 +234,7 @@ exports.updateCartByItem = async ctx => {
   const { quantity } = ctx.request.body;
 
   try {
-    const updateQuery = await shopping_cart.update(
+    await shopping_cart.update(
       {
         quantity
       },
@@ -274,7 +274,7 @@ exports.deleteCart = async ctx => {
   const { id } = ctx.params;
 
   try {
-    const data = await shopping_cart.destroy({
+    await shopping_cart.destroy({
       where: { cart_id: id }
     });
     ctx.body = successMessage('cart', 'is deleted');
@@ -295,7 +295,7 @@ exports.moveProductToCart = async ctx => {
     .replace('Z', '');
 
   try {
-    const query = await shopping_cart.update(
+    await shopping_cart.update(
       { cart_id, add_on, quantity: 1 },
       { where: { item_id: id } }
     );
@@ -316,6 +316,7 @@ exports.returnTotalAmountFromCart = async ctx => {
   Array.prototype.flatMap = function(f) {
     return flatMap(f, this);
   };
+
   const { id } = ctx.params;
 
   try {
@@ -350,7 +351,7 @@ exports.saveProductForLater = async ctx => {
     .replace('Z', '');
 
   try {
-    const query = await shopping_cart.update(
+    await shopping_cart.update(
       { buy_now: 0, add_on },
       { where: { item_id: id } }
     );
@@ -371,6 +372,7 @@ exports.getProductsForLater = async ctx => {
   Array.prototype.flatMap = function(f) {
     return flatMap(f, this);
   };
+
   const { id } = ctx.params;
 
   try {
@@ -403,7 +405,7 @@ exports.deleteProductInCart = async ctx => {
   const { id } = ctx.params;
 
   try {
-    const data = await shopping_cart.destroy({
+    await shopping_cart.destroy({
       where: { item_id: id }
     });
     ctx.body = successMessage('cart', 'successfully deleted product');

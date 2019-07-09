@@ -1,7 +1,9 @@
-require('dotenv').config();
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
-
-const webhook = ngrokHostname => {
+/**
+ *
+ * @param {*} ngrokHostname
+ * @param {*} stripe
+ */
+const webhook = (ngrokHostname, stripe) => {
   stripe.webhookEndpoints.create(
     {
       url: `http://${ngrokHostname}.ngrok.io/payment/webhook`,

@@ -45,18 +45,15 @@ exports.getProducts = async ctx => {
       ]
     });
     ctx.body = successMessage('products', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
 exports.searchProducts = async ctx => {
   const pageSize = 20;
   const query_string = ctx.request.query.query_string;
-  const all_words = ctx.request.query.all_words
-    ? Boolean(ctx.request.query.all_words)
-    : on;
   const page = ctx.request.query.page ? Number(ctx.request.query.page) : 1;
   const limit = ctx.request.query.limit
     ? Number(ctx.request.query.limit)
@@ -96,9 +93,9 @@ exports.searchProducts = async ctx => {
       ]
     });
     ctx.body = successMessage('products', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -110,9 +107,9 @@ exports.getProductById = async ctx => {
       where: { product_id: id }
     });
     ctx.body = successMessage('products', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -157,9 +154,9 @@ exports.getProductsOfCategories = async ctx => {
       }
     });
     ctx.body = successMessage('products', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -206,9 +203,9 @@ exports.getProductsOfDepartment = async ctx => {
       ]
     });
     ctx.body = successMessage('product', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -229,9 +226,9 @@ exports.getProductDetails = async ctx => {
       where: { product_id: id }
     });
     ctx.body = successMessage('product', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -257,7 +254,6 @@ exports.getProductLocations = async ctx => {
       const b = a.get({ plain: true });
       const { category_id, category_name } = b;
       const { department_id, department_name } = b.department;
-
       return {
         category_id,
         category_name,
@@ -266,9 +262,9 @@ exports.getProductLocations = async ctx => {
       };
     };
     ctx.body = successMessage('product', getProduct());
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -283,9 +279,9 @@ exports.getProductReviews = async ctx => {
     });
     const data = query.reviews;
     ctx.body = successMessage('product', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
 
@@ -304,8 +300,8 @@ exports.postProductReviews = async ctx => {
       customer_id
     });
     ctx.body = successMessage('product', data);
-  } catch (err) {
+  } catch (e) {
     ctx.status = 400;
-    ctx.body = errorMessage(err.message);
+    ctx.body = errorMessage(e.message);
   }
 };
