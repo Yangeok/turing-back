@@ -25,7 +25,7 @@ const middlewares = app => {
   app.use(verifyJwt);
   passportConfig(passport);
   authenticationConfig(app);
-  // ignoreRequest(app);
+  ignoreRequest(app);
   imageConfig(app);
 };
 
