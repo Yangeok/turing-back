@@ -1,12 +1,9 @@
-const cache = require('koa-redis-cache');
-
-const options = {
-  expire: 1,
-  routes: '/category'
-};
+const conditional = require('koa-conditional-get');
+const etag = require('koa-etag');
 
 const cacheConfig = app => {
-  app.use(cache(options));
+  app.use(conditional());
+  app.use(etag());
 };
 
 module.exports = cacheConfig;

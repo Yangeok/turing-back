@@ -1,3 +1,5 @@
+require('dotenv').config();
+const env = process.env;
 const { port } = require('./utils/env');
 const db = require('./db/models');
 
@@ -5,10 +7,10 @@ const servers = app => {
   db.sequelize
     .sync()
     .then(() => {
-      console.log(`> DB connected on ${process.env.NODE_ENV} environment`);
+      console.log(`> MongoDB connected on ${env.NODE_ENV} environment`);
     })
     .catch(err => {
-      console.error(err).log(`> DB connection error`);
+      console.error(err).log(`> MongoDB connection error`);
       process.exit();
     })
     .then(() => {

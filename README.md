@@ -870,6 +870,7 @@
 
 - [koa-pagination](https://github.com/uphold/koa-pagination)
 - [koa error-handling](https://github.com/koajs/koa/blob/master/docs/error-handling.md)
+- [setting up webhooks | stripe](https://stripe.com/docs/webhooks/setup)
 
 ## Architecture
 
