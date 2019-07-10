@@ -48,7 +48,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test ./node_modules/.bin/nyc ./node_modules/.bin/mocha test/*.js -t 5000 -exit && yarn coveralls",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "start": "cross-env NODE_ENV=production nodemon src/app.js",
+    "start": "cross-env NODE_ENV=production ./node_modules/.bin/nodemon src/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon src/app.js",
     "db:generate": "sequelize model:generate",
     "db:create": "sequelize db:create",
