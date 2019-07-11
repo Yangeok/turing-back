@@ -5,7 +5,6 @@
 - [Installation](#Installation)
 - [Running test](#Running-test)
 - [Endpoints](#Endpoints)
-- [References](#References)
 - [Architecture](#Architecture)
 - [Database](#Database)
 
@@ -866,52 +865,145 @@
   "successfully webhooks received"
   ```
 
-## References
-
-- [koa-pagination](https://github.com/uphold/koa-pagination)
-- [koa error-handling](https://github.com/koajs/koa/blob/master/docs/error-handling.md)
-- [setting up webhooks | stripe](https://stripe.com/docs/webhooks/setup)
-
 ## Architecture
+
+### Directory structure
 
 ```sh
 ├─assets
-│  └─images
 ├─db
-│  ├─config
-│  ├─migrations
-│  ├─models
-│  ├─seed-data
-│  └─seeders
 ├─middleware
-├─not-available
 ├─routes
-│  ├─attribute
-│  ├─cart
-│  ├─category
-│  ├─customer
-│  ├─department
-│  ├─home
-│  ├─order
-│  ├─payment
-│  ├─product
-│  ├─shipping
-│  └─tax
 └─utils
 ```
 
-- 폴더나 파일구조 자세하게 작성하기 :)
+### Utilities
+
+- checkout
+- env
+- facebook
+- generator
+- helper
+- jwt
+- mailer
+- response
+- validation
+- webhook
 
 ### Middlewares
 
-- 미들웨어 구조도 여기다가 말해주자
+- authentication
+- cache
+- image
+- verify jwt
+- others
+  - cors
+  - helmet
+  - json
+  - body parser
+  - logger
 
 ### Routes
 
+```js
+// index.js
+const attribute = require('./attribute');
+router.use('/attribute', attribute.routes());
+
+const rotuers = app => {
+  app.use(router.routes());
+  app.use(router.allowedMethods());
+};
+
+module.exports = rotuers;
+```
+
+```js
+// attribute/index.js
+const attributeCtrl = require('./attribute.controller');
+attribute.get('/', attributeCtrl.getAttributes);
+
+module.exports = attribute;
+```
+
+```js
+// attribute/attribute.controller.js
+exports.getAttributes = async ctx => {
+  try {
+    const data = await attribute.findAll();
+    ctx.body = successMessage('attributes', data);
+  } catch (e) {
+    ctx.status = 400;
+    ctx.body = errorMessage(e.message);
+  }
+};
+```
+
 ### Servers
 
-- 적으면서 개똥코드도 같이 정돈해보기
+```js
+// app.js
+const middlewares = require('./middleware');
+middlewares(app);
 
-## Database
+const routers = require('./routes');
+routers(app);
+
+const servers = require('./server');
+servers(app);
+```
+
+### Database
+
+- sequelizerc file
+  - `db`디렉토리 외에서도 `sequelize-cli`를 이용하기 위한 세팅
+
+```js
+const path = require('path');
+
+module.exports = {
+  config: path.join(__dirname + '/src/db/config'),
+  'migrations-path': path.join(__dirname, '/src/db/migrations'),
+  'seeders-path': path.join(__dirname, '/src/db/seeders'),
+  'models-path': path.join(__dirname, '/src/db/models')
+};
+```
+
+- config
+
+  - `.env`파일에서 정보를 읽어오기 위해 js파일로 변경
+
+- models
+
+```js
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const attribute = sequelize.define('attribute', {
+    attribute_id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    name: {
+      type: DataTypes.STRING(100)
+    }
+  });
+  attribute.associate = function(models) {
+    attribute.hasMany(models.attribute_value, {
+      foreignKey: 'attribute_id'
+    });
+  };
+  return attribute;
+};
+```
+
+- migrations
+  - migrating data
+- seed data
+  - generated mock data in `generator.js` file
+- seeders
+
+  - populating data
 
 [![](https://res.cloudinary.com/yangeok/image/upload/v1558406432/portfolio/turing-db.jpg)](https://res.cloudinary.com/yangeok/image/upload/v1558406432/portfolio/turing-db.jpg)

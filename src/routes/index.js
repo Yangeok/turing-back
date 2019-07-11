@@ -13,12 +13,12 @@ const product = require('./product');
 const shipping = require('./shipping');
 const tax = require('./tax');
 
-router.use('/', home.routes());
 router.use('/attribute', attribute.routes());
 router.use('/cart', cart.routes());
 router.use('/category', category.routes());
 router.use('/customer', customer.routes());
 router.use('/department', department.routes());
+router.use('/', home.routes());
 router.use('/order', order.routes());
 router.use('/payment', payment.routes());
 router.use('/product', product.routes());

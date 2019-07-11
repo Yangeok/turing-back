@@ -3,17 +3,12 @@ const cors = require('koa2-cors');
 const helmet = require('koa-helmet');
 const logger = require('koa-logger');
 const bodyParser = require('koa-body');
-const passport = require('koa-passport');
-
-// Utils
-const { verifyJwt } = require('../utils/jwt');
 
 // Middlewares
-const ignoreRequest = require('./ignoreRequest');
-const authenticationConfig = require('./authenticationConfig');
-const passportConfig = require('./passportConfig');
 const cacheConfig = require('./cacheConfig');
+const authenticationConfig = require('./authenticationConfig');
 const imageConfig = require('./imageConfig');
+const verifyJwtConfig = require('./verifyJwtConfig');
 
 const middlewares = app => {
   app.use(cors());
@@ -22,10 +17,8 @@ const middlewares = app => {
   cacheConfig(app);
   app.use(bodyParser());
   app.use(logger());
-  app.use(verifyJwt);
-  passportConfig(passport);
+  verifyJwtConfig(app);
   authenticationConfig(app);
-  ignoreRequest(app);
   imageConfig(app);
 };
 

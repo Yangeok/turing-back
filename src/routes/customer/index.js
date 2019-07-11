@@ -2,10 +2,7 @@ const Router = require('koa-router');
 const customer = new Router();
 const customerCtrl = require('./customer.controller');
 const { authenticated } = require('../../utils/jwt');
-const {
-  authFacebook,
-  authFacebookCallback
-} = require('../../middleware/thirdPartyLogin');
+const { authFacebook, authFacebookCallback } = require('../../utils/facebook');
 
 customer.put('/', authenticated, customerCtrl.updateCustomer);
 customer.get('/', authenticated, customerCtrl.getCustomerById);

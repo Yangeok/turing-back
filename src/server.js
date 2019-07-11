@@ -7,10 +7,10 @@ const servers = app => {
   db.sequelize
     .sync()
     .then(() => {
-      console.log(`> MongoDB connected on ${env.NODE_ENV} environment`);
+      console.log(`> MySQL connected on ${env.NODE_ENV} environment`);
     })
     .catch(err => {
-      console.error(err).log(`> MongoDB connection error`);
+      console.error(err).log(`> MySQL connection error`);
       process.exit();
     })
     .then(() => {
