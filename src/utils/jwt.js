@@ -25,31 +25,6 @@ const verifyJwtToken = token => {
   }
 };
 
-// /**
-//  *
-//  * @param {object} ctx
-//  * @param {function} next
-//  */
-// const verifyJwt = async (ctx, next) => {
-//   const token =
-//     ctx.request.header.authorization &&
-//     ctx.request.header.authorization.split(' ')[0] === 'Bearer'
-//       ? ctx.request.header.authorization.split(' ')[1]
-//       : '';
-//   if (token) {
-//     const payload = verifyJwtToken(token);
-//     if (payload !== null || payload !== undefined) {
-//       ctx.status = 200;
-//       ctx.request.user = payload;
-//       ctx.request.user.authenticated = true;
-//     } else {
-//       ctx.status = 200;
-//       ctx.reuqest.user.authenticated = {};
-//     }
-//   }
-//   await next();
-// };
-
 /**
  *
  * @param {object} ctx
@@ -66,6 +41,6 @@ const authenticated = async (ctx, next) => {
 
 module.exports = {
   generateJwtToken,
-  // verifyJwt,
+  verifyJwtToken,
   authenticated
 };

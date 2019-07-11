@@ -52,7 +52,7 @@ const emailSender = async (emailAddress, mailSubject, mailBody) => {
  * @param {*} shippingType
  * @return {*} sends order confirmation email
  */
-exports.sendOrderConfirmation = (customerId, shippingCost, shippingType) => {
+const sendOrderConfirmation = (customerId, shippingCost, shippingType) => {
   const cart = shopping_cart.findAll({
     include: [
       {
@@ -125,5 +125,8 @@ exports.sendOrderConfirmation = (customerId, shippingCost, shippingType) => {
       <b>Shipping Address:</b> ${address}, ${city}, ${country}, ${postalCode}
     </p>  
   `;
+
   emailSender(email, subject, message);
 };
+
+module.exports = sendOrderConfirmation;

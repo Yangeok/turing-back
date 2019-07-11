@@ -5,8 +5,23 @@
 - [Installation](#Installation)
 - [Running test](#Running-test)
 - [Endpoints](#Endpoints)
+  - [Departments](#Departments)
+  - [Categories](#Categories)
+  - [Attributes](#Attributes)
+  - [Products](#Products)
+  - [Customers](#Customers)
+  - [Orders](#Orders)
+  - [Tax](#Tax)
+  - [Shipping](#Shipping)
+  - [Payment](#Payment)
+  - [Shopping cart](#Shopping-cart)
 - [Architecture](#Architecture)
-- [Database](#Database)
+  - [Directory structure](#Directory-structure)
+  - [Utilities](#Utilities)
+  - [Middlewares](#Middlewares)
+  - [Routes](#Routes)
+  - [Server](#Server)
+  - [Database](#Database)
 
 ## Installation
 
@@ -867,93 +882,125 @@
 
 ## Architecture
 
+![]()
+
 ### Directory structure
 
-```sh
-├─assets
-├─db
-├─middleware
-├─routes
-└─utils
-```
+- assets
+  - 가공되지 않은 데이터들과 이미지 파일이 있는 디렉토리이다.
+- db
+  - mysql을 바인딩시켜주는 orm sequelize 설정과 모델 및 mock-data가 있는 디렉토리이다.
+- middleware
+  - koa서버에서 사용하는 미들우에어가 있는 디렉토리이다.
+- routes
+  - 라우터들이 들어있는 디렉토리이다.
+- utils
+  - 헬퍼함수들이 들어있는 디렉토리이다.
 
 ### Utilities
 
 - checkout
+  - stirpe payment를 하는 함수가 들어있다.
 - env
+  - port, hostname을 관리하는 파일이다.
 - facebook
+  - facebook login을 하기위한 설정이 들어있다.
 - generator
+  - mock-data를 만들기 위한 함수가 들어있다.
+  - 파일을 실행하면 함수가 자동으로 실행되 mock-data가 `db/seed-data/`에 생성된다.
 - helper
+  - `generator.js`에서 데이터를 생성할때 사용하는 함수가 들어있다.
 - jwt
+  - jwt를 생성, 검증하기 위해 필요한 함수가 들어있다.
 - mailer
+  - stripe payment가 끝나면 메일링을 하기 위한 함수가 들어있다.
 - response
+  - error handling을 하기 위한 함수가 들어있다.
 - validation
+  - customer 정보를 검증하기 위한 함수가 들어있다.
 - webhook
+  - stripe account에 일어난 event를 알려주는 웹훅 함수가 들어있다.
+  - [Using Webhooks](https://stripe.com/docs/webhooks) 참고해서 더 작성하기
 
 ### Middlewares
 
 - authentication
+  - session과 passport를 사용한 federation login을 사용하기 위한 기능들이 들어있다.
 - cache
-- image
+  - etag를 사용한 http캐싱을 사용하기 위한 기능들이 들어있다.
 - verify jwt
+  - jwt를 사용한 로컬로그인을 사용하기 위한 기능들이 들어있다.
 - others
   - cors
+    - 본 서버와 프론트엔드 서버가 통신하기 위해 cross-site http request를 응답할 수 있게 하기위한 설정이 들어있다.
   - helmet
+    - 본 서버를 보호하기 위한 http 헤더 설정이 들어있다.
   - json
+    - response body를 예쁘게 print하는 설정이 들어있다.
   - body parser
+    - request body의 parameter를 편하게 추출하는 설정이 들어있다.
   - logger
+    - 개발용 로거 설정이 들어있다.
 
 ### Routes
 
-```js
-// index.js
-const attribute = require('./attribute');
-router.use('/attribute', attribute.routes());
+- [라우트 모듈화](https://backend-intro.vlpt.us/1/04.html#%EB%9D%BC%EC%9A%B0%ED%8A%B8-%EB%AA%A8%EB%93%88%ED%99%94)에서 영감을 받아 객체로 상속하는 라우터구조를 만들었다.
+- 라우터 안에 컨트롤러를 같이 작성해넣었다.
+- `index.js`
 
-const rotuers = app => {
-  app.use(router.routes());
-  app.use(router.allowedMethods());
-};
+  ```js
+  const attribute = require('./attribute');
+  router.use('/attribute', attribute.routes());
 
-module.exports = rotuers;
-```
+  const rotuers = app => {
+    app.use(router.routes());
+    app.use(router.allowedMethods());
+  };
 
-```js
-// attribute/index.js
-const attributeCtrl = require('./attribute.controller');
-attribute.get('/', attributeCtrl.getAttributes);
+  module.exports = rotuers;
+  ```
 
-module.exports = attribute;
-```
+- `attribute/index.js`
 
-```js
-// attribute/attribute.controller.js
-exports.getAttributes = async ctx => {
-  try {
-    const data = await attribute.findAll();
-    ctx.body = successMessage('attributes', data);
-  } catch (e) {
-    ctx.status = 400;
-    ctx.body = errorMessage(e.message);
-  }
-};
-```
+  ```js
+  const attributeCtrl = require('./attribute.controller');
+  attribute.get('/', attributeCtrl.getAttributes);
 
-### Servers
+  module.exports = attribute;
+  ```
 
-```js
-// app.js
-const middlewares = require('./middleware');
-middlewares(app);
+- `attribute/attribute.controller.js`
 
-const routers = require('./routes');
-routers(app);
+  ```js
+  exports.getAttributes = async ctx => {
+    try {
+      const data = await attribute.findAll();
+      ctx.body = successMessage('attributes', data);
+    } catch (e) {
+      ctx.status = 400;
+      ctx.body = errorMessage(e.message);
+    }
+  };
+  ```
 
-const servers = require('./server');
-servers(app);
-```
+### Server
+
+- `app.js`
+
+  ```js
+  const middlewares = require('./middleware');
+  middlewares(app);
+
+  const routers = require('./routes');
+  routers(app);
+
+  const servers = require('./server');
+  servers(app);
+  ```
 
 ### Database
+
+[![](https://res.cloudinary.com/yangeok/image/upload/v1562823903/turing/turing_model-1.jpg)](https://res.cloudinary.com/yangeok/image/upload/v1562823903/turing/turing_model-1.jpg)
 
 - sequelizerc file
   - `db`디렉토리 외에서도 `sequelize-cli`를 이용하기 위한 세팅
@@ -975,35 +1022,57 @@ module.exports = {
 
 - models
 
-```js
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const attribute = sequelize.define('attribute', {
-    attribute_id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
-    name: {
-      type: DataTypes.STRING(100)
-    }
-  });
-  attribute.associate = function(models) {
-    attribute.hasMany(models.attribute_value, {
-      foreignKey: 'attribute_id'
+  ```js
+  'use strict';
+  module.exports = (sequelize, DataTypes) => {
+    const model = sequelize.define('model', {
+      (...)
     });
+    model.associate = function(models) {
+      (...)
+    };
+    return model;
   };
-  return attribute;
-};
-```
+  ```
 
 - migrations
-  - migrating data
+
+  ```js
+  'use strict';
+  module.exports = {
+    up: (queryInterface, Sequelize) => {
+      return queryInterface.createTable('model', {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: Sequelize.INTEGER
+        },
+        (...)
+      });
+    },
+    down: (queryInterface, Sequelize) => {
+      return queryInterface.dropTable('model');
+    }
+  };
+  ```
+
 - seed data
   - generated mock data in `generator.js` file
+  - seeders에서 바로 사용가능한 중첩된 배열 형태를 하고 있다.
 - seeders
 
-  - populating data
+  ```js
+  'use strict';
+  const { attribute } = require('../seed-data');
 
-[![](https://res.cloudinary.com/yangeok/image/upload/v1558406432/portfolio/turing-db.jpg)](https://res.cloudinary.com/yangeok/image/upload/v1558406432/portfolio/turing-db.jpg)
+  module.exports = {
+    up: (queryInterface, Sequelize) => {
+      return queryInterface.bulkInsert('attribute', attribute);
+    },
+
+    down: (queryInterface, Sequelize) => {
+      return queryInterface.bulkDelete('attribute', null, {});
+    }
+  };
+  ```

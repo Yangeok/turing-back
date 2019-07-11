@@ -21,14 +21,7 @@ const getRandomIndex = arr => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-const concat = (x, y) => x.concat(y);
-const flatMap = (f, xs) => xs.map(f).reduce(concat, []);
-Array.prototype.flatMap = function(f) {
-  return flatMap(f, this);
-};
-
 module.exports = {
   createDatetime,
-  getRandomIndex,
-  flatMap
+  getRandomIndex
 };

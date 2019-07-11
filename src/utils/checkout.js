@@ -1,3 +1,5 @@
+const sendOrderConfirmation = require('./mailer');
+
 /**
  *
  * @param {*} ctx
@@ -44,7 +46,7 @@ exports.checkoutQuery = async (
       })
     )
     .then(async payment => {
-      // Mailer.sendOrderConfirmation(customerId, shippingCost, shippingType);
+      // sendOrderConfirmation(customerId, shippingCost, shippingType);
       await customer
         .findOne({
           where: {
