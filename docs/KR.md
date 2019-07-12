@@ -1,58 +1,58 @@
-# Turing-Backend ![](https://api.travis-ci.org/Yangeok/turing-back.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Yangeok/turing-back/badge.svg?branch=master)](https://coveralls.io/github/Yangeok/turing-back?branch=master)
+# 튜링-백엔드 ![](https://api.travis-ci.org/Yangeok/turing-back.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Yangeok/turing-back/badge.svg?branch=master)](https://coveralls.io/github/Yangeok/turing-back?branch=master)
 
-## Contents
+## 목차
 
-- Language
-  - [English](../README.md)
-  - [Korean(한국어)](#)
-- [Installation](#Installation)
-- [Running test](#Running-test)
-- [Endpoints](#Endpoints)
-  - [Departments](#Departments)
-  - [Categories](#Categories)
-  - [Attributes](#Attributes)
-  - [Products](#Products)
-  - [Customers](#Customers)
-  - [Orders](#Orders)
-  - [Tax](#Tax)
-  - [Shipping](#Shipping)
-  - [Payment](#Payment)
-  - [Shopping cart](#Shopping-cart)
-- [Architecture](#Architecture)
-  - [Directory structure](#Directory-structure)
-  - [Utilities](#Utilities)
-  - [Middlewares](#Middlewares)
-  - [Routes](#Routes)
-  - [Server](#Server)
-  - [Database](#Database)
+- 언어
+  - [영어(English)](../README.md)
+  - [한국어](#)
+- [설치](#설치)
+- [테스트](#테스트)
+- [엔드포인트](#엔드포인트)
+  - [부문](#부문)
+  - [카테고리](#카테고리)
+  - [상품 옵션](#상품-옵션)
+  - [상품](#상품)
+  - [사용자](#사용자)
+  - [주문](#주문)
+  - [세금](#세금)
+  - [배송](#배송)
+  - [결제](#결제)
+  - [카트](#카트)
+- [아키텍쳐](#아키텍쳐)
+  - [디렉토리 구조](#디렉토리-구조)
+  - [유틸리티](#유틸리티)
+  - [미들웨어](#미들웨어)
+  - [라우터](#라우터)
+  - [서버](#서버)
+  - [데이터베이스](#데이터베이스)
 
-## Installation
+## 설치
 
-- Ensure [Node.js](https://nodejs.org/en/), [MySQL](https://www.mysql.com/downloads/) are installed.
-- Clone this [repository](https://github.com/Yangeok/turing-back).
-- Navigate to the project directory `cd turing-back`.
-- Run `yarn` on the terminal to install dependencies.
-- Change the filename `.env.example` to `.env` in your root directory and write variables with facebook app info and stripe.
-- Create MySQL database `yarn db:create`.
-- Run migrations `yarn migrate`.
-- Generate mock data to seed to dabase `cd src/utils && node generator && yarn seed`.
-- Start server `yarn start` to connect to production mode or `yarn start:dev` to development.
+- [Node.js](https://nodejs.org/en/), [MySQL](https://www.mysql.com/downloads/)가 설치되어 있어야합니다.
+- [저장소](https://github.com/Yangeok/turing-back)를 클론하세요.
+- `cd turing-back`를 통해 프로젝트 디렉토리로 이동하세요.
+- 터미널에서 의존성 모듈을 `yarn`을 통해 설치하세요.
+- 루트 디렉토리에 있는 `.env.example`을 `.env`으로 파일명을 변경하고 페이스북 앱과 스트라이프에 관한 변수를 입력하세요.
+- `yarn db:create`을 통해 MySQL 데이터베이스를 만드세요.
+- `yarn migrate`을 통해 테이블 마이그레이션을 하세요.
+- `cd src/utils && node generator && yarn seed`을 통해 페이크데이터를 생성하고 데이터 마이그레이션을 하세요.
+- `yarn start`을 통해 배포모드로 서버를 실행하거나 `yarn start:dev`로 개발모드로 실행하세요.
 
-## Running test
+## 테스트
 
 - `yarn coveralls`
-- Run the command `yarn test` to run the test
+- `yarn test`을 통해 테스트를 하세요.
 
-## Endpoints
+## 엔드포인트
 
-### Departments
+### 부문
 
 - `GET /department`
 
-  - Returns a departments object.
-  - No authentication required.
-  - No parameters required.
-  - Example response
+  - departments 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 파라미터가 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -66,9 +66,9 @@
 
 - `GET /department/:id`
 
-  - Returns a department object by department ID.
-  - No authentication required.
-  - Example response
+  - department ID별 department 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -78,17 +78,17 @@
   }
   ```
 
-### Categories
+### 카테고리
 
 - `GET /category`
 
-  - Returns a categories object.
-  - No authentication required.
-  - Query parameters
-    - Sorting a field. Allowed fields are 'category_id', 'name' `?order=French`
-    - Informing the page and starting with 1. (default: 1) `?page=1`
-    - Limit per page. (default: 20) `?limit=20`
-  - Example response
+  - categories 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 쿼리 파라미터
+    - 'category_id', 'name' 필드로 객체를 정렬합니다 `?order=French`
+    - 페이지를 알려주고 1로 시작합니다. (기본값: 1) `?page=1`
+    - 페이지당 리미트. (기본값: 20) `?limit=20`
+  - 예제 응답
 
   ```json
   {
@@ -106,9 +106,9 @@
 
 - `GET /category/:id`
 
-  - Returns a category object by category ID.
-  - No authentication required.
-  - Example response
+  - category ID별 category 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -121,9 +121,9 @@
 
 - `GET /category/product/:id`
 
-  - Returns a categories object by product ID.
-  - No authentication required.
-  - Example response
+  - product ID별 categories 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -137,9 +137,9 @@
 
 - `GET /category/department/:id`
 
-  - Returns a categories object by department ID.
-  - No authentication required.
-  - Example response
+  - department ID별 categories 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -152,13 +152,14 @@
   ]
   ```
 
-### Attributes
+### 상품 옵션
 
 - `GET /attribute`
 
-  - Returns a attributes object.
-  - No authentication required.
-  - Example response
+  - attributes 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 파라미터가 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -171,9 +172,9 @@
 
 - `GET /attribute/:id`
 
-  - Returns a attributes object by attribute ID.
-  - No authentication required.
-  - Example response
+  - attribute ID별 attributes 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -186,9 +187,9 @@
 
 - `GET /attribute/value/:id`
 
-  - Returns a attribute values object by attribute ID.
-  - No authentication required.
-  - Example response
+  - attribute ID별 attribute values 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -201,9 +202,9 @@
 
 - `GET /attribute/product/:id`
 
-  - Returns a attributes object by product ID.
-  - No authentication required.
-  - Example response
+  - product ID별 attributes 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -215,17 +216,18 @@
   ]
   ```
 
-### Products
+### 상품
 
 - `GET /product`
 
-  - Returns a products object.
-  - No authentication required.
-  - Query parameters
-    - Inform the page and starting with 1. (default: 1) `?page=1`
-    - Limit per page. (default: 20) `?limit=20`
-    - Limit of the description. (default: 200) `?description_length=200`
-  - Example response
+  - products 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 파라미터가 필요하지 않습니다.
+  - 쿼리 파라미터
+    - 페이지를 알려주고 1로 시작합니다. (기본값: 1) `?page=1`
+    - 페이지당 리미트. (기본값: 20) `?limit=20`
+    - 설명 글자 리미트. (기본값: 200) `?description_length=200`
+  - 예제 응답
 
   ```json
   "count": 101,
@@ -243,14 +245,14 @@
 
 - `GET /product/search`
 
-  - Returns a retrieved product object.
-  - No authentication required.
-  - Query parameters
-    - Query to search. `?query_string=French`
-    - Inform the page and starting with 1. (default: 1) `?page=1`
-    - Limit per page. (default: 20) `?limit=20`
-    - Limit of the description. (default: 200) `?description_length=200`
-  - Example response
+  - 검색된 product 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 쿼리 파라미터
+    - 검색 쿼리. `?query_string=French`
+    - 페이지를 알려주고 1로 시작합니다. (기본값: 1) `?page=1`
+    - 페이지당 리미트. (기본값: 20) `?limit=20`
+    - 설명 글자 리미트. (기본값: 200) `?description_length=200`
+  - 예제 응답
 
   ```json
   {
@@ -270,9 +272,9 @@
 
 - `GET /product/:id`
 
-  - Returns a product object by product ID.
-  - No authentication required.
-  - Example response
+  - product ID별 product 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -290,13 +292,13 @@
 
 - `GET /product/category/:id`
 
-  - Returns a products object by category ID.
-  - No authentication required.
-  - Query parameters
-    - Inform the page and starting with 1. (default: 1) `?page=1`
-    - Limit per page. (default: 20) `?limit=20`
-    - Limit of the description. (default: 200) `?description_length=200`
-  - Example response
+  - category ID별 products 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 쿼리 파라미터
+    - 페이지를 알려주고 1로 시작합니다. (기본값: 1) `?page=1`
+    - 페이지당 리미트. (기본값: 20) `?limit=20`
+    - 설명 글자 리미트. (기본값: 200) `?description_length=200`
+  - 예제 응답
 
   ```json
   {
@@ -316,13 +318,13 @@
 
 - `GET /product/department/:id`
 
-  - Returns a products object by department ID.
-  - No authentication required.
-  - Query parameters
-    - Inform the page and starting with 1. (default: 1) `?page=1`
-    - Limit per page. (default: 20) `?limit=20`
-    - Limit of the description. (default: 200) `?description_length=200`
-  - Example response
+  - department ID별 products 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 쿼리 파라미터
+    - 페이지를 알려주고 1로 시작합니다. (기본값: 1) `?page=1`
+    - 페이지당 리미트. (기본값: 20) `?limit=20`
+    - 설명 글자 리미트. (기본값: 200) `?description_length=200`
+  - 예제 응답
 
   ```json
   {
@@ -342,9 +344,9 @@
 
 - `GET /product/:id/detail`
 
-  - Returns a product details object by product ID.
-  - No authentication required.
-  - Example response
+  - product ID별 product details 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -360,9 +362,9 @@
 
 - `GET /product/:id/location`
 
-  - Returns a product locations object by product ID.
-  - No authentication required.
-  - Example response
+  - product ID별 product locations 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -375,9 +377,9 @@
 
 - `GET /product/:id/review`
 
-  - Returns a product reviews object by product ID.
-  - No authentication required.
-  - Example response
+  - product ID별 product reviews 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -392,11 +394,10 @@
 
 - `POST /product/:id/review`
 
-  - Returns a created product review object.
-  - Authentication required.
-  - Required fields: `comment`, `rating`
-  - Authentication required.
-  - Example response
+  - 생성된 product review 객체를 반환합니다.
+  - 필수 입력사항: `comment`, `rating`
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -407,14 +408,14 @@
   }
   ```
 
-### Customers
+### 사용자
 
 - `PUT /customer`
 
-  - Returns a updated customer object.
-  - Required fields: `name`, `email`, `password`, `day_phone`, `eve_phone`, `mob_phone`, `credit_card`, `address_1`, `address_2`, `city`, `region`, `postal_code`, `country`, `shipping_region_id`
-  - Authentication required.
-  - Example response
+  - 업데이트된 customer 객체를 반환합니다.
+  - 필수 입력사항: `name`, `email`, `password`, `day_phone`, `eve_phone`, `mob_phone`, `credit_card`, `address_1`, `address_2`, `city`, `region`, `postal_code`, `country`, `shipping_region_id`
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -437,9 +438,9 @@
 
 - `GET /customer`
 
-  - Returns a customer object by token.
-  - Authentication required.
-  - Example response
+  - 토큰별 customer 객체를 반환합니다.
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -462,11 +463,11 @@
 
 - `POST /customer`
 
-  - Registers a customer.
-  - Returns a created customer object.
-  - Required fields: `name`, `email`, `password`
-  - No authentication required.
-  - Example response
+  - 사용자를 등록합니다.
+  - 생성된 customer 객체를 반환합니다.
+  - 필수 입력사항: `name`, `email`, `password`
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -478,10 +479,10 @@
 
 - `POST /customer/login`
 
-  - Returns a jwt token.
-  - Required fields: `email`, `password`
-  - No authentication required.
-  - Example response
+  - jwt 토큰을 반환합니다.
+  - 필수 입력사항: `email`, `password`
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -491,21 +492,22 @@
 
 - `POST /customer/facebook`
 
-  - Redirect to `/customer/facebook/callback/`.
-  - Required fields: `access_token`
-  - No authentication required.
+  - `/customer/facebook/callback/`로 리디렉트합니다.
+  - 필수 입력사항: `access_token`
+  - 인증이 필요하지 않습니다.
 
 - `GET /customer/facebook/callback`
 
-  - Redirects to root on success or `/customer/login` on failure.
-  - No authentication required.
+  - 성공시 루트페이지로 실패시 `/customer/login`로 리디렉트합니다.
+  - 인증이 필요하지 않습니다.
+  - 파라미터가 필요하지 않습니다.
 
 - `PUT /customer/address`
 
-  - Returns a updated customer object.
-  - Required fields: `address_1`, `address_2`, `city`, `region`, `postal_code`, `country`, `shipping_region_id`
-  - Authentication required.
-  - Example response
+  - 업데이트된 customer 객체를 반환합니다.
+  - 필수 입력사항: `address_1`, `address_2`, `city`, `region`, `postal_code`, `country`, `shipping_region_id`
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -521,10 +523,10 @@
 
 - `PUT /customer/credit-card`
 
-  - Returns a updated customer object.
+  - 업데이트된 customer 객체를 반환합니다.
   - Required field: `credit_card`
-  - Authentication required.
-  - Example response
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -532,14 +534,14 @@
   }
   ```
 
-### Orders
+### 주문
 
 - `POST /order`
 
-  - Returns a created order object.
-  - Required fields: `shipping_id`, `tax_id`
-  - Authentication required.
-  - Example response
+  - 생성된 order 객체를 반환합니다.
+  - 필수 입력사항: `shipping_id`, `tax_id`
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -551,9 +553,9 @@
 
 - `GET /order/:id`
 
-  - Returns a order object by order ID.
-  - Authentication required.
-  - Example response
+  - order ID별 a order 객체를 반환합니다.
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -568,9 +570,9 @@
 
 - `GET /order/customer`
 
-  - Returns a orders object by token.
-  - Authentication required.
-  - Example response
+  - 토큰별 orders 객체를 반환합니다.
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -590,9 +592,9 @@
 
 - `GET /order/detail/:id`
 
-  - Returns a order details object by order ID.
-  - Authentication required.
-  - Example response
+  - order ID별 order details 객체를 반환합니다.
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   {
@@ -610,13 +612,14 @@
   }
   ```
 
-### Shopping cart
+### 카트
 
 - `GET /cart/gen-id`
 
-  - Returns a created cart object.
-  - No authentication required.
-  - Example response
+  - 생성된 cart 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 파라미터가 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -628,10 +631,10 @@
 
 - `POST /cart/add`
 
-  - Returns a created carts object.
-  - Required fields: `cart_id`, `product_id`, `attributes`
-  - No authentication required.
-  - Example response
+  - 생성된 carts 객체를 반환합니다.
+  - 필수 입력사항: `cart_id`, `product_id`, `attributes`
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -655,9 +658,9 @@
 
 - `GET /cart/:id`
 
-  - Returns a carts object by cart ID.
-  - No authentication required.
-  - Example response
+  - cart ID별 carts 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -681,10 +684,10 @@
 
 - `PUT /cart/update/:id`
 
-  - Returns a updated cart object by item ID.
+  - item ID별 업데이트된 cart 객체를 반환합니다.
   - Required field: `quantity`
-  - No authentication required.
-  - Example response
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -705,10 +708,10 @@
 
 - `DELETE /cart/delete/:id`
 
-  - Deletes a cart object by cart ID.
-  - Returns true on success or error on failure.
-  - No authentication required.
-  - Example response
+  - cart ID별 cart를 삭제합니다.
+  - 성공시 true를 실패시 error를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   "successfully deleted cart"
@@ -716,9 +719,9 @@
 
 - `GET /cart/move-to-cart/:id`
 
-  - Returns a moved cart object by item ID.
-  - No authentication required.
-  - Example response
+  - item ID별 옮겨진 cart 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -735,9 +738,9 @@
 
 - `GET /cart/total-amount/:id`
 
-  - Returns a cart object by cart ID.
-  - No authentication required.
-  - Example response
+  - cart ID별 cart 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -748,9 +751,9 @@
 
 - `GET /cart/save-for-later/:id`
 
-  - Returns a cart object by item ID.
-  - No authentication required.
-  - Example response
+  - item ID별 cart 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -767,9 +770,9 @@
 
 - `GET /cart/get-saved/:id`
 
-  - Returns a carts object by cart ID.
-  - No authentication required.
-  - Example response
+  - cart ID별 carts 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -787,22 +790,23 @@
 
 - `DELETE /cart/remove-product/:id`
 
-  - Deletes a cart object by item ID.
-  - Returns true on success or error on failure.
-  - No authentication required.
-  - Example response
+  - item ID별 cart를 삭제합니다.
+  - 성공시 true를 실패시 error를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   "successfully deleted product"
   ```
 
-### Tax
+### 세금
 
 - `GET /tax`
 
-  - Returns a taxes object
-  - No authentication required.
-  - Example response
+  - taxes 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 파라미터가 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -816,9 +820,9 @@
 
 - `GET /tax/:id`
 
-  - Returns a tax object by tax ID.
-  - No authentication required.
-  - Example response
+  - tax ID별 tax 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -828,13 +832,14 @@
   }
   ```
 
-### Shipping
+### 배송
 
 - `GET /shipping/region`
 
-  - Returns a shipping regions object.
-  - No authentication required.
-  - Example response
+  - shipping regions 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 파라미터가 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   [
@@ -847,9 +852,9 @@
 
 - `GET /shipping/region/:id`
 
-  - Returns a shipping region objec by shopping region ID.
-  - No authentication required.
-  - Example response
+  - shopping region ID별 shipping region 객체를 반환합니다.
+  - 인증이 필요하지 않습니다.
+  - 예제 응답
 
   ```json
   {
@@ -858,15 +863,15 @@
   }
   ```
 
-### Payment
+### 결제
 
 - `POST /payment/charge`
 
-  - Receives a front-end payment and create a charge.
-  - To get a return value, `stripeToken` should be entered as`tok_visa`.
-  - Required fields: `stripeToken`, `stripeEmail`, `shippingId`, `currency`
-  - Authentication required.
-  - Example response
+  - 프론트엔드에서 결제를 받고 처리합니다.
+  - Stripe 테스트 모드에서 리턴값을 받기 위해서는 `stripeToken` 값은 `tok_visa`로 입력해주어야 합니다.
+  - 필수 입력사항: `stripeToken`, `stripeEmail`, `shippingId`, `currency`
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   "successfully completed payment"
@@ -874,18 +879,18 @@
 
 - `POST /payment/webhook`
 
-  - Returns the webhook endpoint object with the secret field populated.
-  - Provides a synchronization with front-end.
-  - Authentication required.
-  - Example response
+  - 비밀 객체로 된 웹훅 엔드포인트 객체를 반환합니다.
+  - 프론트엔드와의 동기화를 제공합니다.
+  - 인증이 필요합니다.
+  - 예제 응답
 
   ```json
   "successfully webhooks received"
   ```
 
-## Architecture
+## 아키텍쳐
 
-### Directory structure
+### 디렉토리 구조
 
 - assets
   - 가공되지 않은 데이터들과 이미지 파일이 있는 디렉토리입니다.
@@ -898,10 +903,10 @@
 - utils
   - 헬퍼 함수들이 있는 디렉토리입니다.
 
-### Utilities
+### 유틸리티
 
 - checkout
-  - stripe 결제를 하는 함수가 있습니다.
+  - 스트라이프 결제를 하는 함수가 있습니다.
 - env
   - 포트, 호스트명을 관리하는 파일입니다.
 - facebook
@@ -914,17 +919,17 @@
 - jwt
   - jwt를 생성, 검증하기 위해 필요한 함수가 있습니다.
 - mailer
-  - stripe 결제가 끝나면 메일링을 하기 위한 함수가 있습니다.
+  - 스트라이프 결제가 끝나면 메일링을 하기 위한 함수가 있습니다.
 - response
   - 에러 처리를 하기 위한 함수가 있습니다.
 - validation
   - 사용자 정보를 검증하기 위한 함수가 있습니다.
 - webhook
-  - stripe 계정에 일어난 이벤트를 알려주는 웹훅 함수가 있습니다.
-    - 결제청구나 환불같은 stripe 요청 결과를 동기적으로 만들어낼 수 있습니다.
+  - 스트라이프 계정에 일어난 이벤트를 알려주는 웹훅 함수가 있습니다.
+    - 결제청구나 환불같은 스트라이프 요청 결과를 동기적으로 만들어낼 수 있습니다.
     - 별도의 검증과정은 요청하지 않습니다.
 
-### Middlewares
+### 미들웨어
 
 - authentication
   - [session](https://www.npmjs.com/package/koa-session)과 [passport](https://www.npmjs.com/package/koa-passport)를 사용한 타사 로그인을 사용하기 위한 기능들이 있습니다.
@@ -944,7 +949,7 @@
   - [logger](https://www.npmjs.com/package/koa-logger)
     - 개발용 로거 설정이 있습니다.
 
-### Routes
+### 라우터
 
 - [라우트 모듈화](https://backend-intro.vlpt.us/1/04.html#%EB%9D%BC%EC%9A%B0%ED%8A%B8-%EB%AA%A8%EB%93%88%ED%99%94)에서 영감을 받아 객체로 상속하는 라우터구조를 만들었습니다. 라우터 안에 컨트롤러를 같이 작성했습니다.
 
@@ -985,7 +990,7 @@
   };
   ```
 
-### Server
+### 서버
 
 - app.js
 
@@ -1000,7 +1005,7 @@
   servers(app);
   ```
 
-### Database
+### 데이터베이스
 
 [![](https://res.cloudinary.com/yangeok/image/upload/v1562823903/turing/turing_model-1.jpg)](https://res.cloudinary.com/yangeok/image/upload/v1562823903/turing/turing_model-1.jpg)
 

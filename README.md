@@ -32,7 +32,7 @@
 - Clone this [repository](https://github.com/Yangeok/turing-back).
 - Navigate to the project directory `cd turing-back`.
 - Run `yarn` on the terminal to install dependencies.
-- Change the filename `.env.example` to `.env` in your root directory and write variables with facebook app info and stripe.
+- Change the filename `.env.example` to `.env` in your root directory and write variables with Facebook app info and Stripe.
 - Create MySQL database `yarn db:create`.
 - Run migrations `yarn migrate`.
 - Generate mock data to seed to dabase `cd src/utils && node generator && yarn seed`.
@@ -158,6 +158,7 @@
 
   - Returns a attributes object.
   - No authentication required.
+  - No parameters required.
   - Example response
 
   ```json
@@ -221,6 +222,7 @@
 
   - Returns a products object.
   - No authentication required.
+  - No parameters required.
   - Query parameters
     - Inform the page and starting with 1. (default: 1) `?page=1`
     - Limit per page. (default: 20) `?limit=20`
@@ -393,7 +395,6 @@
 - `POST /product/:id/review`
 
   - Returns a created product review object.
-  - Authentication required.
   - Required fields: `comment`, `rating`
   - Authentication required.
   - Example response
@@ -491,7 +492,7 @@
 
 - `POST /customer/facebook`
 
-  - Redirect to `/customer/facebook/callback/`.
+  - Redirect So `/customer/facebook/callback/`.
   - Required fields: `access_token`
   - No authentication required.
 
@@ -499,6 +500,7 @@
 
   - Redirects to root on success or `/customer/login` on failure.
   - No authentication required.
+  - No parameters required.
 
 - `PUT /customer/address`
 
@@ -616,6 +618,7 @@
 
   - Returns a created cart object.
   - No authentication required.
+  - No parameters required.
   - Example response
 
   ```json
@@ -705,7 +708,7 @@
 
 - `DELETE /cart/delete/:id`
 
-  - Deletes a cart object by cart ID.
+  - Deletes a cart by cart ID.
   - Returns true on success or error on failure.
   - No authentication required.
   - Example response
@@ -787,7 +790,7 @@
 
 - `DELETE /cart/remove-product/:id`
 
-  - Deletes a cart object by item ID.
+  - Deletes a cart by item ID.
   - Returns true on success or error on failure.
   - No authentication required.
   - Example response
@@ -800,8 +803,9 @@
 
 - `GET /tax`
 
-  - Returns a taxes object
+  - Returns a taxes object.
   - No authentication required.
+  - No parameters required.
   - Example response
 
   ```json
@@ -834,6 +838,7 @@
 
   - Returns a shipping regions object.
   - No authentication required.
+  - No parameters required.
   - Example response
 
   ```json
@@ -847,7 +852,7 @@
 
 - `GET /shipping/region/:id`
 
-  - Returns a shipping region objec by shopping region ID.
+  - Returns a shipping region object by shopping region ID.
   - No authentication required.
   - Example response
 
@@ -863,7 +868,7 @@
 - `POST /payment/charge`
 
   - Receives a front-end payment and create a charge.
-  - To get a return value, `stripeToken` should be entered as`tok_visa`.
+  - To get a return value, `stripeToken` should be entered as `tok_visa`.
   - Required fields: `stripeToken`, `stripeEmail`, `shippingId`, `currency`
   - Authentication required.
   - Example response
@@ -901,11 +906,11 @@
 ### Utilities
 
 - checkout
-  - contains a stripe payment function.
+  - contains a Stripe payment function.
 - env
   - contains settings for managing port, hostname.
 - facebook
-  - contains settings for facebook login.
+  - contains settings for Facebook login.
 - generator
   - contains functions for creating mock-data.
   - when you run the file, the function automatically runs and creates mock-data in `db/seed-data/`.
@@ -914,14 +919,14 @@
 - jwt
   - contains functions needed to create and validate jwt.
 - mailer
-  - contains functions for mailing when stripe payment is successful.
+  - contains functions for mailing when Stripe payment is successful.
 - response
   - contains functions for error handling.
 - validation
   - contains functions for verifying customer information.
 - webhook
-  - contains a web hook function that tells you what happened in the stripe account.
-    - can create synchronous results for stripe requests, such as charges or refunds.
+  - contains a web hook function that tells you what happened in the Stripe account.
+    - can create synchronous results for Stripe requests, such as charges or refunds.
     - do not requires a verification process.
 
 ### Middlewares
