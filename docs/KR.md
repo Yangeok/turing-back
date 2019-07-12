@@ -2,6 +2,9 @@
 
 ## Contents
 
+- Language
+  - [English](../README.md)
+  - [Korean(한국어)](#)
 - [Installation](#Installation)
 - [Running test](#Running-test)
 - [Endpoints](#Endpoints)
@@ -885,60 +888,61 @@
 ### Directory structure
 
 - assets
-  - 가공되지 않은 데이터들과 이미지 파일이 있는 디렉토리이다.
+  - 가공되지 않은 데이터들과 이미지 파일이 있는 디렉토리입니다.
 - db
-  - mysql을 바인딩시켜주는 orm sequelize 설정과 모델 및 mock-data가 있는 디렉토리이다.
+  - mysql을 바인딩시켜주는 orm sequelize 설정과 모델 및 페이크 데이터가 있는 디렉토리입니다.
 - middleware
-  - koa서버에서 사용하는 미들우에어가 있는 디렉토리이다.
+  - koa서버에서 사용하는 미들웨어가 있는 디렉토리입니다.
 - routes
-  - 라우터들이 들어있는 디렉토리이다.
+  - 라우터가 있는 디렉토리입니다.
 - utils
-  - 헬퍼함수들이 들어있는 디렉토리이다.
+  - 헬퍼 함수들이 있는 디렉토리입니다.
 
 ### Utilities
 
 - checkout
-  - stirpe payment를 하는 함수가 들어있다.
+  - stripe 결제를 하는 함수가 있습니다.
 - env
-  - port, hostname을 관리하는 파일이다.
+  - 포트, 호스트명을 관리하는 파일입니다.
 - facebook
-  - facebook login을 하기위한 설정이 들어있다.
+  - 페이스북 로그인을 하기위한 설정이 있습니다.
 - generator
-  - mock-data를 만들기 위한 함수가 들어있다.
-  - 파일을 실행하면 함수가 자동으로 실행되 mock-data가 `db/seed-data/`에 생성된다.
+  - 페이크 데이터를 만들기 위한 함수가 있습니다.
+  - 파일을 실행하면 함수가 자동으로 실행되 mock-data가 `db/seed-data/`에 생성됩니다.
 - helper
-  - `generator.js`에서 데이터를 생성할때 사용하는 함수가 들어있다.
+  - `generator.js`에서 데이터를 생성할때 사용하는 함수가 있습니다.
 - jwt
-  - jwt를 생성, 검증하기 위해 필요한 함수가 들어있다.
+  - jwt를 생성, 검증하기 위해 필요한 함수가 있습니다.
 - mailer
-  - stripe payment가 끝나면 메일링을 하기 위한 함수가 들어있다.
+  - stripe 결제가 끝나면 메일링을 하기 위한 함수가 있습니다.
 - response
-  - error handling을 하기 위한 함수가 들어있다.
+  - 에러 처리를 하기 위한 함수가 있습니다.
 - validation
-  - customer 정보를 검증하기 위한 함수가 들어있다.
+  - 사용자 정보를 검증하기 위한 함수가 있습니다.
 - webhook
-  - stripe account에 일어난 event를 알려주는 웹훅 함수가 들어있다.
-  - [Using Webhooks](https://stripe.com/docs/webhooks) 참고해서 더 작성하기
+  - stripe 계정에 일어난 이벤트를 알려주는 웹훅 함수가 있습니다.
+    - 결제청구나 환불같은 stripe 요청 결과를 동기적으로 만들어낼 수 있습니다.
+    - 별도의 검증과정은 요청하지 않습니다.
 
 ### Middlewares
 
 - authentication
-  - session과 passport를 사용한 federation login을 사용하기 위한 기능들이 들어있다.
+  - [session](https://www.npmjs.com/package/koa-session)과 [passport](https://www.npmjs.com/package/koa-passport)를 사용한 타사 로그인을 사용하기 위한 기능들이 있습니다.
 - cache
-  - etag를 사용한 http캐싱을 사용하기 위한 기능들이 들어있다.
+  - [etag](https://www.npmjs.com/package/koa-etag)를 사용한 http캐싱을 사용하기 위한 기능들이 있습니다.
 - verify jwt
-  - jwt를 사용한 로컬로그인을 사용하기 위한 기능들이 들어있다.
+  - [jwt](https://www.npmjs.com/package/jsonwebtoken)를 사용한 로컬 로그인을 사용하기 위한 기능들이 있습니다.
 - others
-  - cors
-    - 본 서버와 프론트엔드 서버가 통신하기 위해 cross-site http request를 응답할 수 있게 하기위한 설정이 들어있다.
-  - helmet
-    - 본 서버를 보호하기 위한 http 헤더 설정이 들어있다.
-  - json
-    - response body를 예쁘게 print하는 설정이 들어있다.
-  - body parser
-    - request body의 parameter를 편하게 추출하는 설정이 들어있다.
-  - logger
-    - 개발용 로거 설정이 들어있습니다.
+  - [cors](https://www.npmjs.com/package/koa2-cors)
+    - 본 서버와 프론트엔드 서버가 통신하기 위해 크로스사이트 http 요청에 응답할 수 있게 하기위한 설정이 있습니다.
+  - [helmet](https://www.npmjs.com/package/koa-helmet)
+    - 본 서버를 보호하기 위한 http 헤더 설정이 있습니다.
+  - [json](https://www.npmjs.com/package/koa-json)
+    - response body를 예쁘게 출력하는 설정이 있습니다.
+  - [body parser](https://www.npmjs.com/package/koa-body)
+    - request body의 파라미터를 편하게 추출하는 설정이 있습니다.
+  - [logger](https://www.npmjs.com/package/koa-logger)
+    - 개발용 로거 설정이 있습니다.
 
 ### Routes
 
@@ -1002,7 +1006,7 @@
 
 - sequelizerc file
 
-  - `db`디렉토리 외에서도 `sequelize-cli`를 이용한 command를 사용하기 위한 세팅입니다.
+  - `db`디렉토리 외에서도 `sequelize-cli`를 이용한 명령어를 사용하기 위한 세팅입니다.
 
   ```js
   const path = require('path');

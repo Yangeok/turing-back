@@ -2,6 +2,9 @@
 
 ## Contents
 
+- Language
+  - [English](#)
+  - [Korean(한국어)](./docs/KR.md)
 - [Installation](#Installation)
 - [Running test](#Running-test)
 - [Endpoints](#Endpoints)
@@ -885,59 +888,60 @@
 ### Directory structure
 
 - assets
-  - 가공되지 않은 데이터들과 이미지 파일이 있는 디렉토리이다.
+  - contains unrefined data and image files.
 - db
-  - mysql을 바인딩시켜주는 orm sequelize 설정과 모델 및 mock-data가 있는 디렉토리이다.
+  - contains the orm sequelize settings and model and mock-data to bind mysql.
 - middleware
-  - koa서버에서 사용하는 미들우에어가 있는 디렉토리이다.
+  - contains the middleware used by the koa server.
 - routes
-  - 라우터들이 들어있는 디렉토리이다.
+  - contains routers.
 - utils
-  - 헬퍼함수들이 들어있는 디렉토리이다.
+  - contains helper functions.
 
 ### Utilities
 
 - checkout
-  - stirpe payment를 하는 함수가 들어있다.
+  - contains a stripe payment function.
 - env
-  - port, hostname을 관리하는 파일이다.
+  - contains settings for managing port, hostname.
 - facebook
-  - facebook login을 하기위한 설정이 들어있다.
+  - contains settings for facebook login.
 - generator
-  - mock-data를 만들기 위한 함수가 들어있다.
-  - 파일을 실행하면 함수가 자동으로 실행되 mock-data가 `db/seed-data/`에 생성된다.
+  - contains functions for creating mock-data.
+  - when you run the file, the function automatically runs and creates mock-data in `db/seed-data/`.
 - helper
-  - `generator.js`에서 데이터를 생성할때 사용하는 함수가 들어있다.
+  - contains functions used to generate data from the `generator.js`.
 - jwt
-  - jwt를 생성, 검증하기 위해 필요한 함수가 들어있다.
+  - contains functions needed to create and validate jwt.
 - mailer
-  - stripe payment가 끝나면 메일링을 하기 위한 함수가 들어있다.
+  - contains functions for mailing when stripe payment is successful.
 - response
-  - error handling을 하기 위한 함수가 들어있다.
+  - contains functions for error handling.
 - validation
-  - customer 정보를 검증하기 위한 함수가 들어있다.
+  - contains functions for verifying customer information.
 - webhook
-  - stripe account에 일어난 event를 알려주는 웹훅 함수가 들어있다.
-  - [Using Webhooks](https://stripe.com/docs/webhooks) using webhooks를 참고해서 더 작성하기
+  - contains a web hook function that tells you what happened in the stripe account.
+    - can create synchronous results for stripe requests, such as charges or refunds.
+    - do not requires a verification process.
 
 ### Middlewares
 
 - authentication
-  - contains functions for using federation login with session and passport.
+  - contains functions for using federation login with [session](https://www.npmjs.com/package/koa-session) and [passport](https://www.npmjs.com/package/koa-passport).
 - cache
-  - contains functions for using http caching with etag.
+  - contains functions for using http caching with [etag](https://www.npmjs.com/package/koa-etag).
 - verify jwt
-  - contains functions for using local login using jwt.
+  - contains functions for using local login using [jwt](https://www.npmjs.com/package/jsonwebtoken).
 - others
-  - cors
+  - [cors](https://www.npmjs.com/package/koa2-cors)
     - contains settings to allow the server and the front-end server to respond to cross-site http requests to communicate.
-  - helmet
+  - [helmet](https://www.npmjs.com/package/koa-helmet)
     - contains http header settings to protect this server.
-  - json
+  - [json](https://www.npmjs.com/package/koa-json)
     - contains settings to print the response body pretty.
-  - body parser
+  - [body parser](https://www.npmjs.com/package/koa-body)
     - contains settings to easily extract the parameters of the request body.
-  - logger
+  - [logger](https://www.npmjs.com/package/koa-logger)
     - contains logger settings for development.
 
 ### Routes

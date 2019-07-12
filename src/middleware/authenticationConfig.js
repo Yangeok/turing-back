@@ -36,8 +36,8 @@ const facebook = new FacebookStrategy(
 );
 
 const authenticationConfig = app => {
-  // app.keys = [env.SESSION_SECRET];
-  // app.use(session({}, app));
+  app.keys = [env.SESSION_SECRET];
+  app.use(session({}, app));
   app.use(passport.initialize());
   app.use(passport.session());
 
