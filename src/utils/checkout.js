@@ -46,7 +46,7 @@ exports.checkoutQuery = async (
       })
     )
     .then(async payment => {
-      // sendOrderConfirmation(customerId, shippingCost, shippingType);
+      sendOrderConfirmation(customerId, shippingCost, shippingType);
       await customer
         .findOne({
           where: {
