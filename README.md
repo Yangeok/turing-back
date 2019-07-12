@@ -1073,15 +1073,15 @@
 
   ```js
   'use strict';
-  const { attribute } = require('../seed-data');
+  const { model } = require('../seed-data');
 
   module.exports = {
     up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('attribute', attribute);
+      return queryInterface.bulkInsert('model', model);
     },
 
     down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('attribute', null, {});
+      return queryInterface.bulkDelete('model', null, {});
     }
   };
   ```

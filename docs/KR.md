@@ -1066,20 +1066,20 @@
   ```
 
 - seed data
-  - [raw sql](https://github.com/zandoan/turing-backend/blob/master/database/tshirtshop.sql)에 있는 데이터는 복붙해서 `assets/mock-data.js`에 모았으며, 나머지 데이터는 [faker](https://www.npmjs.com/package/faker)를 통해 생성했습니다. 이 데이터를 모아서 `utils/generator.js`에서 실행하면 seeders에서 바로 사용가능한 중첩된 배열을 `db/seed-data/`에 파일단위로 생성합니다. 각각의 파일들을 `db/seeders/`에서 require해서 사용할 수 있습니다.
+  - [raw sql](https://github.com/zandoan/turing-backend/blob/master/database/tshirtshop.sql)에 있는 데이터는 복사해서 `assets/mock-data.js`에 모았으며, 나머지 데이터는 [faker](https://www.npmjs.com/package/faker)를 통해 생성했습니다. 이 데이터를 모아서 `utils/generator.js`에서 실행하면 seeders에서 바로 사용가능한 중첩된 배열을 `db/seed-data/`에 파일단위로 생성합니다. 각각의 파일들을 `db/seeders/`에서 require해서 사용할 수 있습니다.
 - seeders
 
   ```js
   'use strict';
-  const { attribute } = require('../seed-data');
+  const { model } = require('../seed-data');
 
   module.exports = {
     up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('attribute', attribute);
+      return queryInterface.bulkInsert('model', model);
     },
 
     down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('attribute', null, {});
+      return queryInterface.bulkDelete('model', null, {});
     }
   };
   ```
