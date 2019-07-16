@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  turing:
+    build: .
+    entrypoint:
+      - /usr/local/bin/app.sh
+    ports:
+      - '80:80'
