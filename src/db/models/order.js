@@ -42,7 +42,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       }
     },
-    { freezeTableName: true }
+    {
+      freezeTableName: true,
+      timestamps: false
+    }
   );
   orders.associate = function(models) {
     orders.belongsTo(models.shipping, {

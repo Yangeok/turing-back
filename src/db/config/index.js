@@ -6,10 +6,6 @@ const password = env.MYSQL_PASSWORD;
 const host = env.MYSQL_HOST;
 const dialect = env.MYSQL_DIALECT;
 const port = env.MYSQL_PORT;
-const define = {
-  freezeTableName: true,
-  timestamps: false
-};
 
 const development = {
   username,
@@ -18,7 +14,8 @@ const development = {
   host,
   dialect,
   port,
-  define
+  freezeTableName: true,
+  timestamps: false
 };
 
 const production = {
@@ -28,7 +25,9 @@ const production = {
   host,
   dialect,
   port,
-  define
+  freezeTableName: true,
+  timestamps: false,
+  logging: false
 };
 
 const test = {
@@ -38,7 +37,9 @@ const test = {
   host,
   dialect,
   port,
-  define
+  freezeTableName: true,
+  timestamps: false,
+  logging: false
 };
 
 module.exports = {

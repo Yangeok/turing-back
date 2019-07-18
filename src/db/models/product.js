@@ -42,7 +42,9 @@ module.exports = (sequelize, DataTypes) => {
           type: 'FULLTEXT',
           fields: ['name', 'description']
         }
-      ]
+      ],
+      tableName: 'product',
+      timestamps: false
     }
   );
   product.associate = function(models) {

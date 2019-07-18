@@ -12,3 +12,5 @@ routers(app);
 // Servers
 const servers = require('./server');
 servers(app);
+
+module.exports = app;
