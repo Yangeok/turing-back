@@ -44,11 +44,12 @@
     "sequelize-cli": "^5.4.0"
   },
   "scripts": {
-    "test:watch": "nodemon --exec cross-env NODE_ENV=test ./node_modules/.bin/mocha test/*.js -t 5000 -exit",
-    "test": "cross-env NODE_ENV=test ./node_modules/.bin/nyc ./node_modules/.bin/mocha test/*.js -t 5000 -exit && yarn coveralls",
+    "test:watch": "nodemon --exec cross-env NODE_ENV=test ./node_modules/.bin/mocha test/**/*.js -t 5000 -exit",
+    "test": "cross-env NODE_ENV=test ./node_modules/.bin/nyc ./node_modules/.bin/mocha test/**/*.js -t 5000 -exit && yarn coveralls",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "cross-env NODE_ENV=production ./node_modules/.bin/forever src/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon src/app.js",
+    "start:test": "cross-env NODE_ENV=test nodemon src/app.js",
     "db:generate": "sequelize model:generate",
     "db:create": "sequelize db:create",
     "db:migrate": "sequelize db:migrate --env production",
@@ -60,6 +61,8 @@
     "db:seed:test": "sequelize db:seed:all --env test",
     "db:seed:undo:test": "sequelize db:seed:undo:all --env test",
     "migrate": "yarn db:migrate:undo && yarn db:migrate",
-    "seed": "yarn db:seed:undo && yarn db:seed"
+    "migrate:test": "yarn db:migrate:undo:test && yarn db:migrate:test",
+    "seed": "yarn db:seed:undo && yarn db:seed",
+    "seed:test": "yarn db:seed:undo:test && yarn db:seed:test"
   }
 }

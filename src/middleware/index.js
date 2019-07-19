@@ -16,7 +16,7 @@ const middlewares = app => {
   app.use(json());
   cacheConfig(app);
   app.use(bodyParser());
-  app.use(logger());
+  process.env.NODE_ENV === 'test' || app.use(logger());
   verifyJwtConfig(app);
   authenticationConfig(app);
   imageConfig(app);

@@ -1,72 +1,13 @@
-// Testing library
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-chai.use(chaiHttp);
-const { request, expect } = require('chai');
+// // Testing library
+// const chai = require('chai');
+// const chaiHttp = require('chai-http');
+// chai.use(chaiHttp);
+// const { request, expect } = require('chai');
 
-// Server setting
-const { port } = require('../src/utils/env');
-const app = require('../src/app');
-const server = app.listen(port);
-
-// Units
-describe('GET /', () => {
-  it('returns root page', done => {
-    request(server)
-      .get('/')
-      .end((err, res) => {
-        expect(err).to.be.a.null;
-        expect(res).to.have.status(200);
-        done();
-      });
-  });
-});
-
-describe('Attribute', () => {
-  it('returns a attributes object', done => {
-    request(server)
-      .get('/attribute')
-      .end((err, res) => {
-        expect(err).to.be.a.null;
-        expect(res).to.have.status(200);
-        expect(res).to.be.an('object');
-        done();
-      });
-  });
-
-  it('returns a attributes object by attribute ID', done => {
-    request(server)
-      .get('/attribute/1')
-      .end((err, res) => {
-        expect(err).to.be.a.null;
-        expect(res).to.have.status(200);
-        expect(res).to.be.an('object');
-        done();
-      });
-  });
-
-  it('returns a attribute values object by attribute ID', done => {
-    request(server)
-      .get('/attribute/value/1')
-      .end((err, res) => {
-        expect(err).to.be.a.null;
-        expect(res).to.have.status(200);
-        // expect(res).to.be.an('object');
-        done();
-      });
-  });
-
-  it('returns a attributes object by product ID', done => {
-    request(server)
-      .get('/attribute/product/1')
-      .end((err, res) => {
-        expect(err).to.be.a.null;
-        expect(res).to.have.status(200);
-        // expect(res).to.be.an('object');
-        done();
-      });
-  });
-});
+// // Server setting
+// const { port } = require('../../src/utils/env');
+// const app = require('../../src/app');
+// const server = app.listen(port);
 
 // describe('Cart', () => {
 //   it('returns all cart', done => {
