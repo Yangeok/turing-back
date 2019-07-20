@@ -54,15 +54,15 @@
   - No parameters required.
   - Example response
 
-  ```json
-  [
-    {
-      "department_id": 1,
-      "name": "Regional",
-      "description": "Proud of your country? Wear a T-shirt with a national symbol stamp!"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "department_id": 1,
+        "name": "Regional",
+        "description": "Proud of your country? Wear a T-shirt with a national symbol stamp!"
+      }
+    ]
+    ```
 
 - `GET /department/:id`
 
@@ -70,13 +70,13 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "department_id": 1,
-    "name": "Regional",
-    "description": "Proud of your country? Wear a T-shirt with a national symbol stamp!"
-  }
-  ```
+    ```json
+    {
+      "department_id": 1,
+      "name": "Regional",
+      "description": "Proud of your country? Wear a T-shirt with a national symbol stamp!"
+    }
+    ```
 
 ### Categories
 
@@ -90,19 +90,19 @@
     - Limit per page. (default: 20) `?limit=20`
   - Example response
 
-  ```json
-  {
-    "count": 7,
-    "rows": [
-      {
-        "category_id": 1,
-        "name": "French",
-        "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
-        "department_id": 1
-      }
-    ]
-  }
-  ```
+    ```json
+    {
+      "count": 7,
+      "rows": [
+        {
+          "category_id": 1,
+          "name": "French",
+          "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
+          "department_id": 1
+        }
+      ]
+    }
+    ```
 
 - `GET /category/:id`
 
@@ -110,14 +110,14 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "category_id": 1,
-    "name": "French",
-    "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
-    "department_id": 1
-  }
-  ```
+    ```json
+    {
+      "category_id": 1,
+      "name": "French",
+      "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
+      "department_id": 1
+    }
+    ```
 
 - `GET /category/product/:id`
 
@@ -125,15 +125,15 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "category_id": 1,
-      "department_id": 1,
-      "name": "French"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "category_id": 1,
+        "department_id": 1,
+        "name": "French"
+      }
+    ]
+    ```
 
 - `GET /category/department/:id`
 
@@ -141,16 +141,16 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "category_id": 1,
-      "name": "French",
-      "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
-      "department_id": 1
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "category_id": 1,
+        "name": "French",
+        "description": "The French have always had an eye for beauty. One look at the T-shirts below and you'll see that same appreciation has been applied abundantly to their postage stamps. Below are some of our most beautiful and colorful T-shirts, so browse away! And don't forget to go all the way to the bottom - you don't want to miss any of them!",
+        "department_id": 1
+      }
+    ]
+    ```
 
 ### Attributes
 
@@ -161,14 +161,14 @@
   - No parameters required.
   - Example response
 
-  ```json
-  [
-    {
-      "attribute_id": 1,
-      "name": "Size"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "attribute_id": 1,
+        "name": "Size"
+      }
+    ]
+    ```
 
 - `GET /attribute/:id`
 
@@ -176,14 +176,14 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "attribute_id": 1,
-      "name": "Size"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "attribute_id": 1,
+        "name": "Size"
+      }
+    ]
+    ```
 
 - `GET /attribute/value/:id`
 
@@ -191,14 +191,14 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "attribute_value_id": 1,
-      "value": "S"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "attribute_value_id": 1,
+        "value": "S"
+      }
+    ]
+    ```
 
 - `GET /attribute/product/:id`
 
@@ -206,15 +206,15 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "attribute_name": "Color",
-      "attribute_value_id": 6,
-      "attribute_value": "White"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "attribute_name": "Color",
+        "attribute_value_id": 6,
+        "attribute_value": "White"
+      }
+    ]
+    ```
 
 ### Products
 
@@ -229,19 +229,19 @@
     - Limit of the description. (default: 200) `?description_length=200`
   - Example response
 
-  ```json
-  "count": 101,
-  "rows": [
-      {
-          "product_id": 1,
-          "name": "Arc d'Triomphe",
-          "description": "This beautiful and iconic T-shirt will no doubt lead you to your own triumph.",
-          "price": "14.99",
-          "discounted_price": "0.00",
-          "thumbnail": "arc-d-triomphe-thumbnail.gif"
-      }
-    ]
-  ```
+    ```json
+    "count": 101,
+    "rows": [
+        {
+            "product_id": 1,
+            "name": "Arc d'Triomphe",
+            "description": "This beautiful and iconic T-shirt will no doubt lead you to your own triumph.",
+            "price": "14.99",
+            "discounted_price": "0.00",
+            "thumbnail": "arc-d-triomphe-thumbnail.gif"
+        }
+      ]
+    ```
 
 - `GET /product/search`
 
@@ -254,21 +254,21 @@
     - Limit of the description. (default: 200) `?description_length=200`
   - Example response
 
-  ```json
-  {
-    "count": 101,
-    "rows": [
-      {
-        "product_id": 2,
-        "name": "Chartres Cathedral",
-        "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
-        "price": "16.95",
-        "discounted_price": "15.95",
-        "thumbnail": "chartres-cathedral-thumbnail.gif"
-      }
-    ]
-  }
-  ```
+    ```json
+    {
+      "count": 101,
+      "rows": [
+        {
+          "product_id": 2,
+          "name": "Chartres Cathedral",
+          "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+          "price": "16.95",
+          "discounted_price": "15.95",
+          "thumbnail": "chartres-cathedral-thumbnail.gif"
+        }
+      ]
+    }
+    ```
 
 - `GET /product/:id`
 
@@ -276,19 +276,19 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "product_id": 2,
-    "name": "Chartres Cathedral",
-    "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
-    "price": "16.95",
-    "discounted_price": "15.95",
-    "image": "chartres-cathedral.gif",
-    "image_2": "chartres-cathedral-2.gif",
-    "thumbnail": "chartres-cathedral-thumbnail.gif",
-    "display": 2
-  }
-  ```
+    ```json
+    {
+      "product_id": 2,
+      "name": "Chartres Cathedral",
+      "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+      "price": "16.95",
+      "discounted_price": "15.95",
+      "image": "chartres-cathedral.gif",
+      "image_2": "chartres-cathedral-2.gif",
+      "thumbnail": "chartres-cathedral-thumbnail.gif",
+      "display": 2
+    }
+    ```
 
 - `GET /product/category/:id`
 
@@ -300,21 +300,21 @@
     - Limit of the description. (default: 200) `?description_length=200`
   - Example response
 
-  ```json
-  {
-    "count": 101,
-    "rows": [
-      {
-        "product_id": 2,
-        "name": "Chartres Cathedral",
-        "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
-        "price": "16.95",
-        "discounted_price": "15.95",
-        "thumbnail": "chartres-cathedral-thumbnail.gif"
-      }
-    ]
-  }
-  ```
+    ```json
+    {
+      "count": 101,
+      "rows": [
+        {
+          "product_id": 2,
+          "name": "Chartres Cathedral",
+          "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+          "price": "16.95",
+          "discounted_price": "15.95",
+          "thumbnail": "chartres-cathedral-thumbnail.gif"
+        }
+      ]
+    }
+    ```
 
 - `GET /product/department/:id`
 
@@ -326,21 +326,21 @@
     - Limit of the description. (default: 200) `?description_length=200`
   - Example response
 
-  ```json
-  {
-    "count": 101,
-    "rows": [
-      {
-        "product_id": 2,
-        "name": "Chartres Cathedral",
-        "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
-        "price": "16.95",
-        "discounted_price": "15.95",
-        "thumbnail": "chartres-cathedral-thumbnail.gif"
-      }
-    ]
-  }
-  ```
+    ```json
+    {
+      "count": 101,
+      "rows": [
+        {
+          "product_id": 2,
+          "name": "Chartres Cathedral",
+          "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+          "price": "16.95",
+          "discounted_price": "15.95",
+          "thumbnail": "chartres-cathedral-thumbnail.gif"
+        }
+      ]
+    }
+    ```
 
 - `GET /product/:id/detail`
 
@@ -348,17 +348,17 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "product_id": 2,
-    "name": "Chartres Cathedral",
-    "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
-    "price": "16.95",
-    "discounted_price": "15.95",
-    "image": "chartres-cathedral.gif",
-    "image2": "chartres-cathedral2.gif"
-  }
-  ```
+    ```json
+    {
+      "product_id": 2,
+      "name": "Chartres Cathedral",
+      "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
+      "price": "16.95",
+      "discounted_price": "15.95",
+      "image": "chartres-cathedral.gif",
+      "image2": "chartres-cathedral2.gif"
+    }
+    ```
 
 - `GET /product/:id/location`
 
@@ -366,14 +366,14 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "category_id": 1,
-    "category_name": "French",
-    "department_id": 1,
-    "department_name": "Regional"
-  }
-  ```
+    ```json
+    {
+      "category_id": 1,
+      "category_name": "French",
+      "department_id": 1,
+      "department_name": "Regional"
+    }
+    ```
 
 - `GET /product/:id/review`
 
@@ -381,16 +381,16 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "name": "Eder Taveira",
-      "review": "That's a good product. The best for me.",
-      "rating": 5,
-      "created_on": "2019-02-17 13:57:29"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "name": "Eder Taveira",
+        "review": "That's a good product. The best for me.",
+        "rating": 5,
+        "created_on": "2019-02-17 13:57:29"
+      }
+    ]
+    ```
 
 - `POST /product/:id/review`
 
@@ -399,14 +399,14 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "name": "Eder Taveira",
-    "review": "That's a good product. The best for me.",
-    "rating": 5,
-    "created_on": "2019-02-17 13:57:29"
-  }
-  ```
+    ```json
+    {
+      "name": "Eder Taveira",
+      "review": "That's a good product. The best for me.",
+      "rating": 5,
+      "created_on": "2019-02-17 13:57:29"
+    }
+    ```
 
 ### Customers
 
@@ -417,24 +417,24 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "customer_id": 1,
-    "name": "Karlie Abshire",
-    "email": "Eva_Pfeffer@yahoo.com",
-    "address_1": "458 Tavares Extensions",
-    "address_2": "Apt. 026",
-    "city": "Tromptown",
-    "region": "ID",
-    "postal_code": "04707",
-    "country": "Afghanistan",
-    "shipping_region_id": 1,
-    "day_phone": "338-633-1760",
-    "eve_phone": "058-979-9247",
-    "mob_phone": "219-113-5933",
-    "credit_card": "7071123439818621"
-  }
-  ```
+    ```json
+    {
+      "customer_id": 1,
+      "name": "Karlie Abshire",
+      "email": "Eva_Pfeffer@yahoo.com",
+      "address_1": "458 Tavares Extensions",
+      "address_2": "Apt. 026",
+      "city": "Tromptown",
+      "region": "ID",
+      "postal_code": "04707",
+      "country": "Afghanistan",
+      "shipping_region_id": 1,
+      "day_phone": "338-633-1760",
+      "eve_phone": "058-979-9247",
+      "mob_phone": "219-113-5933",
+      "credit_card": "7071123439818621"
+    }
+    ```
 
 - `GET /customer`
 
@@ -442,24 +442,24 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "customer_id": 1,
-    "name": "Karlie Abshire",
-    "email": "Eva_Pfeffer@yahoo.com",
-    "address_1": "458 Tavares Extensions",
-    "address_2": "Apt. 026",
-    "city": "Tromptown",
-    "region": "ID",
-    "postal_code": "04707",
-    "country": "Afghanistan",
-    "shipping_region_id": 1,
-    "day_phone": "338-633-1760",
-    "eve_phone": "058-979-9247",
-    "mob_phone": "219-113-5933",
-    "credit_card": "7071123439818621"
-  }
-  ```
+    ```json
+    {
+      "customer_id": 1,
+      "name": "Karlie Abshire",
+      "email": "Eva_Pfeffer@yahoo.com",
+      "address_1": "458 Tavares Extensions",
+      "address_2": "Apt. 026",
+      "city": "Tromptown",
+      "region": "ID",
+      "postal_code": "04707",
+      "country": "Afghanistan",
+      "shipping_region_id": 1,
+      "day_phone": "338-633-1760",
+      "eve_phone": "058-979-9247",
+      "mob_phone": "219-113-5933",
+      "credit_card": "7071123439818621"
+    }
+    ```
 
 - `POST /customer`
 
@@ -469,13 +469,13 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "customer_id": 1016,
-    "name": "Administrator",
-    "email": "admin@gmafil.com"
-  }
-  ```
+    ```json
+    {
+      "customer_id": 1016,
+      "name": "Administrator",
+      "email": "admin@gmafil.com"
+    }
+    ```
 
 - `POST /customer/login`
 
@@ -484,11 +484,11 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTg4LCJlbWFpbCI6IkRhcGhuZS5TcG9yZXI0NkBob3RtYWlsLmNvbSIsImlhdCI6MTU2MjU1MDQzMSwiZXhwIjoxNTYyNjM2ODMxfQ.KGEDMbeu-z6HCwK_SoJmffz9AfSat5_wnLBw4gyyjdY"
-  }
-  ```
+    ```json
+    {
+      "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTg4LCJlbWFpbCI6IkRhcGhuZS5TcG9yZXI0NkBob3RtYWlsLmNvbSIsImlhdCI6MTU2MjU1MDQzMSwiZXhwIjoxNTYyNjM2ODMxfQ.KGEDMbeu-z6HCwK_SoJmffz9AfSat5_wnLBw4gyyjdY"
+    }
+    ```
 
 - `POST /customer/facebook`
 
@@ -509,17 +509,17 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "address_1": "458 Tavares Extensions",
-    "address_2": "Apt. 026",
-    "city": "Tromptown",
-    "region": "ID",
-    "postal_code": "04707",
-    "country": "Afghanistan",
-    "shipping_region_id": 1
-  }
-  ```
+    ```json
+    {
+      "address_1": "458 Tavares Extensions",
+      "address_2": "Apt. 026",
+      "city": "Tromptown",
+      "region": "ID",
+      "postal_code": "04707",
+      "country": "Afghanistan",
+      "shipping_region_id": 1
+    }
+    ```
 
 - `PUT /customer/credit-card`
 
@@ -528,11 +528,11 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "credit_card": "7071123439818621"
-  }
-  ```
+    ```json
+    {
+      "credit_card": "7071123439818621"
+    }
+    ```
 
 ### Orders
 
@@ -543,13 +543,13 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "order_id": 1026,
-    "shipping_id": 1,
-    "tax_id": 1
-  }
-  ```
+    ```json
+    {
+      "order_id": 1026,
+      "shipping_id": 1,
+      "tax_id": 1
+    }
+    ```
 
 - `GET /order/:id`
 
@@ -557,16 +557,16 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "order_id": 1,
-    "product_id": 1,
-    "attributes": "LG, Red",
-    "product_name": "Arc d'Triomphe",
-    "quantity": 1,
-    "subtotal": "14.99"
-  }
-  ```
+    ```json
+    {
+      "order_id": 1,
+      "product_id": 1,
+      "attributes": "LG, Red",
+      "product_name": "Arc d'Triomphe",
+      "quantity": 1,
+      "subtotal": "14.99"
+    }
+    ```
 
 - `GET /order/customer`
 
@@ -574,21 +574,21 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "order_id": 988,
-    "total_amount": "692.82",
-    "created_on": "2019-04-01T16:07:18.000Z",
-    "shipped_on": "2018-09-30T10:50:33.000Z",
-    "status": 5,
-    "comments": "Quidem id ad suscipit at.",
-    "customer_id": 734,
-    "auth_code": "kEuIAUu_A4",
-    "reference": "non laborum pariatur",
-    "shipping_id": 1,
-    "tax_id": 1
-  }
-  ```
+    ```json
+    {
+      "order_id": 988,
+      "total_amount": "692.82",
+      "created_on": "2019-04-01T16:07:18.000Z",
+      "shipped_on": "2018-09-30T10:50:33.000Z",
+      "status": 5,
+      "comments": "Quidem id ad suscipit at.",
+      "customer_id": 734,
+      "auth_code": "kEuIAUu_A4",
+      "reference": "non laborum pariatur",
+      "shipping_id": 1,
+      "tax_id": 1
+    }
+    ```
 
 - `GET /order/detail/:id`
 
@@ -596,21 +596,21 @@
   - Authentication required.
   - Example response
 
-  ```json
-  {
-    "order_id": 1,
-    "total_amount": "79.89",
-    "created_on": "2019-04-09T15:22:30.000Z",
-    "shipped_on": "2019-01-21T00:32:41.000Z",
-    "status": 5,
-    "comments": "Similique in rem.",
-    "customer_id": 120,
-    "auth_code": "fYX4t5oj7A",
-    "reference": "est delectus ea",
-    "shipping_id": 2,
-    "tax_id": 2
-  }
-  ```
+    ```json
+    {
+      "order_id": 1,
+      "total_amount": "79.89",
+      "created_on": "2019-04-09T15:22:30.000Z",
+      "shipped_on": "2019-01-21T00:32:41.000Z",
+      "status": 5,
+      "comments": "Similique in rem.",
+      "customer_id": 120,
+      "auth_code": "fYX4t5oj7A",
+      "reference": "est delectus ea",
+      "shipping_id": 2,
+      "tax_id": 2
+    }
+    ```
 
 ### Shopping cart
 
@@ -621,13 +621,13 @@
   - No parameters required.
   - Example response
 
-  ```json
-  {
-    "item_id": 1038,
-    "cart_id": "49132550a18311e98b",
-    "add_on": "2019-07-08T04:21:25.030Z"
-  }
-  ```
+    ```json
+    {
+      "item_id": 1038,
+      "cart_id": "49132550a18311e98b",
+      "add_on": "2019-07-08T04:21:25.030Z"
+    }
+    ```
 
 - `POST /cart/add`
 
@@ -636,25 +636,25 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "price": "14.99",
-      "subtotal": 14.99,
-      "discounted_price": "0.00",
-      "discounted_subtotal": 0,
-      "name": "Arc d'Triomphe",
-      "image": "arc-d-triomphe.gif",
-      "item_id": 1039,
-      "cart_id": "49132550a18311e98b",
-      "product_id": 1,
-      "attributes": "lorem ipsum",
-      "quantity": 1,
-      "add_on": "2019-07-08T04:26:04.000Z",
-      "customer_id": 988
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "price": "14.99",
+        "subtotal": 14.99,
+        "discounted_price": "0.00",
+        "discounted_subtotal": 0,
+        "name": "Arc d'Triomphe",
+        "image": "arc-d-triomphe.gif",
+        "item_id": 1039,
+        "cart_id": "49132550a18311e98b",
+        "product_id": 1,
+        "attributes": "lorem ipsum",
+        "quantity": 1,
+        "add_on": "2019-07-08T04:26:04.000Z",
+        "customer_id": 988
+      }
+    ]
+    ```
 
 - `GET /cart/:id`
 
@@ -662,25 +662,25 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "price": "14.99",
-      "subtotal": 14.99,
-      "discounted_price": "0.00",
-      "discounted_subtotal": 0,
-      "name": "Arc d'Triomphe",
-      "image": "arc-d-triomphe.gif",
-      "item_id": 1039,
-      "cart_id": "49132550a18311e98b",
-      "product_id": 1,
-      "attributes": "lorem ipsum",
-      "quantity": 1,
-      "add_on": "2019-07-08T04:26:04.000Z",
-      "customer_id": 988
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "price": "14.99",
+        "subtotal": 14.99,
+        "discounted_price": "0.00",
+        "discounted_subtotal": 0,
+        "name": "Arc d'Triomphe",
+        "image": "arc-d-triomphe.gif",
+        "item_id": 1039,
+        "cart_id": "49132550a18311e98b",
+        "product_id": 1,
+        "attributes": "lorem ipsum",
+        "quantity": 1,
+        "add_on": "2019-07-08T04:26:04.000Z",
+        "customer_id": 988
+      }
+    ]
+    ```
 
 - `PUT /cart/update/:id`
 
@@ -689,22 +689,22 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "price": "19.99",
-    "subtotal": 39.98,
-    "discounted_price": "17.99",
-    "discounted_subtotal": 35.98,
-    "name": "Christmas Seal",
-    "image": "christmas-seal.gif",
-    "item_id": 1,
-    "product_id": 82,
-    "attributes": "Color",
-    "quantity": 2,
-    "add_on": "2019-04-12T02:09:19.000Z",
-    "customer_id": 988
-  }
-  ```
+    ```json
+    {
+      "price": "19.99",
+      "subtotal": 39.98,
+      "discounted_price": "17.99",
+      "discounted_subtotal": 35.98,
+      "name": "Christmas Seal",
+      "image": "christmas-seal.gif",
+      "item_id": 1,
+      "product_id": 82,
+      "attributes": "Color",
+      "quantity": 2,
+      "add_on": "2019-04-12T02:09:19.000Z",
+      "customer_id": 988
+    }
+    ```
 
 - `DELETE /cart/delete/:id`
 
@@ -723,18 +723,18 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "item_id": 1,
-    "cart_id": "9d201ac0a18511e994",
-    "product_id": 82,
-    "attributes": "Color",
-    "quantity": 1,
-    "buy_now": true,
-    "add_on": "2019-07-08T04:38:05.000Z",
-    "customer_id": 647
-  }
-  ```
+    ```json
+    {
+      "item_id": 1,
+      "cart_id": "9d201ac0a18511e994",
+      "product_id": 82,
+      "attributes": "Color",
+      "quantity": 1,
+      "buy_now": true,
+      "add_on": "2019-07-08T04:38:05.000Z",
+      "customer_id": 647
+    }
+    ```
 
 - `GET /cart/total-amount/:id`
 
@@ -742,12 +742,12 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "subtotal": 19.99,
-    "discounted_subtotal": 17.99
-  }
-  ```
+    ```json
+    {
+      "subtotal": 19.99,
+      "discounted_subtotal": 17.99
+    }
+    ```
 
 - `GET /cart/save-for-later/:id`
 
@@ -755,18 +755,18 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "item_id": 1,
-    "cart_id": "bc750a20a18511e994",
-    "product_id": 82,
-    "attributes": "Color",
-    "quantity": 1,
-    "buy_now": false,
-    "add_on": "2019-07-08T04:39:48.000Z",
-    "customer_id": 647
-  }
-  ```
+    ```json
+    {
+      "item_id": 1,
+      "cart_id": "bc750a20a18511e994",
+      "product_id": 82,
+      "attributes": "Color",
+      "quantity": 1,
+      "buy_now": false,
+      "add_on": "2019-07-08T04:39:48.000Z",
+      "customer_id": 647
+    }
+    ```
 
 - `GET /cart/get-saved/:id`
 
@@ -774,19 +774,19 @@
   - No authentication required.
   - Example response
 
-  ```json
-  [
-    {
-      "price": "19.99",
-      "discounted_price": "17.99",
-      "name": "Christmas Seal",
-      "item_id": 1,
-      "attributes": "Color",
-      "quantity": 1,
-      "buy_now": false
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "price": "19.99",
+        "discounted_price": "17.99",
+        "name": "Christmas Seal",
+        "item_id": 1,
+        "attributes": "Color",
+        "quantity": 1,
+        "buy_now": false
+      }
+    ]
+    ```
 
 - `DELETE /cart/remove-product/:id`
 
@@ -795,9 +795,9 @@
   - No authentication required.
   - Example response
 
-  ```json
-  "successfully deleted product"
-  ```
+    ```json
+    "successfully deleted product"
+    ```
 
 ### Tax
 
@@ -808,15 +808,15 @@
   - No parameters required.
   - Example response
 
-  ```json
-  [
-    {
-      "tax_id": 1,
-      "tax_type": "Sales Tax at 8.5%",
-      "tax_percentage": "8.50"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "tax_id": 1,
+        "tax_type": "Sales Tax at 8.5%",
+        "tax_percentage": "8.50"
+      }
+    ]
+    ```
 
 - `GET /tax/:id`
 
@@ -824,13 +824,13 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "tax_id": 1,
-    "tax_type": "Sales Tax at 8.5%",
-    "tax_percentage": "8.50"
-  }
-  ```
+    ```json
+    {
+      "tax_id": 1,
+      "tax_type": "Sales Tax at 8.5%",
+      "tax_percentage": "8.50"
+    }
+    ```
 
 ### Shipping
 
@@ -841,14 +841,14 @@
   - No parameters required.
   - Example response
 
-  ```json
-  [
-    {
-      "shipping_region_id": 1,
-      "shipping_region": "Please Select"
-    }
-  ]
-  ```
+    ```json
+    [
+      {
+        "shipping_region_id": 1,
+        "shipping_region": "Please Select"
+      }
+    ]
+    ```
 
 - `GET /shipping/region/:id`
 
@@ -856,12 +856,12 @@
   - No authentication required.
   - Example response
 
-  ```json
-  {
-    "shipping_region_id": 1,
-    "shipping_region": "Please Select"
-  }
-  ```
+    ```json
+    {
+      "shipping_region_id": 1,
+      "shipping_region": "Please Select"
+    }
+    ```
 
 ### Payment
 
@@ -873,9 +873,9 @@
   - Authentication required.
   - Example response
 
-  ```json
-  "successfully completed payment"
-  ```
+    ```json
+    "successfully completed payment"
+    ```
 
 - `POST /payment/webhook`
 
@@ -884,9 +884,9 @@
   - Authentication required.
   - Example response
 
-  ```json
-  "successfully webhooks received"
-  ```
+    ```json
+    "successfully webhooks received"
+    ```
 
 ## Architecture
 
