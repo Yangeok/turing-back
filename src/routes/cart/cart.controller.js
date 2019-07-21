@@ -277,7 +277,7 @@ exports.deleteCart = async ctx => {
     await shopping_cart.destroy({
       where: { cart_id: id }
     });
-    ctx.body = successMessage('cart', 'is deleted');
+    ctx.body = successMessage('cart', 'successfully deleted cart');
   } catch (e) {
     ctx.status = 400;
     ctx.body = errorMessage(e.message);

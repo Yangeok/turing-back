@@ -215,3 +215,13 @@ exports.updateCreditCardFromCustomer = async ctx => {
     ctx.body = errorMessage(e.message);
   }
 };
+
+exports.deleteCustomer = async ctx => {
+  try {
+    await customer.destroy({ where: { email: 'wooky92@naver.com' } });
+    ctx.body = successMessage('customer', 'successfully deleted customer');
+  } catch (e) {
+    ctx.status = 400;
+    ctx.body = errorMessage(e.message);
+  }
+};

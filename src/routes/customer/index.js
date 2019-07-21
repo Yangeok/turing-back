@@ -21,4 +21,6 @@ customer.put(
   customerCtrl.updateCreditCardFromCustomer
 );
 
+customer.delete('/', customerCtrl.deleteCustomer);
+
 module.exports = customer;

@@ -7,7 +7,8 @@ const servers = app => {
   db.sequelize
     .sync()
     .then(() => {
-      console.log(`> MySQL connected on ${env.NODE_ENV} environment`);
+      env.NODE_ENV !== 'test' &&
+        console.log(`> MySQL connected on ${env.NODE_ENV} environment`);
     })
     .catch(err => {
       console.error(err).log(`> MySQL connection error`);
@@ -15,7 +16,8 @@ const servers = app => {
     })
     .then(() => {
       app.listen(port, () => {
-        console.log(`> Koa server is listening on port ${port}`);
+        env.NODE_ENV !== 'test' &&
+          console.log(`> Koa server is listening on port ${port}`);
       });
     });
 };
