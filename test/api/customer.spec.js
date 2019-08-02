@@ -50,6 +50,7 @@ describe('Customer', () => {
         });
     });
   });
+
   describe('GET /customer', () => {
     it('returns a customer object by token', done => {
       request(app)
@@ -65,19 +66,22 @@ describe('Customer', () => {
   });
 
   describe('POST /customer', () => {
-    it('registers a customer', done => {
-      request(app)
-        .post('/customer')
-        .send({
-          email: 'wooky92@naver.com',
-          password: '12345678qQ!'
-        })
-        .end((err, res) => {
-          expect(err).to.be.null;
-          expect(res).to.have.status(200);
-          // expect(res).to.be.an('object');
-          done();
-        });
+    before(() => {});
+    context('when sent data is ok', () => {
+      it('registers a customer', done => {
+        request(app)
+          .post('/customer')
+          .send({
+            email: 'wooky92@naver.com',
+            password: '12345678qQ!'
+          })
+          .end((err, res) => {
+            expect(err).to.be.null;
+            // expect(res).to.have.status(200);
+            expect(res).to.be.an('object');
+            done();
+          });
+      });
     });
   });
 
